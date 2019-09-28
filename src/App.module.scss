@@ -1,0 +1,21 @@
+.app {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'h h'
+    'c c';
+
+
+
+  .content {
+    grid-area: c;
+  }
+}
+@media screen and (max-width: 450px) {
+  .app {
+    font-size: 80%;
+  }
+}

@@ -1,0 +1,120 @@
+$shad: 0 1px 4px rgba(0, 0, 0, .3),
+-23px 0 20px -23px rgba(0, 0, 0, .6),
+23px 0 20px -23px rgba(0, 0, 0, .6),
+inset 0 0 40px rgba(0, 0, 0, .1);
+
+
+.toDoWrapper {
+	color: red;
+	font-size: 100%;
+	padding: 1rem 3rem;
+
+	.toDoHeader {
+		padding: 1rem 0;
+		box-shadow: $shad;
+		margin-bottom: 0.5rem;
+
+	}
+
+
+	.toDoItem {
+
+		padding: 1rem 0;
+
+		.itemHeader {
+			background: #fff;
+			padding: 30px;
+			position: relative;
+			margin-bottom: 0.5rem;
+			cursor: pointer;
+			&:hover {
+				background-color: rgba(250, 250, 250, .7);
+			}
+			&:active {
+				box-shadow: none;
+			}
+
+		}
+
+		.itemHeader,
+		.itemHeader::before,
+		.itemHeader::after {
+			/* Стили, чтобы отделить листы друг от друга */
+			box-shadow: $shad;
+			border: 1px solid #bbb;
+		}
+
+		.itemHeader::before,
+		.itemHeader::after {
+			content: "";
+			position: absolute;
+			height: 95%;
+			width: 99%;
+			background-color: #eee;
+		}
+
+		.itemHeader::before {
+			right: 15px;
+			top: 0;
+			transform: rotate(-1deg);
+			z-index: -1;
+		}
+
+		.itemHeader::after {
+			top: 5px;
+			right: -5px;
+			transform: rotate(1deg);
+			z-index: -2;
+		}
+
+
+		.itemContents {
+			box-shadow: $shad;
+
+			.task {
+
+				.taskHeader {
+
+				}
+
+				.taskContent {
+
+
+				}
+			}
+
+
+		}
+
+		.itemContents.active {
+
+
+		}
+
+		.itemContents.none {
+			display: none;
+
+		}
+
+	}
+	.footerWrapper {
+		display: none;
+		position: sticky;
+		bottom: 0;
+		text-align: right;
+		padding: 3px 0.5rem;
+		box-shadow: $shad;
+		background-color: white;
+	}
+}
+@media screen and (max-width: 450px) {
+	.toDoWrapper {
+		padding: 5px;
+
+
+		.footerWrapper {
+			display: block;
+		}
+	}
+
+}
