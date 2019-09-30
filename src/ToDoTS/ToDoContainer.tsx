@@ -1,20 +1,22 @@
 import React, {Component} from 'react'
 import {ToDo} from "./ToDo";
 
+interface Props {
+	showSidebar: boolean;
+	setShowSidebar: (showSidebar: any) => boolean | undefined | void;
+}
 
-class ToDoContainer extends Component {
+class ToDoContainer extends Component<Props> {
 
-  render() {type Props = {
-    showSidebar: boolean | undefined;
-    setShowSidebar: (showSidebar: any) => boolean | undefined | void;
-  }
 
-    return (
-      <div>
-        <ToDo />
-      </div>
-    )
-  }
+	render() {
+
+		return (
+			<div>
+				<ToDo showSidebar={this.props.showSidebar} setShowSidebar={this.props.setShowSidebar}/>
+			</div>
+		)
+	}
 }
 
 

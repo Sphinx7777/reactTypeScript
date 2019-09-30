@@ -4,41 +4,14 @@ $shad: 0 1px 4px rgba(0, 0, 0, .3),
 inset 0 0 40px rgba(0, 0, 0, .1);
 
 
-.burgerMenuWrapper {
-	position: fixed;
-	padding: 0.43rem 0;
-	left: 5px;
-	display: inline-block;
-	box-shadow: $shad;
-	cursor: pointer;
 
-	&:hover {
-		background-color: rgba(0, 0, 0, .1);
-	}
-
-	&:active {
-		box-shadow: none;
-	}
-
-	.burgerMenuImg {
-		max-width: 3.5rem;
-		display: block;
-		margin: 0 auto;
-
-	}
-
-	.burgerMenuTitle {
-		color: black;
-		display: inline-block;
-	}
-}
 
 
 .sideBarWrapper {
 	grid-area: s;
-	position: fixed;
+	position: absolute;
 	top: 4.4rem;
-	left: 5px;
+	left: 3.3%;
 	color: black;
 	max-width: 10rem;
 	background-color: white;
@@ -58,14 +31,10 @@ z-index: 5;
 }
 
 @media screen and (max-width: 450px) {
-	.burgerMenuWrapper {
 
-		z-index: 2;
-bottom: 1rem;
-		padding: 0;
-	}
 	.sideBarWrapper {
-		top: 0;
+		top: 4rem;
+		left: 0;
 	}
 
 }

@@ -12,8 +12,8 @@ const App: React.FC = () => {
 
   return (
     <div className={s.app}>
-      <Header />
-      <SideBar {...{showSidebar, setShowSidebar}} />
+      <Header {...{showSidebar, setShowSidebar}} />
+      <SideBar {...{showSidebar}} />
       <div className={s.content}>
         <ToDoContainer {...{showSidebar, setShowSidebar}}/>
       </div>

@@ -1,19 +1,18 @@
 import React from 'react'
 import s from './Header.module.scss'
 import {ContactLinks} from '../OtherComponents/ContaktLinks/ContactLinks';
+import {BurgerMenu} from "../ToDoTS/BurgerMenu";
 
-/*
 interface Props {
   showSidebar: boolean | undefined;
   setShowSidebar: (showSidebar: any) => boolean | undefined | void;
 }
-*/
 
 
-export const Header = () => {
+export const Header = ({showSidebar,setShowSidebar}: Props) => {
   return (
     <div className={s.headerWrapper}>
-      <div>Вспомнить бы еще то что забыл вспомнить...</div>
+        <BurgerMenu showSidebar={showSidebar} setShowSidebar={setShowSidebar}/> {/*for 450+px*/}
       <ContactLinks/>
     </div>
   )

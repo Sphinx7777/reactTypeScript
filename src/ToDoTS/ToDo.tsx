@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import s from './ToDo.module.scss'
 import {ContactLinks} from "../OtherComponents/ContaktLinks/ContactLinks";
-import {BurgerMenu} from "../SideBar/BurgerMenu";
+import {BurgerMenu} from "./BurgerMenu";
 
 interface Props {
   showSidebar: boolean | undefined;
@@ -12,6 +12,8 @@ export const ToDo = ({showSidebar, setShowSidebar}:Props) => {
 
 
   return (
+      <>
+        <div>Вспомнить бы еще то что забыл вспомнить...</div>
     <div className={s.toDoWrapper}>
       <div className={s.toDoHeader}>
         по_дате завершенные активные все         поиск
@@ -96,5 +98,5 @@ export const ToDo = ({showSidebar, setShowSidebar}:Props) => {
         <ContactLinks />
       </div>
     </div>
-  )
+ </> )
 };
