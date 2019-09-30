@@ -32,6 +32,7 @@ export class NewCalendar extends Component<CalendarProps> {
 					onChange={this.onChange}
 					value={this.props.dateForPlane}
 				/>
+				<div className={s.closeCalendar} onClick={()=>{this.props.setStatusCalendar(false)}}>X</div>
 			</div>
 		);
 	}

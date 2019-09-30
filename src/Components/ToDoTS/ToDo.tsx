@@ -11,50 +11,50 @@ interface IProps {
 }
 
 
-const days=new Date();
-	const week = ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+const days = new Date();
+const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
 
 export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 	const [showContent, setStatusContent] = useState(false);
 	const [dateForPlane, setDateForPlane] = useState(new Date());
 	const [showCalendar, setStatusCalendar] = useState(false);
-  const dateForPlaneString: string =dateForPlane.toLocaleDateString();
-  const dayOfWeek: string =week[days.getDay()];
+	const dateForPlaneString: string = dateForPlane.toLocaleDateString();
+	const dayOfWeek: string = week[days.getDay()];
 
 
 	return (
 		<>
-			<div>Вспомнить бы еще то что забыл вспомнить...</div>
+			<div>Учебный проект по TypeScript...начало..</div>
 			<div className={s.toDoWrapper}>
 				<div className={s.toDoHeader}>
 					по_дате завершенные активные все поиск
 				</div>
 				<div className={s.toDoItem}>
 
-					<div className={s.itemHeader} >
-
-						<div>
-							{showContent ? <span title='Дабл клик для редактирования' className={s.dateForPlaneEdit} onDoubleClick={()=>{setStatusCalendar(true)}}>{dateForPlaneString}</span>
-								:<span className={s.dateForPlane}>{dateForPlaneString}</span>}
+					<div className={s.itemHeader}>
+						<div className={s.dateAndTaskStatus}>
+							<div>
+								{showContent ?
+									<span title='Дабл клик для редактирования' className={s.dateForPlaneEdit} onDoubleClick={() => {
+										setStatusCalendar(true)
+									}}>{dateForPlaneString}</span>
+									: <span className={s.dateForPlane}>{dateForPlaneString}</span>}
 								<span className={s.dayForPlane}>{dayOfWeek}</span>
+							</div>
+							<div>
+								<span className={s.totalTasks}>всего_дел</span>
+								<span className={s.completedTasks}>сделанно_дел</span>
+							</div>
 						</div>
-
 						<div className={s.openList} onClick={() => {
 							setStatusContent(!showContent)
 						}}>{!showContent ? 'Открыть список' : 'Закрыть список'}
 						</div>
-
-						<div>
-							<span className={s.totalTasks}>всего_дел</span>
-							<span className={s.completedTasks}>сделанно_дел</span>
-						</div>
-
 					</div>
-
 					<div className={showContent ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 						<div className={s.task}>
-							<div className={s.taskHeader}>
+							<div className={s.taskHeader} >
 								дата_создания название_даблклик_редактировать завершить
 							</div>
 							<div className={s.taskContent}>
@@ -82,7 +82,7 @@ export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 
 
 				{showCalendar && <div className={s.calendar}>
-					<ModalWindow {...{setStatusCalendar,dateForPlane,setDateForPlane}}/>
+					<ModalWindow {...{setStatusCalendar, dateForPlane, setDateForPlane}}/>
 				</div>}
 				{/*for width 450px -*/}
 				<div className={s.footerWrapper}>
