@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
 import s from './ToDo.module.scss'
 import {ContactLinks} from "../OtherComponents/ContaktLinks/ContactLinks";
+import {BurgerMenu} from "../SideBar/BurgerMenu";
 
-
-export const ToDo = () => {
+interface Props {
+  showSidebar: boolean | undefined;
+  setShowSidebar: (showSidebar: any) => boolean | undefined | void;
+}
+export const ToDo = ({showSidebar, setShowSidebar}:Props) => {
   const [showContent, setStatusContent] = useState(true); //toggle task Contents
 
 
@@ -88,6 +92,7 @@ export const ToDo = () => {
 
 
       <div className={s.footerWrapper}>
+        <BurgerMenu {...{showSidebar, setShowSidebar}}/>
         <ContactLinks />
       </div>
     </div>

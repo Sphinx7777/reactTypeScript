@@ -13,6 +13,7 @@ interface Props {
 export const Header = () => {
   return (
     <div className={s.headerWrapper}>
+      <div>Вспомнить бы еще то что забыл вспомнить...</div>
       <ContactLinks/>
     </div>
   )

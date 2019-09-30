@@ -38,6 +38,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	grid-area: s;
 	position: fixed;
 	top: 4.4rem;
+	left: 5px;
 	color: black;
 	max-width: 10rem;
 	background-color: white;
@@ -47,7 +48,8 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	transition: opacity 1s;
 	box-shadow: $shad;
 	padding: 5px;
-
+z-index: 5;
+	border-radius: 0.5rem;
 }
 
 .sideBarWrapper.hide {
@@ -57,6 +59,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 @media screen and (max-width: 450px) {
 	.burgerMenuWrapper {
+
 		z-index: 2;
 bottom: 1rem;
 		padding: 0;

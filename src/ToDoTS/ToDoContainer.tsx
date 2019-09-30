@@ -3,7 +3,12 @@ import {ToDo} from "./ToDo";
 
 
 class ToDoContainer extends Component {
-  render() {
+
+  render() {type Props = {
+    showSidebar: boolean | undefined;
+    setShowSidebar: (showSidebar: any) => boolean | undefined | void;
+  }
+
     return (
       <div>
         <ToDo />
