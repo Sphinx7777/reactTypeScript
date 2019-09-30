@@ -9,6 +9,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	font-size: 100%;
 	padding: 1rem 3rem;
 
+	.calendar {
+		margin-left: 10rem;
+	}
+
 	.toDoHeader {
 		padding: 1rem 0;
 		box-shadow: $shad;
@@ -19,19 +23,41 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		padding: 1rem 0;
 
 		.itemHeader {
-			background: #fff;
-			padding: 30px;
+			background: rgba(255,255,255,0.1);
+			text-align: left;
+			padding: 1rem;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			align-content: center;
 			position: relative;
 			margin-bottom: 0.5rem;
-			cursor: pointer;
 
-			&:hover {
-				background-color: rgba(250, 250, 250, .7);
+
+
+			.openList {
+				color: blue;
+				padding: 3px;
+				cursor: pointer;
+
+				&:hover {
+					box-shadow: $shad;
+				}
+				&:active {
+background-color: lightgray;
+
+				}
+			}
+			.dateForPlane,.dateForPlaneEdit {
+				color: blue;
+				margin-right: 5px;
+				padding: 3px;
+				border-radius: 0.5rem;
+			}
+			.dateForPlaneEdit {
+				background-color: white;
 			}
 
-			&:active {
-				box-shadow: none;
-			}
 		}
 
 		.itemHeader,
@@ -92,12 +118,16 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 	.footerWrapper {
 		display: none;
-		position: sticky;
+		position: fixed;
 		bottom: 0;
-		text-align: right;
+		left: 0;
+		right: 0;
+		justify-content: space-between;
+		align-content: center;
 		padding: 3px 0.5rem;
 		box-shadow: $shad;
 		background-color: white;
+		z-index: 3;
 	}
 }
 
@@ -107,8 +137,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 		.footerWrapper {
 			display: flex;
-			justify-content: space-between;
-			align-content: center;
 
 			.burgerMenuWrapper {
 				position: sticky;

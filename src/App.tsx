@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import s from './App.module.scss';
-import ToDoContainer from "./ToDoTS/ToDoContainer";
-import {Header} from './Header/Header';
-import {SideBar} from "./SideBar/SideBar";
+import ToDoContainer from "./Components/ToDoTS/ToDoContainer";
+import {Header} from './Components/Header/Header';
+import {SideBar} from "./Components/SideBar/SideBar";
 
-
+export interface IProps {
+  showSidebar: boolean;
+  setShowSidebar: (showSidebar: boolean) => void;
+}
 
 
 const App: React.FC = () => {

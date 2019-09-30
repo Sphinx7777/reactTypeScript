@@ -1,12 +1,13 @@
 import React from 'react'
 import s from './SideBar.module.scss'
 
+//BurgerMenu toggle show sideBar
 
-interface Props {
-	showSidebar: boolean | undefined;
+interface IProps {
+	showSidebar: boolean;
 }
 
-export const SideBar = ({showSidebar}: Props) => {
+export const SideBar = ({showSidebar}: IProps) => {
 
 
 	return (
