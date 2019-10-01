@@ -3,7 +3,7 @@ import s from './ToDo.module.scss'
 import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 import {ModalWindow} from '../Others/ModalWindow/ModalWindow';
-
+const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 interface IProps {
 	showSidebar: boolean;
 	setShowSidebar: (showSidebar: boolean) => void;
@@ -11,8 +11,8 @@ interface IProps {
 }
 
 
-const days = new Date();
-const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+
+
 
 
 export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
@@ -20,6 +20,7 @@ export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 	const [dateForPlane, setDateForPlane] = useState(new Date());
 	const [showCalendar, setStatusCalendar] = useState(false);
 	const dateForPlaneString: string = dateForPlane.toLocaleDateString();
+	const days = new Date();
 	const dayOfWeek: string = week[days.getDay()];
 
 
@@ -30,8 +31,9 @@ export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 				<div className={s.toDoHeader}>
 					по_дате завершенные активные все поиск
 				</div>
-				<div className={s.toDoItem}>
 
+
+				<div className={s.toDoItem}>
 					<div className={s.itemHeader}>
 						<div className={s.dateAndTaskStatus}>
 							<div>
@@ -47,38 +49,62 @@ export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 								<span className={s.completedTasks}>сделанно_дел</span>
 							</div>
 						</div>
-						<div className={s.openList} onClick={() => {
-							setStatusContent(!showContent)
-						}}>{!showContent ? 'Открыть список' : 'Закрыть список'}
+						<div className={s.action}>
+							<div className={s.printTask}>Добавить</div>
+							<div className={s.openList} onClick={() => {
+								setStatusContent(!showContent)
+							}}>{!showContent ? 'Открыть список' : 'Закрыть список'}
+							</div>
+							<div className={s.dellAllTask}>Удалить все</div>
 						</div>
+
 					</div>
 					<div className={showContent ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 						<div className={s.task}>
 							<div className={s.taskHeader} >
-								дата_создания название_даблклик_редактировать завершить
+								<div className={s.createDateAndDell}>
+									<span>
+										дата_создания
+									</span>
+									<span>
+										завершить
+									</span>
+								</div>
+
+								<div className={s.taskName}>
+									название_даблклик_редактировать
+								</div>
+
 							</div>
 							<div className={s.taskContent}>
 								task Content дабл клик редактировать
 							</div>
 						</div>
 						<div className={s.task}>
-							<div className={s.taskHeader}>
-								дата_создания название_даблклик_редактировать завершить
+							<div className={s.taskHeader} >
+								<div className={s.createDateAndDell}>
+									<span>
+										дата_создания
+									</span>
+									<span>
+										завершить
+									</span>
+								</div>
+
+								<div className={s.taskName}>
+									название_даблклик_редактировать
+								</div>
+
 							</div>
 							<div className={s.taskContent}>
 								task Content дабл клик редактировать
 							</div>
 						</div>
-						<div className={s.task}>
-							<div className={s.taskHeader}>
-								дата_создания название_даблклик_редактировать завершить
-							</div>
-							<div className={s.taskContent}>
-								task Content дабл клик редактировать
-							</div>
-						</div>
+
 					</div>
 				</div>
+
+
 
 
 				{showCalendar && <div className={s.calendar}>

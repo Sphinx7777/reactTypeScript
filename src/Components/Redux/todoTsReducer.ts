@@ -13,13 +13,15 @@ if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 	initialState = {
 		tasks: [{
 			id: 1,
+			dateForPlane: '24 мая 2019 г. 11:32',
+
 			name: 'Образец',
 			editStatusDescription: false,
 			editStatusName: false,
 			description: 'Описание задачи',
 			status: false,
 			createDate: '01 января 2000 г. 00:00',
-			dateForPlane: '24 мая 2019 г. 11:32'
+
 		}],
 	}
 }
