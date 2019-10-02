@@ -3,19 +3,19 @@ import s from './ToDo.module.scss'
 import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 import {ModalWindow} from '../Others/ModalWindow/ModalWindow';
+import {IProps} from "./ToDoContainer";
+
+
+
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-interface IProps {
-	showSidebar: boolean;
-	setShowSidebar: (showSidebar: boolean) => void;
-	addNewTask: (task: object) => object | void;
-}
 
 
 
 
 
 
-export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
+
+export const ToDo = ({showSidebar, setShowSidebar,addNewTask,editMode}:IProps) => {
 	const [showContent, setStatusContent] = useState(false);
 	const [dateForPlane, setDateForPlane] = useState(new Date());
 	const [showCalendar, setStatusCalendar] = useState(false);
@@ -26,7 +26,7 @@ export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 
 	return (
 		<>
-			<div>Учебный проект по TypeScript...начало..</div>
+			<div onClick={()=>{addNewTask(!editMode)}}>Учебный проект по TypeScript...начало..</div>
 			<div className={s.toDoWrapper}>
 				<div className={s.toDoHeader}>
 					по_дате завершенные активные все поиск
@@ -112,7 +112,7 @@ export const ToDo = ({showSidebar, setShowSidebar, addNewTask}: IProps) => {
 				</div>}
 				{/*for width 450px -*/}
 				<div className={s.footerWrapper}>
-					<BurgerMenu {...{showSidebar, setShowSidebar}}/>
+					<BurgerMenu {...{showSidebar, setShowSidebar,addNewTask,editMode}}/>
 					<ContactLinks/>
 				</div>
 			</div>

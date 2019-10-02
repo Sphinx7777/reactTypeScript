@@ -4,10 +4,6 @@ import ToDoContainer from "./Components/ToDoTS/ToDoContainer";
 import {Header} from './Components/Header/Header';
 import {SideBar} from "./Components/SideBar/SideBar";
 
-export interface IProps {
-  showSidebar: boolean;
-  setShowSidebar: (showSidebar: boolean) => void;
-}
 
 
 const App: React.FC = () => {
@@ -16,7 +12,7 @@ const App: React.FC = () => {
   return (
     <div className={s.app}>
       <Header {...{showSidebar, setShowSidebar}} />
-      <SideBar {...{showSidebar}} />
+      <SideBar {...{showSidebar,setShowSidebar}} />
       <div className={s.content}>
         <ToDoContainer {...{showSidebar, setShowSidebar}}/>
       </div>

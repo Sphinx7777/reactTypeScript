@@ -4,21 +4,22 @@ import {connect} from "react-redux";
 import {addNewTask} from "../Redux/todoTsReducer";
 import {TodoState} from '../Redux/reduxStore';
 
-interface IProps {
+export interface IProps {
 	showSidebar: boolean;
 	setShowSidebar: (showSidebar: boolean) => void;
-	addNewTask: (task: object) => object | void;
+	addNewTask: (task: boolean) => any;
 	editMode: boolean;
 }
 
-class ToDoContainer extends Component<IProps> {
+
+class ToDoContainer extends Component<IProps>{
 
 
 	render() {
-const {addNewTask,showSidebar,setShowSidebar}=this.props;
+const {addNewTask,showSidebar,setShowSidebar,editMode}=this.props;
 		return (
 			<div>
-				<ToDo {...{addNewTask,showSidebar,setShowSidebar}}/>
+				<ToDo {...{addNewTask,showSidebar,setShowSidebar,editMode}}/>
 			</div>
 		)
 	}

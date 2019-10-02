@@ -1,13 +1,13 @@
 import React from 'react'
 import s from './SideBar.module.scss'
+import {IProps} from "../ToDoTS/ToDoContainer";
+
 
 //BurgerMenu toggle show sideBar
 
-interface IProps {
-	showSidebar: boolean;
-}
 
-export const SideBar = ({showSidebar}: IProps) => {
+
+export const SideBar = ({showSidebar,setShowSidebar}: IProps) => {
 
 
 	return (
@@ -31,7 +31,11 @@ export const SideBar = ({showSidebar}: IProps) => {
 				<div>
 					sideBardfdfdfdfdsdsds
 				</div>
+				<span onClick={()=> {
+					setShowSidebar(!showSidebar)
+				}}>Закрыть</span>
 			</div>
+
 		</>
 	)
 };

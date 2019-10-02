@@ -2,7 +2,7 @@
 import {load} from 'redux-localstorage-simple';
 
 
-const ADD_NEW_TASK = '/todoReducer___ADD_NEW_TASK';
+const ADD_NEW_TASK: string = '/todoReducer___ADD_NEW_TASK';
 
 
 
@@ -23,20 +23,22 @@ if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 			createDate: '01 января 2000 г. 00:00',
 
 		}],
+		editMode: false
 	}
 }
 
 interface IAction{
-	action: object
+	action: {}
 	type: string
-	task: object
+	task: {}
+	status: boolean
 }
 
 
 const todoTsReducer = (state = initialState, action: IAction) => {
 	switch (action.type) {
 		case ADD_NEW_TASK: {
-			return {...state, ...state.tasks.unshift({...action.task})}
+			return {...state, editMode:action.status}
 		}
 		default:
 			return state;
@@ -44,12 +46,12 @@ const todoTsReducer = (state = initialState, action: IAction) => {
 
 };
 
-const setNewTask = (task: object) => ({type: ADD_NEW_TASK, task});
+const setNewTask = (status: boolean) => ({type: ADD_NEW_TASK,status});
 
 
-export const addNewTask = (task: object) => {
+export const addNewTask: (s: boolean)=> any = (status: boolean) => {
 	return (dispatch: any) => {
-		dispatch(setNewTask(task));
+		dispatch(setNewTask(status));
 	}
 };
 
