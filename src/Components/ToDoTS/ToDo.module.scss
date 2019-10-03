@@ -13,17 +13,68 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		margin-left: 10rem;
 	}
 
+	.taskControl {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		padding: 0 0.5rem;
+
+		.addNewTask, .dellAllFinishedTask {
+			box-shadow: $shad;
+			font-size: 0.9rem;
+			display: inline-block;
+			padding: 0.3rem;
+			margin-top: 0.5rem;
+		}
+
+
+	}
+
+
 	.toDoHeader {
-		padding: 1rem 0;
+		padding: 0.5rem;
 		box-shadow: $shad;
 		margin-bottom: 0.5rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+
+		.taskFilter {
+
+
+			.filterItem {
+				margin-right: 0.5rem;
+
+			}
+
+		}
+
+		.search {
+			border-radius: 0.3rem;
+			outline: none;
+			padding: 3px;
+
+			&:focus {
+				border: 2px solid cornflowerblue;
+			}
+
+		}
+	}
+
+	@media screen and (max-width: 500px) {
+		.taskControl, .toDoHeader {
+			flex-direction: column;
+			align-content: center;
+		}
+
 	}
 
 	.toDoItem {
 		padding: 1rem 0;
 
 		.itemHeader {
-			background: rgba(255,255,255,0.1);
+			background: rgba(255, 255, 255, 0.1);
 			text-align: left;
 			padding: 0.5rem 2rem 0.5rem 1rem;
 			align-content: center;
@@ -37,14 +88,15 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			}
 
 			.action {
-        display: flex;
+				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				margin-top: 0.5rem;
 
-				.printTask {
+				.addTask {
 					font-size: 0.8rem;
 				}
+
 				.dellAllTask {
 					font-size: 0.8rem;
 				}
@@ -56,9 +108,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					padding: 3px;
 					margin: 0.2rem auto;
 					cursor: pointer;
+
 					&:hover {
 						box-shadow: $shad;
 					}
+
 					&:active {
 						background-color: lightgray;
 
@@ -67,12 +121,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			}
 
-			.dateForPlane,.dateForPlaneEdit {
+			.dateForPlane, .dateForPlaneEdit {
 				color: blue;
 				margin-right: 5px;
 				padding: 3px;
 				border-radius: 0.5rem;
 			}
+
 			.dateForPlaneEdit {
 				background-color: white;
 			}
@@ -112,15 +167,15 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 		.itemContents {
 			box-shadow: $shad;
-			background: rgba(0,0,0,0.1);
+			background: rgba(0, 0, 0, 0.1);
 
 			.task {
-border-bottom: 1px solid black;
+				border-bottom: 1px solid black;
 				border-radius: 0.5rem;
 
 
 				.taskHeader {
-          padding: 0.8rem;
+					padding: 0.8rem;
 					margin: 0.5rem auto;
 
 					.taskName {
@@ -150,6 +205,12 @@ border-bottom: 1px solid black;
 					background: white;
 					border-radius: 0.5rem;
 					outline: none;
+				}
+
+				.dellContent {
+					text-align: right;
+					padding: 2px 1.5rem;
+					font-size: 0.8rem;
 				}
 			}
 		}
