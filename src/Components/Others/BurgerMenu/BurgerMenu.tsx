@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './BurgerMenu.module.scss'
-import {IProps} from "../../ToDoTS/ToDoContainer";
+import {MyProps} from "../../Header/Header";
 
 
 
-export const BurgerMenu = ({setShowSidebar,showSidebar}: IProps) => {
+export const BurgerMenu = ({setShowSidebar,showSidebar}: MyProps) => {
 //togle menu
 
 	return (

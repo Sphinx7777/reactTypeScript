@@ -1,13 +1,13 @@
 import React from 'react'
 import s from './SideBar.module.scss'
-import {IProps} from "../ToDoTS/ToDoContainer";
+import {MyProps} from "../Header/Header";
 
 
 //BurgerMenu toggle show sideBar
 
 
 
-export const SideBar = ({showSidebar,setShowSidebar}: IProps) => {
+export const SideBar = ({showSidebar,setShowSidebar}: MyProps) => {
 
 
 	return (
