@@ -21,7 +21,7 @@ export const ToDo = ({showSidebar, setShowSidebar,tasks, addNewTask, editMode}: 
 
   return (
     <>
-      <div>Учебный проект по TypeScript...начало..</div>
+      <div>Учебный проект по TypeScript...начало...</div>
       <div className={s.toDoWrapper}>
         <div className={s.toDoHeader}>
           <div className={s.taskFilter}>
