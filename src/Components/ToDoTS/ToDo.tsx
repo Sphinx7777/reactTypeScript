@@ -10,18 +10,7 @@ import {Task} from "../Redux/todoTsReducer";
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
-export type Task = {
-	id: number,
-	dateForPlane: string,
-	name: string | number,
-	description: string | number,
-	editStatusDescription: boolean,
-	editStatusName: boolean,
-	status: boolean,
-	createDate: string
-}
 type ValueForm = {
-	dateForPlane: string,
 	name: string | number,
 	description: string | number,
 }
@@ -33,22 +22,21 @@ export const ToDo = ({showSidebar, setShowSidebar,tasks, addNewTask, editMode}: 
   const [dateForPlane, setDateForPlane] = useState(new Date());
   const [showCalendar, setStatusCalendar] = useState(false);
   const dateForPlaneString: string = dateForPlane.toLocaleDateString();
-  const days = new Date();
-  const dayOfWeek: string = week[days.getDay()];
+  const dayOfWeek: string = week[dateForPlane.getDay()];
   const onSubmit: (value:any)=> void = (value: ValueForm)=>{
-
-  	let newDateForPlane:(value: ValueForm)=> string = (value) =>{
-			let date=value.dateForPlane.split('-');
-			return date[2] + '.' + date[1] + '.' + date[0];
-		};
-		let dateForPlane =newDateForPlane(value);
-
-  	const task: Task = {name:value.name,description:value.description,dateForPlane:dateForPlane,id:Math.random(),editStatusDescription:false,editStatusName:false,
-			createDate:new Date().toLocaleDateString(),status:false};
+  	const task: Task = {name:value.name,description:value.description,dateForPlane:dateForPlaneString,id:Math.random(),
+			editStatusDescription:false,editStatusName:false,
+			createDate:new Date().toLocaleDateString(),status:false,deyOfWeek:dayOfWeek};
 		addNewTask(task);
 		setStatusAddTask(false);
 	};
-
+const createNewTask=()=>{
+	if(!addTask){
+		setStatusCalendar(true);
+		setStatusAddTask(!addTask)
+	}
+	setStatusAddTask(!addTask)
+};
 
   return (
     <>
@@ -63,10 +51,10 @@ export const ToDo = ({showSidebar, setShowSidebar,tasks, addNewTask, editMode}: 
           <input type="text" className={s.search} placeholder='Поиск'/>
         </div>
         <div className={s.taskControl}>
-          <div className={s.addNewTask} onClick={()=>{setStatusAddTask(!addTask)}}>{!addTask ? 'Добавить новое задание' : 'Отменить'}</div>
+          <div className={s.addNewTask} onClick={createNewTask}>{!addTask ? 'Добавить новое задание' : 'Отменить'}</div>
           <div className={s.dellAllFinishedTask}>Удалить все завершенные</div>
         </div>
-				{addTask && <ToDoForm onSubmit={onSubmit} />}
+				{addTask && <ToDoForm onSubmit={onSubmit}/>}
 
 
         <div className={s.toDoItem}>
@@ -74,11 +62,9 @@ export const ToDo = ({showSidebar, setShowSidebar,tasks, addNewTask, editMode}: 
             <div className={s.dateAndTaskStatus}>
               <div>
                 {showContent ?
-                  <span title='Дабл клик для редактирования' className={s.dateForPlaneEdit} onDoubleClick={() => {
-                    setStatusCalendar(true)
-                  }}>{dateForPlaneString}</span>
-                  : <span className={s.dateForPlane}>{dateForPlaneString}</span>}
-                <span className={s.dayForPlane}>{dayOfWeek}</span>
+                  <span title='Дабл клик для редактирования' className={s.dateForPlaneEdit}>11.11.1911</span>
+                  : <span className={s.dateForPlane}>11.11.1911</span>}
+                <span className={s.dayForPlane}>Понедельник</span>
               </div>
               <div>
                 <span className={s.totalTasks}>всего_дел</span>

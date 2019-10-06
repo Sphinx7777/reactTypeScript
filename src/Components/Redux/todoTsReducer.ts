@@ -14,7 +14,8 @@ export type Task = {
 	editStatusName: boolean,
 	description: string | number,
 	status: boolean,
-	createDate: string
+	createDate: string,
+	deyOfWeek: string
 }
 
 
@@ -31,7 +32,8 @@ if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 			editStatusDescription:false,
 			editStatusName:false,
 			createDate:"06.10.2019",
-			status:false
+			status:false,
+			deyOfWeek: 'Понедельник'
 
 		}] ,
 		editMode: false

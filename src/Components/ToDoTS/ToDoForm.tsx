@@ -5,11 +5,7 @@ import {maxLengthCreator,emptyField} from "../Validators/Validators";
 import {InputComponent, TextAreaComponent} from "../Validators/ComponentsFromReduxForm";
 
 
-type ValueForm = {
-	dateForPlane: string,
-	name: string | number,
-	description: string | number,
-}
+
 
 interface IFormProps {
 
@@ -20,22 +16,14 @@ const maxlength200 = maxLengthCreator(200);
 const maxlength30 = maxLengthCreator(30);
 
 
-const ToDoForm: React.FC<IFormProps & InjectedFormProps<{}, IFormProps>> = props => {
+const ToDoForm: React.FC<IFormProps & InjectedFormProps<{}, IFormProps>> = (props) => {
 
 	const {handleSubmit, pristine, reset, submitting} = props;
 
 	return (
 		<div className={s.formWrapper}>
 			<form onSubmit={handleSubmit} className={s.form}>
-				<div className={s.formDate}>
-					<Field
-						name='dateForPlane'
-						type='date'
-						component={InputComponent}
-						label='Дата'
-						validate={[emptyField, maxlength30]}
-					/>
-				</div>
+
 				<div className={s.formName}>
 					<Field
 						name='name'
