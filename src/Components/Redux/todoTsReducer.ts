@@ -5,35 +5,33 @@ import {load} from 'redux-localstorage-simple';
 
 const ADD_NEW_TASK: string = '/todoReducer___ADD_NEW_TASK';
 
-type Initial = {
-  tasks: [{
-  id: number,
-  dateForPlane: string,
-  name: string | number,
-  editStatusDescription: boolean,
-  editStatusName: boolean,
-  description: string | number,
-  status: boolean,
-  createDate: string,
-}],
-  editMode: boolean
+
+export type Task = {
+	id: number,
+	dateForPlane: string,
+	name: string | number,
+	editStatusDescription: boolean,
+	editStatusName: boolean,
+	description: string | number,
+	status: boolean,
+	createDate: string
 }
 
 
 let data: any = load({namespace: 'TasksTs-list'});
-let initialState: Initial = data.toDo;
+let initialState: any = data.toDo;
 
 if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 	initialState = {
 		tasks: [{
-			id: 1,
-			dateForPlane: '24 мая 2019 г. 11:32',
-      name: 'Образец',
-			editStatusDescription: false,
-			editStatusName: false,
-			description: 'Описание задачи',
-			status: false,
-			createDate: '01 января 2000 г. 00:00',
+			dateForPlane:"10.17.2019",
+			name:"Название",
+			description:"Образец",
+			id:0.9040531789451176,
+			editStatusDescription:false,
+			editStatusName:false,
+			createDate:"06.10.2019",
+			status:false
 
 		}] ,
 		editMode: false
@@ -41,17 +39,16 @@ if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 }
 
 interface IAction{
-	action: {}
+	action: object
 	type: string
-	task: Initial
-	status: boolean
+	newTask: Task
 }
 
 
 const todoTsReducer = (state = initialState, action: IAction) => {
 	switch (action.type) {
 		case ADD_NEW_TASK: {
-			return {...state, editMode:action.status}
+			return {...state,...state.tasks.unshift({...action.newTask})}
 		}
 		default:
 			return state;
@@ -59,12 +56,12 @@ const todoTsReducer = (state = initialState, action: IAction) => {
 
 };
 
-const setNewTask = (status: boolean) => ({type: ADD_NEW_TASK,status});
+const setNewTask = (newTask: Task) => ({type: ADD_NEW_TASK,newTask});
 
 
-export const addNewTask: (s: boolean)=> {} =  (status: boolean) => {
+export const addNewTask: (newTask: Task)=> {} =  (newTask: Task) => {
 	return async (dispatch: (p: any)=>{}) => {
-		await dispatch(setNewTask(status));
+		await dispatch(setNewTask(newTask));
 	}
 };
 

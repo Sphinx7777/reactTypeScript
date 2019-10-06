@@ -8,6 +8,38 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	color: red;
 	font-size: 100%;
 	padding: 1rem 3rem;
+	max-width: 100%;
+
+	.formWrapper {
+
+
+		.form {
+			max-width: 30rem;
+			color: blue;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			margin: 0 auto;
+			padding: 0.5rem;
+
+			.formDate,.formName,.formDescription {
+				display: flex;
+				flex-direction: column;
+				margin: 0.5rem auto;
+				max-width: 100%;
+			}
+
+			.formBtn {
+				text-align: center;
+
+				.formSubmitBtn {
+					margin-right: 0.5rem;
+				}
+			}
+		}
+
+	}
+
 
 	.calendar {
 		margin-left: 10rem;
@@ -25,6 +57,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			display: inline-block;
 			padding: 0.3rem;
 			margin-top: 0.5rem;
+			cursor: pointer;
 		}
 
 
@@ -39,6 +72,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
+		max-width: 100%;
 
 		.taskFilter {
 
@@ -72,6 +106,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 	.toDoItem {
 		padding: 1rem 0;
+
 
 		.itemHeader {
 			background: rgba(255, 255, 255, 0.1);

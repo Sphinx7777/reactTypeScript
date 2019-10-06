@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {ToDo} from "./ToDo";
 import {connect} from "react-redux";
-import {addNewTask} from "../Redux/todoTsReducer";
+import {addNewTask, Task} from "../Redux/todoTsReducer";
 import {TodoState} from '../Redux/reduxStore';
 
 type Tasks = [{
@@ -18,7 +18,7 @@ type Tasks = [{
 export interface IProps {
 	showSidebar: boolean;
 	setShowSidebar: (showSidebar: boolean) => void;
-	addNewTask: (task: boolean) => {};
+	addNewTask: (task: Task) => {};
 	editMode: boolean;
 	tasks: Tasks
 }

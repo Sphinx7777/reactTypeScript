@@ -4,19 +4,50 @@ import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 import {ModalWindow} from '../Others/ModalWindow/ModalWindow';
 import {IProps} from "./ToDoContainer";
+import ToDoForm from "./ToDoForm";
+import {Task} from "../Redux/todoTsReducer";
 
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 
+export type Task = {
+	id: number,
+	dateForPlane: string,
+	name: string | number,
+	description: string | number,
+	editStatusDescription: boolean,
+	editStatusName: boolean,
+	status: boolean,
+	createDate: string
+}
+type ValueForm = {
+	dateForPlane: string,
+	name: string | number,
+	description: string | number,
+}
 
 export const ToDo = ({showSidebar, setShowSidebar,tasks, addNewTask, editMode}: IProps) => {
 
   const [showContent, setStatusContent] = useState(false);
+  const [addTask, setStatusAddTask] = useState(false);
   const [dateForPlane, setDateForPlane] = useState(new Date());
   const [showCalendar, setStatusCalendar] = useState(false);
   const dateForPlaneString: string = dateForPlane.toLocaleDateString();
   const days = new Date();
   const dayOfWeek: string = week[days.getDay()];
+  const onSubmit: (value:any)=> void = (value: ValueForm)=>{
+
+  	let newDateForPlane:(value: ValueForm)=> string = (value) =>{
+			let date=value.dateForPlane.split('-');
+			return date[2] + '.' + date[1] + '.' + date[0];
+		};
+		let dateForPlane =newDateForPlane(value);
+
+  	const task: Task = {name:value.name,description:value.description,dateForPlane:dateForPlane,id:Math.random(),editStatusDescription:false,editStatusName:false,
+			createDate:new Date().toLocaleDateString(),status:false};
+		addNewTask(task);
+		setStatusAddTask(false);
+	};
 
 
   return (
@@ -32,10 +63,10 @@ export const ToDo = ({showSidebar, setShowSidebar,tasks, addNewTask, editMode}: 
           <input type="text" className={s.search} placeholder='Поиск'/>
         </div>
         <div className={s.taskControl}>
-          <div className={s.addNewTask}>Добавить новое задание</div>
+          <div className={s.addNewTask} onClick={()=>{setStatusAddTask(!addTask)}}>{!addTask ? 'Добавить новое задание' : 'Отменить'}</div>
           <div className={s.dellAllFinishedTask}>Удалить все завершенные</div>
         </div>
-
+				{addTask && <ToDoForm onSubmit={onSubmit} />}
 
 
         <div className={s.toDoItem}>
