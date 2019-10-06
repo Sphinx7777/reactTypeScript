@@ -44,8 +44,6 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 		setStatusAddTask(!addTask)
 	};
 
-
-
 	return (
 		<>
 			<div>Учебный проект по TypeScript...начало...</div>
