@@ -12,7 +12,7 @@ export const InputComponent = (
 		<>
 			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{label}</div>
 			<input className={s.inputField + ' ' + (touched && error ? s.errorInputField : '')}
-						 {...input} autoFocus={autoFocus} placeholder={label} size={size} type={type}  />
+						 {...input} autoFocus={autoFocus}  size={size} type={type}  />
 			{touched &&
 			((error && <div className={s.inputError}>{error}</div>) ||
 				(warning && <div className={s.inputWarning}>{warning}  </div>))}
@@ -26,7 +26,7 @@ export const TextAreaComponent = (
 		<>
 			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{label}</div>
 			<textarea className={s.areaField + ' ' + (touched && error ? s.errorAreaField : '')}
-								{...input} placeholder={label} rows={rows} cols={cols} />
+								{...input}  rows={rows} cols={cols} />
 			{touched &&
 			((error && <div className={s.areaError}>{error}</div>) ||
 				(warning && <div className={s.areaWarning}>{warning}</div>))}

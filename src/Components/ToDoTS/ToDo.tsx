@@ -15,7 +15,9 @@ type ValueForm = {
 	description: string | number,
 }
 
-export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode}: IProps) => {
+
+export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,addNewTaskContent}: IProps) => {
+
 
 	const [showContent, setStatusContent] = useState(false);
 	const [addTask, setStatusAddTask] = useState(false);
@@ -25,9 +27,11 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode}:
 	const dayOfWeek: string = week[dateForPlane.getDay()];
 	const onSubmit: (value: any) => void = (value: ValueForm) => {
 		const task: Task = {
-			name: value.name, description: value.description, dateForPlane: dateForPlaneString, id: Math.random(),
-			editStatusDescription: false, editStatusName: false,
-			createDate: new Date().toLocaleDateString(), status: false, deyOfWeek: dayOfWeek
+			dateForPlane: dateForPlaneString, id: Math.random(), deyOfWeek: dayOfWeek, editStatus: false,
+			taskContent: {
+				idContent: Math.random(),name: value.name, description: value.description,
+				editStatusDescription: false, editStatusName: false, createDate: new Date().toLocaleDateString()
+			}
 		};
 		addNewTask(task);
 		setStatusAddTask(false);
@@ -39,6 +43,8 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode}:
 		}
 		setStatusAddTask(!addTask)
 	};
+
+
 
 	return (
 		<>
@@ -56,17 +62,17 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode}:
 					<div className={s.addNewTask} onClick={createNewTask}>{!addTask ? 'Добавить новое задание' : 'Отменить'}</div>
 					<div className={s.dellAllFinishedTask}>Удалить все завершенные</div>
 				</div>
-				{addTask && <ToDoForm onSubmit={onSubmit} dateForPlaneString={dateForPlaneString} />}
+				{addTask && <ToDoForm onSubmit={onSubmit} dateForPlaneString={dateForPlaneString}/>}
 
-
-				<div className={s.toDoItem}>
+				{tasks.map(t=>
+				<div className={s.toDoItem} key={t.id}>
 					<div className={s.itemHeader}>
 						<div className={s.dateAndTaskStatus}>
 							<div>
 								{showContent ?
-									<span title='Дабл клик для редактирования' className={s.dateForPlaneEdit}>11.11.1911</span>
-									: <span className={s.dateForPlane}>11.11.1911</span>}
-								<span className={s.dayForPlane}>Понедельник</span>
+									<span title='Дабл клик для редактирования' className={s.dateForPlaneEdit}>{t.dateForPlane}</span>
+									: <span className={s.dateForPlane}>{t.dateForPlane}</span>}
+								<span className={s.dayForPlane}>{t.deyOfWeek}</span>
 							</div>
 							<div>
 								<span className={s.totalTasks}>всего_дел</span>
@@ -85,45 +91,21 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode}:
 					</div>
 					<div className={showContent ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 
-						<div className={s.task}>
+
+{tasks.map((c: any) =>
+						<div className={s.task} key={c.taskContent.idContent}>
 							<div className={s.taskHeader}>
 								<div className={s.createDateAndDell}>
 									<span>
-										дата_создания
+										{c.taskContent.createDate}
 									</span>
 									<span>
 										завершить
 									</span>
 								</div>
-
 								<div className={s.taskName}>
 									название_даблклик_редактировать
 								</div>
-
-							</div>
-							<div className={s.taskContent}>
-								task Content дабл клик редактировать
-							</div>
-							<div className={s.dellContent}>
-								<span>Удалить</span>
-
-							</div>
-						</div>
-						<div className={s.task}>
-							<div className={s.taskHeader}>
-								<div className={s.createDateAndDell}>
-									<span>
-										дата_создания
-									</span>
-									<span>
-										завершить
-									</span>
-								</div>
-
-								<div className={s.taskName}>
-									название_даблклик_редактировать
-								</div>
-
 							</div>
 							<div className={s.taskContent}>
 								task Content дабл клик редактировать
@@ -131,10 +113,10 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode}:
 							<div className={s.dellContent}>
 								<span>Удалить</span>
 							</div>
-						</div>
+						</div>)}
 
 					</div>
-				</div>
+				</div>)}
 
 
 				{showCalendar && <div className={s.calendar}>

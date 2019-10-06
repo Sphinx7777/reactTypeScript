@@ -16,7 +16,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 
 	return (
 		<div className={s.formWrapper}>
-			<div><span>{props.dateForPlaneString}</span></div>
+			<div className={s.formDate}><span>{props.dateForPlaneString}</span></div>
 			<form onSubmit={handleSubmit} className={s.form} onKeyPress={(event) => {
 				if (event.key === 'Enter') {
 					handleSubmit(event)
@@ -34,7 +34,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 				<div className={s.formDescription}>
 					<Field
 						name='description'
-						type='text'
+						cols='30'
 						component={TextAreaComponent}
 						label='Описание'
 						validate={[emptyField,maxlength200]}

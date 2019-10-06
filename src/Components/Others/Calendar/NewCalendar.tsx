@@ -25,14 +25,17 @@ export class NewCalendar extends Component<CalendarProps> {
 		const minDate=new Date();
 
 		return (
-			<div className={s.calendarWrapper}>
+			<div className={s.calendarWrapper} onKeyPress={(event) => {
+				if (event.key === 'Enter') {
+					this.props.setStatusCalendar(false)
+				}
+			}}>
 				<Calendar
 					minDate={minDate}
-					onClickDay={() => setTimeout(()=>this.props.setStatusCalendar(false),200)}
 					onChange={this.onChange}
 					value={this.props.dateForPlane}
 				/>
-				<div className={s.closeCalendar} onClick={()=>{this.props.setStatusCalendar(false)}}>X</div>
+				<div className={s.closeCalendar} onClick={()=>{this.props.setStatusCalendar(false)}}>Применить</div>
 			</div>
 		);
 	}
