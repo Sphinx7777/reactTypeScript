@@ -10,14 +10,23 @@ export type Tasks = [{
 	id?: number,
 	deyOfWeek?: string,
 	editStatus?: boolean,
-	taskContent: {
+	taskContent: [{
 		idContent: number,
 		name: string | number,
 		description: string | number,
 		editStatusDescription: boolean,
 		editStatusName: boolean,
 		createDate: string
-	}
+	}]
+}]
+
+export type TaskContent =[{
+	idContent: number,
+	name: string | number,
+	description: string | number,
+	editStatusDescription: boolean,
+	editStatusName: boolean,
+	createDate: string
 }]
 
 export type Task = {
@@ -25,14 +34,14 @@ export type Task = {
 	id?: number,
 	deyOfWeek?: string,
 	editStatus?: boolean,
-	taskContent: {
+	taskContent: [{
 		idContent: number,
 		name: string | number,
 		description: string | number,
 		editStatusDescription: boolean,
 		editStatusName: boolean,
 		createDate: string
-	}
+	}]
 }
 
 
@@ -46,14 +55,14 @@ if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 			id: 0.9040531789451176,
 			deyOfWeek: 'Понедельник',
 			editStatus: false,
-			taskContent: {
+			taskContent: [{
 				idContent: 0.9040532789251176,
 				name: "Название",
 				description: "Образец",
 				editStatusDescription: false,
 				editStatusName: false,
 				createDate: "06.10.2019"
-			}
+			}]
 		}],
 		editMode: false
 	}

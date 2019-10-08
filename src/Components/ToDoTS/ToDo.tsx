@@ -5,7 +5,7 @@ import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 import {ModalWindow} from '../Others/ModalWindow/ModalWindow';
 import {IProps} from "./ToDoContainer";
 import ToDoForm from "./ToDoForm";
-import {Task} from "../Redux/todoTsReducer";
+import {Task, TaskContent} from "../Redux/todoTsReducer";
 
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
@@ -28,10 +28,10 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 	const onSubmit: (value: any) => void = (value: ValueForm) => {
 		const task: Task = {
 			dateForPlane: dateForPlaneString, id: Math.random(), deyOfWeek: dayOfWeek, editStatus: false,
-			taskContent: {
+			taskContent: [{
 				idContent: Math.random(),name: value.name, description: value.description,
 				editStatusDescription: false, editStatusName: false, createDate: new Date().toLocaleDateString()
-			}
+			}]
 		};
 		addNewTask(task);
 		setStatusAddTask(false);
@@ -43,6 +43,11 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 		}
 		setStatusAddTask(!addTask)
 	};
+	const newTaskContent: TaskContent | any=[];
+    tasks.map(t=> t.taskContent)
+      .map(tC=> newTaskContent.push(...tC));
+
+
 
 	return (
 		<>
@@ -90,23 +95,23 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 					<div className={showContent ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 
 
-{tasks.map((c: any) =>
-						<div className={s.task} key={c.taskContent.idContent}>
+{newTaskContent.map((c: any) =>
+						<div className={s.task} key={c.idContent}>
 							<div className={s.taskHeader}>
 								<div className={s.createDateAndDell}>
 									<span>
-										{c.taskContent.createDate}
+                    {c.createDate}
 									</span>
 									<span>
 										завершить
 									</span>
 								</div>
 								<div className={s.taskName}>
-									название_даблклик_редактировать
+									{c.name}
 								</div>
 							</div>
 							<div className={s.taskContent}>
-								task Content дабл клик редактировать
+								{c.description}
 							</div>
 							<div className={s.dellContent}>
 								<span>Удалить</span>
