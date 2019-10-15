@@ -175,7 +175,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		.itemHeader,
 		.itemHeader::before,
 		.itemHeader::after {
-			/* Стили, чтобы отделить листы друг от друга */
 			box-shadow: $shad;
 			border: 1px solid #bbb;
 		}

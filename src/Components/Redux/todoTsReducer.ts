@@ -20,14 +20,14 @@ export type Tasks = [{
 	}]
 }]
 
-export type TaskContent =[{
+export type TaskContent ={
 	idContent: number,
 	name: string | number,
 	description: string | number,
 	editStatusDescription: boolean,
 	editStatusName: boolean,
 	createDate: string
-}]
+}
 
 export type Task = {
 	dateForPlane?: string,
@@ -51,7 +51,7 @@ let initialState: any = data.toDo;
 if (!initialState || !initialState.tasks || !initialState.tasks.length) {
 	initialState = {
 		tasks: [{
-			dateForPlane: "10.17.2019",
+			dateForPlane: "10.11.2019",
 			id: 0.9040531789451176,
 			deyOfWeek: 'Понедельник',
 			editStatus: false,
@@ -73,6 +73,8 @@ interface IAction {
 	type: string
 	newTask: Task
 	newTaskContent:Task
+  idContent: number
+  payload: any
 }
 
 
@@ -82,16 +84,21 @@ const todoTsReducer = (state = initialState, action: IAction) => {
 			return {...state, ...state.tasks.unshift({...action.newTask})}
 		}
 		case ADD_NEW_TASK_CONTENT: {
-			return {...state, ...state.tasks,...state.tasks['taskContent'],...state.tasks.taskContent.unshift(action.newTaskContent)}
+			return {...state, ...state.tasks.map( (t: Task)=>{
+			  if(t.id===action.payload.idContent){
+          t.taskContent.unshift(action.payload.newTaskContent);
+        }
+			  return t;
+        } )}
 		}
 		default:
 			return state;
 	}
 
 };
-
-const setNewTask = (newTask: Task) => ({type: ADD_NEW_TASK, newTask});
-const setNewTaskContent = (id: number, newTaskContent: Task) => ({type: ADD_NEW_TASK_CONTENT,payload: {id,newTaskContent} });
+/*unshift(action.newTaskContent)*/
+const setNewTask = (newTask: Task) => ({type: ADD_NEW_TASK,newTask});
+const setNewTaskContent = (idContent: number | null, newTaskContent: TaskContent) => ({type: ADD_NEW_TASK_CONTENT,payload: {idContent,newTaskContent} });
 
 
 export const addNewTask: (newTask: Task) => {} = (newTask: Task) => {
@@ -99,9 +106,9 @@ export const addNewTask: (newTask: Task) => {} = (newTask: Task) => {
 		dispatch(setNewTask(newTask));
 	}
 };
-export const addNewTaskContent: (id :number, newTaskContent: Task) => {} = (id :number, newTaskContent: Task) => {
+export const addNewTaskContent: (idContent :number | null, newTaskContent: TaskContent) => {} = (idContent :number | null, newTaskContent: TaskContent) => {
 	return (dispatch: (p: any) => {}) => {
-		dispatch(setNewTaskContent(id,newTaskContent));
+		dispatch(setNewTaskContent(idContent,newTaskContent));
 	}
 };
 

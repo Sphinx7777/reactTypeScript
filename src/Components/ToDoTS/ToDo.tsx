@@ -6,14 +6,16 @@ import {ModalWindow} from '../Others/ModalWindow/ModalWindow';
 import {IProps} from "./ToDoContainer";
 import ToDoForm from "./ToDoForm";
 import {Task, TaskContent} from "../Redux/todoTsReducer";
+import ToDoFormNewContent from "./ToDoFormNewContent";
 
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-
 type ValueForm = {
-	name: string | number,
-	description: string | number,
+	name: any,
+	description: any,
 }
+
+
 
 
 export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,addNewTaskContent}: IProps) => {
@@ -23,6 +25,7 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 	const [addTask, setStatusAddTask] = useState(false);
 	const [dateForPlane, setDateForPlane] = useState(new Date());
 	const [showCalendar, setStatusCalendar] = useState(false);
+	const [taskId, setTaskId] = useState(null);
 	const dateForPlaneString: string = dateForPlane.toLocaleDateString();
 	const dayOfWeek: string = week[dateForPlane.getDay()];
 	const onSubmit: (value: any) => void = (value: ValueForm) => {
@@ -43,13 +46,20 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 		}
 		setStatusAddTask(!addTask)
 	};
-	const newTaskContent: TaskContent | any=[];
-    tasks.map(t=> t.taskContent)
-      .map(tC=> newTaskContent.push(...tC));
+	const addTaskId = (id: any)=> {
+    setTaskId(id);
+  };
+	const submitNewContent: (value: any) => void = (value: ValueForm) => {
+const newContent= {
+  idContent: Math.random(),name: value.name, description: value.description,
+  editStatusDescription: false, editStatusName: false, createDate: new Date().toLocaleDateString()
+};
+    addNewTaskContent(taskId,newContent);
+    setTaskId(null);
+  };
 
 
-
-	return (
+  return (
 		<>
 			<div>Учебный проект по TypeScript...начало...</div>
 			<div className={s.toDoWrapper}>
@@ -66,6 +76,7 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 					<div className={s.dellAllFinishedTask}>Удалить все завершенные</div>
 				</div>
 				{addTask && <ToDoForm onSubmit={onSubmit} dateForPlaneString={dateForPlaneString}/>}
+				{taskId && <ToDoFormNewContent submitNewContent={submitNewContent}/>}
 
 				{tasks.map(t=>
 				<div className={s.toDoItem} key={t.id}>
@@ -83,7 +94,7 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 							</div>
 						</div>
 						<div className={s.action}>
-							<div className={s.addTask}>Добавить</div>
+							<div className={s.addTask} onClick={()=>addTaskId(t.id)}>Добавить</div>
 							<div className={s.openList} onClick={() => {
 								setStatusContent(!showContent)
 							}}>{!showContent ? 'Открыть список' : 'Закрыть список'}
@@ -95,7 +106,7 @@ export const ToDo = ({showSidebar, setShowSidebar, tasks, addNewTask, editMode,a
 					<div className={showContent ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 
 
-{newTaskContent.map((c: any) =>
+{t.taskContent.map((c: TaskContent) =>
 						<div className={s.task} key={c.idContent}>
 							<div className={s.taskHeader}>
 								<div className={s.createDateAndDell}>

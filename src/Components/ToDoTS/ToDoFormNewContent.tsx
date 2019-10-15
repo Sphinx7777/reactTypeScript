@@ -8,16 +8,15 @@ import {InputComponent, TextAreaComponent} from "../Validators/ComponentsFromRed
 const maxlength200 = maxLengthCreator(200);
 const maxlength30 = maxLengthCreator(30);
 interface IProps {
-	dateForPlaneString?: string;
+	submitNewContent: any;
 }
 
-const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProps & InjectedFormProps<{}, IProps>) => {
+const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProps & InjectedFormProps<{}, IProps>) => {
 	const {handleSubmit, pristine, reset, submitting} = props;
 
 	return (
 		<div className={s.formWrapper}>
-			<div className={s.formDate}><span>{props.dateForPlaneString}</span></div>
-			<form onSubmit={handleSubmit} className={s.form} onKeyPress={(event) => {
+			<form onSubmit={handleSubmit(props.submitNewContent)} className={s.form} onKeyPress={(event) => {
 				if (event.key === 'Enter') {
 					handleSubmit(event)
 				}
@@ -51,20 +50,6 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 };
 
 export default reduxForm<{}, IProps>({
-	form: 'toDoForm',
-})(ToDoForm)
+	form: 'toDoFormNewContent',
+})(ToDoFormNewContent)
 
-/*<div className={s.loginCheck}>
-	<Field
-name="rememberMe"
-type="checkbox"
-component={InputComponent}
-label="RememberMe"
-	/>
-	</div>*/
-
-/*onKeyPress={(event) => {
-	if (event.key === 'Enter') {
-		handleSubmit()
-	}
-}}*/
