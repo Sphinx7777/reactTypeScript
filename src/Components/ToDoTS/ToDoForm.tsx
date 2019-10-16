@@ -9,6 +9,8 @@ const maxlength200 = maxLengthCreator(200);
 const maxlength30 = maxLengthCreator(30);
 interface IProps {
 	dateForPlaneString?: string;
+	setStatusAddTask: any;
+	setStatusCalendar: any;
 }
 
 const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProps & InjectedFormProps<{}, IProps>) => {
@@ -44,6 +46,12 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 				<div className={s.formBtn}>
 					<button className={s.formSubmitBtn} type="submit" disabled={submitting}>Добавить</button>
 					<button className={s.formClearBtn} type="button" disabled={pristine || submitting} onClick={reset}>Очистить</button>
+					<button className={s.formCancelBtn} type="button"
+									onClick={()=>{
+										props.setStatusAddTask(null);
+										props.setStatusCalendar(false);
+
+					}}>Отменить</button>
 				</div>
 			</form>
 		</div>

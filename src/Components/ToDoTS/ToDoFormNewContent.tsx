@@ -9,6 +9,8 @@ const maxlength200 = maxLengthCreator(200);
 const maxlength30 = maxLengthCreator(30);
 interface IProps {
 	submitNewContent: any;
+	setTaskIdForNewContent: any;
+	dateForNewContent: string;
 }
 
 const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProps & InjectedFormProps<{}, IProps>) => {
@@ -21,6 +23,7 @@ const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> = (pr
 					handleSubmit(event)
 				}
 			}}>
+				<div className={s.taskDate}>{props.dateForNewContent}</div>
 				<div className={s.formName}>
 					<Field
 						name='name'
@@ -43,6 +46,7 @@ const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> = (pr
 				<div className={s.formBtn}>
 					<button className={s.formSubmitBtn} type="submit" disabled={submitting}>Добавить</button>
 					<button className={s.formClearBtn} type="button" disabled={pristine || submitting} onClick={reset}>Очистить</button>
+					<button className={s.formCancelBtn} type="button"  onClick={()=>props.setTaskIdForNewContent(null)}>Отменить</button>
 				</div>
 			</form>
 		</div>

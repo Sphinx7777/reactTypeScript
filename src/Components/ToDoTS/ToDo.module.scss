@@ -5,13 +5,26 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 .toDoWrapper {
+
 	color: red;
 	font-size: 100%;
 	padding: 1rem 3rem;
 	max-width: 100%;
 
 	.formWrapper {
-		color: blue;
+		position: fixed;
+		top: 0;
+		color: black;
+		z-index: 5;
+		background-color: rgb(255, 255, 255);
+		border-radius: 0.5rem;
+		outline: none;
+		padding: 0.5rem;
+
+		.taskDate {
+			text-align: center;
+			color: white;
+		}
 
 		.form {
 			max-width: 30rem;
@@ -21,6 +34,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			text-align: center;
 			margin: 0 auto;
 			padding: 0.5rem;
+			border: 1px solid black;
 
 			.formName,.formDescription {
 				display: flex;
@@ -34,6 +48,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.formSubmitBtn {
 					margin-right: 0.5rem;
+				}
+				.formCancelBtn {
+					margin-left: 0.5rem;
 				}
 			}
 		}
@@ -61,6 +78,12 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			padding: 0.3rem;
 			margin-top: 0.5rem;
 			cursor: pointer;
+			color: blue;
+
+			&:hover {
+				background-color: lightgray;
+
+			}
 		}
 
 
@@ -133,6 +156,17 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.addTask {
 					font-size: 0.8rem;
+					color: blue;
+					cursor: pointer;
+					padding: 1px;
+					&:hover {
+						box-shadow: $shad;
+					}
+
+					&:active {
+						background-color: lightgray;
+
+					}
 				}
 
 				.dellAllTask {
@@ -142,10 +176,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.openList {
 					display: inline-block;
 					text-align: center;
-					color: blue;
 					padding: 3px;
-					margin: 0.2rem auto;
+					color: blue;
 					cursor: pointer;
+					margin: 0.2rem auto;
 
 					&:hover {
 						box-shadow: $shad;
