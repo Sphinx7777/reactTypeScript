@@ -21,7 +21,8 @@ export interface IProps {
 class ToDoContainer extends Component<IProps>{
 
 
-	render() {
+
+  render() {
 const {removeTaskContent,toggleShowTaskContent,addNewTask,showSidebar,setShowSidebar,editMode,tasks,addNewTaskContent}=this.props;
 
 

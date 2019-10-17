@@ -22,7 +22,7 @@ export type Tasks = [{
 	}]
 }]
 
-export type TaskContent = {
+export type TaskContent ={
 	idContent: number,
 	name: string | number,
 	description: string | number,
@@ -80,6 +80,18 @@ interface IAction {
 	status: boolean | undefined
 	id: number
 }
+let removeByAttr = function(arr:any, attr:any, value:any){
+  let i = arr.length;
+  while(i--){
+    if( arr[i]
+      && arr[i].hasOwnProperty(attr)
+      && (arguments.length > 2 && arr[i][attr] === value ) ){
+      arr.splice(i,1);
+
+    }
+  }
+  return arr;
+};
 
 
 const todoTsReducer = (state = initialState, action: IAction) => {
@@ -102,11 +114,14 @@ const todoTsReducer = (state = initialState, action: IAction) => {
 			  return t;
         } )}
 		}
-	/*	case REMOVE_TASK_CONTENT: {
-			let content = state.tasks.map((t: Task)=>t.taskContent);
-			return {...state
-			}
-		}*/
+		case REMOVE_TASK_CONTENT: {
+		  const content=state.tasks.map((t: Task)=>{
+      removeByAttr(t.taskContent, 'idContent', action.idContent);
+      return t.taskContent
+		  });
+		  return {...state,...state.tasks=state.tasks.filter((t:Task)=>t.taskContent),...state.tasks.taskContent=content
+		  }
+		}
 		default:
 			return state;
 	}

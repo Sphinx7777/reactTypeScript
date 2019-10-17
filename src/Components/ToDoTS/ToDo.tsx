@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './ToDo.module.scss'
 import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
@@ -18,7 +18,7 @@ type ValueForm = {
 
 export const ToDo = ({removeTaskContent,toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
 
-  const [addTask, setStatusAddTask] = useState(false);
+  const [addTask, setStatusAddTask] = useState(false)
   const [dateForPlane, setDateForPlane] = useState(new Date());
   const [showCalendar, setStatusCalendar] = useState(false);
   const [taskIdForNewContent, setTaskIdForNewContent] = useState(null);
@@ -58,6 +58,7 @@ export const ToDo = ({removeTaskContent,toggleShowTaskContent, showSidebar, task
  const removeThisTaskContent= (idContent: number)=>{
    removeTaskContent(idContent)
  };
+
 
   return (
     <>

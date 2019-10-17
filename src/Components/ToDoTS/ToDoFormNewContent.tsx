@@ -15,14 +15,15 @@ interface IProps {
 
 const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProps & InjectedFormProps<{}, IProps>) => {
 	const {handleSubmit, pristine, reset, submitting} = props;
+	const submit=handleSubmit(props.submitNewContent);
 
 	return (
 		<div className={s.formWrapper}>
-			<form onSubmit={handleSubmit(props.submitNewContent)} className={s.form} onKeyPress={(event) => {
+			<form onSubmit={submit} className={s.form} onKeyPress={(event) => {
 				if (event.key === 'Enter') {
-					handleSubmit(event)
-				}
-			}}>
+				  event.preventDefault();
+          submit();
+				}}}>
 				<div className={s.taskDate}>{props.dateForNewContent}</div>
 				<div className={s.formName}>
 					<Field
