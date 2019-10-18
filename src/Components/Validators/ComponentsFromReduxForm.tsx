@@ -10,12 +10,12 @@ export const InputComponent = (
 	{input,label,size,type,placeholder,autoFocus,meta: {error, warning, touched}}: ComponentFromForm) => {
 	return (
 		<>
-			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{label}</div>
+			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{touched && error ? error:label}</div>
 			<input className={s.inputField + ' ' + (touched && error ? s.errorInputField : '')}
 						 {...input} autoFocus={autoFocus}  size={size} type={type}  />
-			{touched &&
+			{/*{touched &&
 			((error && <div className={s.inputError}>{error}</div>) ||
-				(warning && <div className={s.inputWarning}>{warning}  </div>))}
+				(warning && <div className={s.inputWarning}>{warning}  </div>))}*/}
 		</>
 	)
 };
@@ -24,12 +24,12 @@ export const TextAreaComponent = (
 	{input,label,rows,cols,meta: {error, warning, touched}}: ComponentFromForm) => {
 	return (
 		<>
-			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{label}</div>
+			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{touched && error ? error:label}</div>
 			<textarea className={s.areaField + ' ' + (touched && error ? s.errorAreaField : '')}
 								{...input}  rows={rows} cols={cols} />
-			{touched &&
+		{/*	{touched &&
 			((error && <div className={s.areaError}>{error}</div>) ||
-				(warning && <div className={s.areaWarning}>{warning}</div>))}
+				(warning && <div className={s.areaWarning}>{warning}</div>))}*/}
 		</>
 	)
 };

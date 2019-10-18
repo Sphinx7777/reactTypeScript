@@ -31,6 +31,7 @@ const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> = (pr
 						type='text'
 						component={InputComponent}
 						label='Название'
+						autoFocus={true}
 						validate={[emptyField, maxlength30]}
 					/>
 				</div>

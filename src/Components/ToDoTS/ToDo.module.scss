@@ -36,7 +36,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			padding: 0.5rem;
 			border: 1px solid black;
 
-			.formName,.formDescription {
+			.formName, .formDescription {
 				display: flex;
 				flex-direction: column;
 				margin: 0.5rem auto;
@@ -49,11 +49,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.formSubmitBtn {
 					margin-right: 0.5rem;
 				}
+
 				.formCancelBtn {
 					margin-left: 0.5rem;
 				}
 			}
 		}
+
 		.formDate {
 
 		}
@@ -122,7 +124,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		}
 	}
 
-	@media screen and (max-width: 500px) {
+	@media screen and (max-width: 511px) {
 		.taskControl, .toDoHeader {
 			flex-direction: column;
 			align-content: center;
@@ -159,6 +161,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					color: blue;
 					cursor: pointer;
 					padding: 1px;
+
 					&:hover {
 						box-shadow: $shad;
 					}
@@ -281,8 +284,25 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.dellContent {
 					text-align: right;
-					padding: 2px 1.5rem;
-					font-size: 0.8rem;
+					margin-bottom: 0.5rem;
+
+					span {
+						font-size: 0.8rem;
+						color: blue;
+						cursor: pointer;
+						padding: 1px;
+						margin-right: 1rem;
+
+						&:hover {
+							box-shadow: $shad;
+						}
+
+						&:active {
+							background-color: lightgray;
+
+						}
+					}
+
 				}
 			}
 		}

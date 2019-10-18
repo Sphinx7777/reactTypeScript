@@ -1,7 +1,16 @@
 import React, {Component} from 'react'
 import {ToDo} from "./ToDo";
 import {connect} from "react-redux";
-import {addNewTask, addNewTaskContent, Task, Tasks, TaskContent, toggleShowTaskContent,removeTaskContent} from "../Redux/todoTsReducer";
+import {
+	addNewTask,
+	addNewTaskContent,
+	Task,
+	Tasks,
+	TaskContent,
+	toggleShowTaskContent,
+	removeTaskContent,
+	removeAllTaskContent
+} from "../Redux/todoTsReducer";
 import {TodoState} from '../Redux/reduxStore';
 
 
@@ -12,6 +21,7 @@ export interface IProps {
 	addNewTask: (task: Task) => {};
 	addNewTaskContent: (idContent:number | null,newTaskContent: TaskContent) => {};
 	toggleShowTaskContent: (id:number | undefined,status: boolean | undefined)=>void;
+	removeAllTaskContent: (id:number | undefined)=>void;
 	removeTaskContent: (idContent: number)=>void;
 	editMode: boolean;
 	tasks: Tasks;
@@ -23,12 +33,12 @@ class ToDoContainer extends Component<IProps>{
 
 
   render() {
-const {removeTaskContent,toggleShowTaskContent,addNewTask,showSidebar,setShowSidebar,editMode,tasks,addNewTaskContent}=this.props;
+const {removeAllTaskContent,removeTaskContent,toggleShowTaskContent,addNewTask,showSidebar,setShowSidebar,editMode,tasks,addNewTaskContent}=this.props;
 
 
 		return (
 			<div>
-				<ToDo {...{removeTaskContent,toggleShowTaskContent,addNewTask,showSidebar,setShowSidebar,editMode,tasks,addNewTaskContent}}/>
+				<ToDo {...{removeAllTaskContent,removeTaskContent,toggleShowTaskContent,addNewTask,showSidebar,setShowSidebar,editMode,tasks,addNewTaskContent}}/>
 			</div>
 		)
 	}
@@ -38,4 +48,4 @@ const {removeTaskContent,toggleShowTaskContent,addNewTask,showSidebar,setShowSid
 export default connect((state: TodoState ) =>({
 	editMode:state.toDo.editMode,
 	tasks:state.toDo.tasks,
-}),{addNewTask,addNewTaskContent,toggleShowTaskContent,removeTaskContent})(ToDoContainer) ;
+}),{addNewTask,addNewTaskContent,toggleShowTaskContent,removeTaskContent,removeAllTaskContent})(ToDoContainer) ;

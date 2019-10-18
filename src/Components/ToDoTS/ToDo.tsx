@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import s from './ToDo.module.scss'
 import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
@@ -7,6 +7,7 @@ import {IProps} from "./ToDoContainer";
 import ToDoForm from "./ToDoForm";
 import {Task, TaskContent} from "../Redux/todoTsReducer";
 import ToDoFormNewContent from "./ToDoFormNewContent";
+/*import * as _ from 'lodash'*/
 
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
@@ -16,9 +17,9 @@ type ValueForm = {
 }
 
 
-export const ToDo = ({removeTaskContent,toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
+export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
 
-  const [addTask, setStatusAddTask] = useState(false)
+  const [addTask, setStatusAddTask] = useState(false);
   const [dateForPlane, setDateForPlane] = useState(new Date());
   const [showCalendar, setStatusCalendar] = useState(false);
   const [taskIdForNewContent, setTaskIdForNewContent] = useState(null);
@@ -56,8 +57,11 @@ export const ToDo = ({removeTaskContent,toggleShowTaskContent, showSidebar, task
     setTaskIdForNewContent(null);
   };
  const removeThisTaskContent= (idContent: number)=>{
-   removeTaskContent(idContent)
- };
+    removeTaskContent(idContent)
+  };
+ const removeAllThisTaskContent= (id:number | undefined)=>{
+    removeAllTaskContent(id)
+  };
 
 
   return (
@@ -102,7 +106,7 @@ export const ToDo = ({removeTaskContent,toggleShowTaskContent, showSidebar, task
                   toggleShowTaskContent(t.id, !t.editStatus);
                 }}>{!t.editStatus ? 'Открыть список' : 'Закрыть список'}
                 </div>
-                <div className={s.dellAllTask}>Удалить все</div>
+                <div className={s.dellAllTask} onClick={()=>removeAllThisTaskContent(t.id)}>Удалить все</div>
               </div>
 
             </div>
