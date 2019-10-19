@@ -21,7 +21,7 @@ type ValueForm = {
 }
 
 
-export const ToDo = ({changeNameAndDescription,newDateForTask,removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
+export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
 
   const [addTask, setStatusAddTask] = useState(false);
   const [dateForPlane, setDateForPlane] = useState(new Date());
@@ -85,13 +85,13 @@ export const ToDo = ({changeNameAndDescription,newDateForTask,removeCompletedTas
     removeCompletedTaskToContent(id)
   };
   const changeDateTask = () => {
-    newDateForTask(taskIdForNewDate,dateForPlaneString)
+    newDateForTask(taskIdForNewDate, dateForPlaneString)
   };
   const IdForNewDescription = (idContent: any) => {
     setTaskIdForNewDescription(idContent)
   };
-  const submitNewDescription: (value: any) => void = (value) =>{
-    changeNameAndDescription(taskIdForNewDescription,value.name,value.description);
+  const submitNewDescription: (value: any) => void = (value) => {
+    changeNameAndDescription(taskIdForNewDescription, value.name, value.description);
     setShowEditDescription(false);
   };
 
@@ -127,17 +127,17 @@ export const ToDo = ({changeNameAndDescription,newDateForTask,removeCompletedTas
                   {t.editStatus ?
                     <div>
                       <span title='Дабл клик для редактирования' className={s.dateForPlaneEdit}
-                            onDoubleClick={()=>{addTaskIdForNewDate(t.id);}}
+                            onDoubleClick={() => {
+                              addTaskIdForNewDate(t.id);
+                            }}
                       >{t.dateForPlane}</span>
                       {taskIdForNewDate && <NewCalendarForNewDate
 												dateForPlane={dateForPlane}
 												setDateForPlane={setDateForPlane}
 												addTaskIdForNewDate={addTaskIdForNewDate}
 												changeDateTask={changeDateTask}
-
-                      />}
+											/>}
                     </div>
-
                     : <span className={s.dateForPlane}>{t.dateForPlane}</span>}
                   <span className={s.dayForPlane}>{t.deyOfWeek}</span>
                 </div>
@@ -162,8 +162,6 @@ export const ToDo = ({changeNameAndDescription,newDateForTask,removeCompletedTas
 
             </div>
             <div className={t.editStatus ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
-
-
               {t.taskContent.map((c: TaskContent) =>
                 <div className={s.task} key={c.idContent}>
                   <div className={s.taskHeader}>
@@ -180,37 +178,33 @@ export const ToDo = ({changeNameAndDescription,newDateForTask,removeCompletedTas
                       />
                     </div>
                     <div>
-                      <div className={s.taskName} onDoubleClick={()=>{
+                      <div className={s.taskName} onDoubleClick={() => {
                         IdForNewDescription(c.idContent);
                         setShowEditDescription(true)
                       }}>
                         {c.name}
                       </div>
                     </div>
-                     <div className={s.taskContent}  onDoubleClick={()=>{
-                        IdForNewDescription(c.idContent);
-                        setShowEditDescription(true)
-                      }}>
-                        {c.description}
-                      </div>
-                    {showEditDescription &&
-                       <ToDoFormForNewDescription initialValues={{name: c.name,description: c.description}}
-                        submitNewDescription={submitNewDescription}
-                                                   setShowEditDescription={setShowEditDescription}/>
-                    }
-
+                    <div className={s.taskContent} onDoubleClick={() => {
+                      IdForNewDescription(c.idContent);
+                      setShowEditDescription(true)
+                    }}>
+                      {c.description}
                     </div>
-
+                    {showEditDescription &&
+										<ToDoFormForNewDescription initialValues={{name: c.name, description: c.description}}
+																							 submitNewDescription={submitNewDescription}
+																							 setShowEditDescription={setShowEditDescription}/>
+                    }
+                  </div>
                   <div className={s.dellContent}>
                     <span className={s.dellContentBtn} onClick={() => removeThisTaskContent(c.idContent)}>Удалить</span>
                   </div>
                 </div>)}
-
             </div>
-          </div>)}
-
-
-        {showCalendar && <div className={s.calendar}>
+          </div>
+        )}
+          {showCalendar && <div className={s.calendar}>
 					<ModalWindow {...{setStatusCalendar, dateForPlane, setDateForPlane}}/>
 				</div>}
         {/*for width <450px */}
