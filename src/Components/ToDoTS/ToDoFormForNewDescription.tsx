@@ -44,13 +44,12 @@ const ToDoFormForNewDescription: React.FC<IProps & InjectedFormProps<{}, IProps>
 				</div>
 				{props.error && <span className={s.formError}>{props.error}</span>}
 				<div className={s.formBtn}>
-					<button className={s.formSubmitBtn} type="submit" disabled={submitting} >Добавить</button>
+					<button className={s.formSubmitBtn} type="submit" disabled={submitting} >Обновить</button>
 					<button className={s.formClearBtn} type="button" disabled={pristine || submitting} onClick={reset}>Очистить</button>
 					<button className={s.formCancelBtn} type="button"
 									onClick={()=>{
 										props.setShowEditDescription(false);
-
-					}}>Отменить</button>
+									}}>Отменить</button>
 				</div>
 			</form>
 		</div>

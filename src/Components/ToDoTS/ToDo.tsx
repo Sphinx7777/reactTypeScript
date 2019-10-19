@@ -98,7 +98,7 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
 
   return (
     <>
-      <div>Учебный проект по TypeScript...начало...</div>
+      <div>Учебный проект по TypeScript...начало...Сложный, гязный, обЪемный код очень помогает мне лучше учиться ...</div>
       <div className={s.toDoWrapper}>
         <div className={s.toDoHeader}>
           <div className={s.taskFilter}>
@@ -181,14 +181,14 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
                       <div className={s.taskName} onDoubleClick={() => {
                         IdForNewDescription(c.idContent);
                         setShowEditDescription(true)
-                      }}>
+                      }} title='Дабл клик для редактирования' >
                         {c.name}
                       </div>
                     </div>
                     <div className={s.taskContent} onDoubleClick={() => {
                       IdForNewDescription(c.idContent);
                       setShowEditDescription(true)
-                    }}>
+                    }} title='Дабл клик для редактирования' >
                       {c.description}
                     </div>
                     {showEditDescription &&
