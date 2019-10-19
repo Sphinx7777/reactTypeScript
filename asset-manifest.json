@@ -1,17 +1,21 @@
 {
   "files": {
     "main.css": "/reactTypeScript/static/css/main.2a28a42b.chunk.css",
-    "main.js": "/reactTypeScript/static/js/main.09e15679.chunk.js",
-    "main.js.map": "/reactTypeScript/static/js/main.09e15679.chunk.js.map",
+    "main.js": "/reactTypeScript/static/js/main.fcfdf12b.chunk.js",
+    "main.js.map": "/reactTypeScript/static/js/main.fcfdf12b.chunk.js.map",
     "runtime-main.js": "/reactTypeScript/static/js/runtime-main.be720d64.js",
     "runtime-main.js.map": "/reactTypeScript/static/js/runtime-main.be720d64.js.map",
     "static/css/2.c51b6406.chunk.css": "/reactTypeScript/static/css/2.c51b6406.chunk.css",
-    "static/js/2.05165874.chunk.js": "/reactTypeScript/static/js/2.05165874.chunk.js",
-    "static/js/2.05165874.chunk.js.map": "/reactTypeScript/static/js/2.05165874.chunk.js.map",
+    "static/js/2.4b7ebf5d.chunk.js": "/reactTypeScript/static/js/2.4b7ebf5d.chunk.js",
+    "static/js/2.4b7ebf5d.chunk.js.map": "/reactTypeScript/static/js/2.4b7ebf5d.chunk.js.map",
     "index.html": "/reactTypeScript/index.html",
-    "precache-manifest.687e5c234222126900d882088eddafb6.js": "/reactTypeScript/precache-manifest.687e5c234222126900d882088eddafb6.js",
+    "precache-manifest.9f59c19e3ddfe739aa1caa7946615c8b.js": "/reactTypeScript/precache-manifest.9f59c19e3ddfe739aa1caa7946615c8b.js",
     "service-worker.js": "/reactTypeScript/service-worker.js",
     "static/css/2.c51b6406.chunk.css.map": "/reactTypeScript/static/css/2.c51b6406.chunk.css.map",
-    "static/css/main.2a28a42b.chunk.css.map": "/reactTypeScript/static/css/main.2a28a42b.chunk.css.map"
+    "static/css/main.2a28a42b.chunk.css.map": "/reactTypeScript/static/css/main.2a28a42b.chunk.css.map",
+    "static/media/burger.ico": "/reactTypeScript/static/media/burger.a2bd2bac.ico",
+    "static/media/lamp.ico": "/reactTypeScript/static/media/lamp.b4166a32.ico",
+    "static/media/linkedIn.ico": "/reactTypeScript/static/media/linkedIn.b3148231.ico",
+    "static/media/telegram.ico": "/reactTypeScript/static/media/telegram.5e18d520.ico"
   }
 }
