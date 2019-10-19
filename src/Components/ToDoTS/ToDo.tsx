@@ -7,6 +7,8 @@ import {IProps} from "./ToDoContainer";
 import ToDoForm from "./ToDoForm";
 import {Task, TaskContent} from "../Redux/todoTsReducer";
 import ToDoFormNewContent from "./ToDoFormNewContent";
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 /*import * as _ from 'lodash'*/
 
 
@@ -17,7 +19,7 @@ type ValueForm = {
 }
 
 
-export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
+export const ToDo = ({removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
 
   const [addTask, setStatusAddTask] = useState(false);
   const [dateForPlane, setDateForPlane] = useState(new Date());
@@ -30,8 +32,13 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
     const task: Task = {
       dateForPlane: dateForPlaneString, id: Math.random(), deyOfWeek: dayOfWeek, editStatus: false,
       taskContent: [{
-        idContent: Math.random(), name: value.name, description: value.description,
-        editStatusDescription: false, editStatusName: false, createDate: new Date().toLocaleDateString()
+        idContent: Math.random(),
+        name: value.name,
+        description: value.description,
+        editStatusDescription: false,
+        editStatusName: false,
+        completed: false,
+        createDate: new Date().toLocaleDateString()
       }]
     };
     addNewTask(task);
@@ -51,16 +58,22 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
   const submitNewContent: (value: any) => void = (value: ValueForm) => {
     const newContent = {
       idContent: Math.random(), name: value.name, description: value.description,
-      editStatusDescription: false, editStatusName: false, createDate: new Date().toLocaleDateString()
+      editStatusDescription: false, editStatusName: false, completed: false, createDate: new Date().toLocaleDateString()
     };
     addNewTaskContent(taskIdForNewContent, newContent);
     setTaskIdForNewContent(null);
   };
- const removeThisTaskContent= (idContent: number)=>{
+  const removeThisTaskContent = (idContent: number) => {
     removeTaskContent(idContent)
   };
- const removeAllThisTaskContent= (id:number | undefined)=>{
+  const removeAllThisTaskContent = (id: number | undefined) => {
     removeAllTaskContent(id)
+  };
+  const toggleCompletedTask = (idContent: number, status: boolean | undefined) => {
+    toSetStatusCompletedTask(idContent, status)
+  };
+  const removeAllCompletedTaskToContent = (id: number | undefined) => {
+    removeCompletedTaskToContent(id)
   };
 
 
@@ -77,13 +90,15 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
           <input type="text" className={s.search} placeholder='Поиск'/>
         </div>
         <div className={s.taskControl}>
-          <div className={s.addNewTask} onClick={createNewTask}>{!addTask ? 'Добавить планы на новую дату' : 'Отменить'}</div>
+          <div className={s.addNewTask}
+               onClick={createNewTask}>{!addTask ? 'Добавить планы на новую дату' : 'Отменить'}</div>
           <div className={s.dellAllFinishedTask}>Удалить все завершенные</div>
         </div>
         {addTask && <ToDoForm onSubmit={onSubmit} setStatusAddTask={setStatusAddTask}
-															setStatusCalendar={setStatusCalendar}                  dateForPlaneString={dateForPlaneString}/>}
+															setStatusCalendar={setStatusCalendar} dateForPlaneString={dateForPlaneString}/>}
         {taskIdForNewContent && <ToDoFormNewContent dateForNewContent={dateForNewContent}
-          submitNewContent={submitNewContent} setTaskIdForNewContent={setTaskIdForNewContent}/>}
+																										submitNewContent={submitNewContent}
+																										setTaskIdForNewContent={setTaskIdForNewContent}/>}
 
         {tasks.map(t =>
           <div className={s.toDoItem} key={t.id}>
@@ -95,9 +110,11 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
                     : <span className={s.dateForPlane}>{t.dateForPlane}</span>}
                   <span className={s.dayForPlane}>{t.deyOfWeek}</span>
                 </div>
-                <div>
-                  <span className={s.totalTasks}>всего_дел</span>
-                  <span className={s.completedTasks}>сделанно_дел</span>
+                <div className={s.totalAndCompletedTask}>
+                  <span
+                    className={s.totalTasks}>Всего дел : <b>{t.taskContent.length ? t.taskContent.length : 0}</b></span>
+                  <span
+                    className={s.completedTasks}>Выполнено : <b>{t.taskContent.length ? t.taskContent.filter(tc => tc.completed).length : 0}</b></span>
                 </div>
               </div>
               <div className={s.action}>
@@ -106,7 +123,10 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
                   toggleShowTaskContent(t.id, !t.editStatus);
                 }}>{!t.editStatus ? 'Открыть список' : 'Закрыть список'}
                 </div>
-                <div className={s.dellAllTask} onClick={()=>removeAllThisTaskContent(t.id)}>Удалить все</div>
+                <div className={s.dellFinishedTask} onClick={() => removeAllCompletedTaskToContent(t.id)}>Удалить
+                  завершенные
+                </div>
+                <div className={s.dellAllTask} onClick={() => removeAllThisTaskContent(t.id)}>Удалить все</div>
               </div>
 
             </div>
@@ -116,13 +136,17 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
               {t.taskContent.map((c: TaskContent) =>
                 <div className={s.task} key={c.idContent}>
                   <div className={s.taskHeader}>
-                    <div className={s.createDateAndDell}>
-									<span>
-                    {c.createDate}
+                    <div className={s.createDateAndFinished}>
+									<span className={s.createDate}>
+                    Дата создания : <b>{c.createDate}</b>
 									</span>
-                      <span>
-										завершить
-									</span>
+                      <FormControlLabel className={s.finished}
+                                        checked={c.completed}
+                                        onChange={() => toggleCompletedTask(c.idContent, !c.completed)}
+                                        control={<Checkbox color="primary"/>}
+                                        label="Статус"
+                                        labelPlacement="start"
+                      />
                     </div>
                     <div className={s.taskName}>
                       {c.name}
@@ -132,7 +156,7 @@ export const ToDo = ({removeAllTaskContent,removeTaskContent,toggleShowTaskConte
                     {c.description}
                   </div>
                   <div className={s.dellContent}>
-                    <span onClick={()=>removeThisTaskContent(c.idContent)}>Удалить</span>
+                    <span className={s.dellContentBtn} onClick={() => removeThisTaskContent(c.idContent)}>Удалить</span>
                   </div>
                 </div>)}
 

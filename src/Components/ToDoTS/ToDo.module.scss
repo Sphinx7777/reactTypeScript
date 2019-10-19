@@ -148,11 +148,21 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				display: flex;
 				justify-content: space-between;
 				align-content: center;
+
+				.totalAndCompletedTask {
+					color: blue;
+				}
+				.completedTasks {
+					margin-left: 0.5rem;
+					color: blue;
+				}
+
 			}
 
 			.action {
 				display: flex;
 				justify-content: space-between;
+				flex-wrap: wrap;
 				align-items: center;
 				margin-top: 0.5rem;
 
@@ -172,8 +182,23 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					}
 				}
 
-				.dellAllTask {
+				.dellAllTask,.dellFinishedTask {
 					font-size: 0.8rem;
+					color: blue;
+					cursor: pointer;
+					padding: 1px;
+
+					&:hover {
+						box-shadow: $shad;
+					}
+
+					&:active {
+						background-color: lightgray;
+
+					}
+				}
+				.dellAllTask {
+					margin-left: 0.5rem;
 				}
 
 				.openList {
@@ -205,6 +230,10 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			.dateForPlaneEdit {
 				background-color: white;
+			}
+
+			.dayForPlane {
+				color: blue;
 			}
 
 		}
@@ -264,11 +293,18 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 					}
 
-					.createDateAndDell {
+					.createDateAndFinished {
 						display: flex;
 						padding: 5px;
 						justify-content: space-between;
 						align-items: center;
+
+						.createDate {
+							color: blue;
+						}
+						.finished {
+							color: blue;
+						}
 					}
 				}
 
@@ -286,7 +322,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					text-align: right;
 					margin-bottom: 0.5rem;
 
-					span {
+					.dellContentBtn {
 						font-size: 0.8rem;
 						color: blue;
 						cursor: pointer;
