@@ -3,6 +3,7 @@ import s from './ContactLinks.module.scss'
 const lamp = require( './../../../images/lamp.ico');
 const telegram = require( './../../../images/telegram.ico');
 const linkedIn = require( './../../../images/linkedIn.ico');
+const git = require( './../../../images/git.ico');
 
 
 export const ContactLinks = () => {
@@ -18,9 +19,14 @@ export const ContactLinks = () => {
         className={s.linkTitle}>Telegram</span>
       </a>
       <a className={s.link} target='_blank' rel='noopener noreferrer'
-         href="https://www.linkedin.com/in/onishchenkosergei/">
+         href="https://www.linkedin.com/in/onishchenkosergei">
         <img className={s.linkImg} src={linkedIn} alt="Линкедин"/><span
         className={s.linkTitle}>linkedin</span>
+      </a>
+      <a className={s.link} target='_blank' rel='noopener noreferrer'
+         href="https://github.com/Sphinx7777?tab=repositories">
+        <img className={s.linkImg} src={git} alt="GIT"/><span
+        className={s.linkTitle}>GIT</span>
       </a>
     </div>
   )

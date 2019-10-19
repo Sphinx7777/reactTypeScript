@@ -98,7 +98,8 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
 
   return (
     <>
-      <div>Учебный проект по TypeScript...начало...Сложный, гязный, обЪемный код очень помогает мне лучше учиться ...</div>
+      <div>Учебный проект по TypeScript... начало... Сложный, гязный, обЪемный код очень помогает мне лучше учиться
+        ... p.s. Я могу писать лучше... и оформление на коленке по быстрому...</div>
       <div className={s.toDoWrapper}>
         <div className={s.toDoHeader}>
           <div className={s.taskFilter}>
