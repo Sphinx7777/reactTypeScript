@@ -18,4 +18,3 @@ export const Header = ({showSidebar,setShowSidebar}: MyProps) => {
   )
 };
 
-//for width 450px +
