@@ -9,13 +9,14 @@ interface CalendarProps {
 	onClickDay?: DateCallback;
 	onChange?: OnChangeDateCallback;
 	value?: Date | Date[] | object | null;
-	setStatusCalendar: (showCalendar: boolean) => void;
+	addTaskIdForNewDate: (show: null | number) => void;
 	dateForPlane: Date;
+	changeDateTask: any;
 	setDateForPlane: (dateForPlane: any) => void;
 }
 
 
-export class NewCalendar extends Component<CalendarProps> {
+export class NewCalendarForNewDate extends Component<CalendarProps> {
 
 
 
@@ -25,9 +26,10 @@ export class NewCalendar extends Component<CalendarProps> {
 		const minDate=new Date();
 
 		return (
-			<div className={s.calendarWrapper} onKeyPress={(event) => {
+
+			<div className={s.newCalendarWrapper} onKeyPress={(event) => {
 				if (event.key === 'Enter') {
-					this.props.setStatusCalendar(false)
+					this.props.addTaskIdForNewDate(null)
 				}
 			}}>
 				<Calendar
@@ -35,9 +37,19 @@ export class NewCalendar extends Component<CalendarProps> {
 					onChange={this.onChange}
 					value={this.props.dateForPlane}
 				/>
-				<div className={s.closeCalendar} onClick={()=>{this.props.setStatusCalendar(false)}}>Применить</div>
-				<div className={s.closeCalendar} onClick={()=>{this.props.setStatusCalendar(false)}}>Отменить</div>
-			</div>
+				<div>
+					<div className={s.closeCalendar} onClick={()=>{
+						this.props.changeDateTask();
+						this.props.addTaskIdForNewDate(null);
+					}}>Применить</div>
+				</div>
+				<div className={s.closeCalendar} onClick={()=>{
+					this.props.addTaskIdForNewDate(null);
+				}}>Отменить</div>
+				</div>
+
+
+
 		);
 	}
 }

@@ -10,6 +10,8 @@ const REMOVE_TASK_CONTENT: string = '/todoReducer___REMOVE_TASK_CONTENT';
 const REMOVE_ALL_TASK_CONTENT: string = '/todoReducer___REMOVE_ALL_TASK_CONTENT';
 const SET_STATUS_COMPLETED_TASK: string = '/todoReducer___SET_STATUS_COMPLETED_TASK';
 const REMOVE_COMPLETED_TASK_TO_CONTENT: string = '/todoReducer___REMOVE_COMPLETED_TASK_TO_CONTENT';
+const SET_NEW_DATTE_FOR_TASK: string = '/todoReducer___SET_NEW_DATTE_FOR_TASK';
+const NEW_NAME_AND_DESCRIPTION: string = '/todoReducer___NEW_NAME_AND_DESCRIPTION';
 
 export type Tasks = [{
   dateForPlane?: string,
@@ -86,7 +88,10 @@ interface IAction {
   idContent: number | undefined
   payload: any
   status: boolean | undefined
-  id: number | undefined
+  id: number | undefined | null
+  date: string | undefined
+  name:string
+  description:string
 }
 
 let removeByAttr = function (arr: any, attr: any, value: any) {
@@ -112,6 +117,16 @@ const todoTsReducer = (state = initialState, action: IAction) => {
         ...state, ...state.tasks = state.tasks.map((t: Task) => {
           if (t.id === action.id) {
             t.editStatus = action.status;
+          }
+          return t;
+        })
+      }
+    }
+    case SET_NEW_DATTE_FOR_TASK: {
+      return {
+        ...state, ...state.tasks = state.tasks.map((t: Task) => {
+          if (t.id === action.id) {
+            t.dateForPlane = action.date;
           }
           return t;
         })
@@ -155,6 +170,21 @@ const todoTsReducer = (state = initialState, action: IAction) => {
         })
       }
     }
+    case NEW_NAME_AND_DESCRIPTION: {
+      return {
+        ...state, ...state.tasks = state.tasks.map((t: Task) => {
+          t.taskContent.map((tc: TaskContent) => {
+            if (tc.idContent === action.idContent) {
+              tc.name = action.name;
+              tc.description = action.description;
+              return tc;
+            }
+            return tc
+          });
+          return t;
+        })
+      }
+    }
     case REMOVE_COMPLETED_TASK_TO_CONTENT: {
       let content = state.tasks.filter((t: Task) => t.id === action.id);
       let newContent = content[0].taskContent.filter((tc: TaskContent) => tc.completed === false);
@@ -177,6 +207,7 @@ const todoTsReducer = (state = initialState, action: IAction) => {
 
 const setNewTask = (newTask: Task) => ({type: ADD_NEW_TASK, newTask});
 const setToggleShowTaskContent = (idAndStatus: any) => ({type: TOGGLE_SHOW_TASK_CONTENT, ...idAndStatus});
+const setNewDateForTask = (idAndDate: any) => ({type: SET_NEW_DATTE_FOR_TASK, ...idAndDate});
 const setNewTaskContent = (idContent: number | null, newTaskContent: TaskContent) => ({
   type: ADD_NEW_TASK_CONTENT,
   payload: {idContent, newTaskContent}
@@ -185,6 +216,7 @@ const setRemoveTaskContent = (idContent: number) => ({type: REMOVE_TASK_CONTENT,
 const setRemoveAllTaskContent = (id: number | undefined) => ({type: REMOVE_ALL_TASK_CONTENT, id});
 const setStatusCompletedTask = (idAndStatus: any) => ({type: SET_STATUS_COMPLETED_TASK, ...idAndStatus});
 const setRemoveCompletedTaskToContent = (id: number | undefined) => ({type: REMOVE_COMPLETED_TASK_TO_CONTENT, id});
+const setChangeNameAndDescription = (newContent: any) => ({type: NEW_NAME_AND_DESCRIPTION, ...newContent});
 
 
 export const addNewTask: (newTask: Task) => {} = (newTask: Task) => {
@@ -195,6 +227,11 @@ export const addNewTask: (newTask: Task) => {} = (newTask: Task) => {
 export const toggleShowTaskContent: (id: number | undefined, status: boolean | undefined) => {} = (id: number | undefined, status: boolean | undefined) => {
   return (dispatch: (p: any) => {}) => {
     dispatch(setToggleShowTaskContent({id, status}));
+  }
+};
+export const newDateForTask: (id: number | null, date: string | undefined) => {} = (id: number | null, date: string | undefined) => {
+  return (dispatch: (p: any) => {}) => {
+    dispatch(setNewDateForTask({id, date}));
   }
 };
 export const addNewTaskContent: (idContent: number | null, newTaskContent: TaskContent) => {} = (idContent: number | null, newTaskContent: TaskContent) => {
@@ -220,6 +257,11 @@ export const toSetStatusCompletedTask: (id: number | undefined, status: boolean 
 export const removeCompletedTaskToContent: (id: number | undefined) => {} = (id: number | undefined) => {
   return (dispatch: (p: any) => {}) => {
     dispatch(setRemoveCompletedTaskToContent(id));
+  }
+};
+export const changeNameAndDescription: (idContent: number | null | undefined,name:string,description:string) => {} = (idContent: number | null | undefined,name:string,description:string) => {
+  return (dispatch: (p: any) => {}) => {
+    dispatch(setChangeNameAndDescription({idContent,name,description}));
   }
 };
 

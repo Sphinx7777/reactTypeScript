@@ -3,7 +3,7 @@ import {ToDo} from "./ToDo";
 import {connect} from "react-redux";
 import {
   addNewTask, addNewTaskContent, Task, Tasks, TaskContent, toggleShowTaskContent,
-  removeTaskContent, removeAllTaskContent, toSetStatusCompletedTask, removeCompletedTaskToContent
+  removeTaskContent, removeAllTaskContent,changeNameAndDescription, toSetStatusCompletedTask,newDateForTask, removeCompletedTaskToContent
 } from "../Redux/todoTsReducer";
 import {TodoState} from '../Redux/reduxStore';
 
@@ -14,9 +14,11 @@ export interface IProps {
   addNewTask: (task: Task) => {};
   addNewTaskContent: (idContent: number | null, newTaskContent: TaskContent) => {};
   toggleShowTaskContent: (id: number | undefined, status: boolean | undefined) => void;
+  newDateForTask: (id: number | null, date: string | undefined) => void;
   toSetStatusCompletedTask: (id: number | undefined, status: boolean | undefined) => void;
   removeAllTaskContent: (id: number | undefined) => void;
   removeTaskContent: (idContent: number) => void;
+  changeNameAndDescription: (idContent: number | null | undefined,name:string,description:string) => void;
   removeCompletedTaskToContent: (id: number | undefined) => void;
   editMode: boolean;
   tasks: Tasks;
@@ -27,11 +29,11 @@ class ToDoContainer extends Component<IProps> {
 
 
   render() {
-    const {removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, showSidebar, setShowSidebar, editMode, tasks, addNewTaskContent} = this.props;
+    const {changeNameAndDescription,newDateForTask,removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, showSidebar, setShowSidebar, editMode, tasks, addNewTaskContent} = this.props;
 
     return (
       <div>
-        <ToDo {...{removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent,
+        <ToDo {...{changeNameAndDescription,newDateForTask,removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent,
           removeTaskContent, toggleShowTaskContent, addNewTask, showSidebar, setShowSidebar,
           editMode, tasks, addNewTaskContent
         }}/>
@@ -46,6 +48,6 @@ export default connect((state: TodoState) => ({
   tasks: state.toDo.tasks,
 }), {
   addNewTask, addNewTaskContent,
-  removeCompletedTaskToContent, toggleShowTaskContent,
+  removeCompletedTaskToContent,changeNameAndDescription, toggleShowTaskContent,newDateForTask,
   removeTaskContent, removeAllTaskContent, toSetStatusCompletedTask
 })(ToDoContainer);

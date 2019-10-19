@@ -4,10 +4,18 @@ $shad: 0 1px 4px rgba(0, 0, 0, .3),
 inset 0 0 40px rgba(0, 0, 0, .1);
 
 .calendarWrapper {
+	text-align: center;
 max-width: 20rem;
 	background-color: white;
+	background-size: 100%;
 	padding: 1rem;
 	border-radius: 1rem;
+	position: absolute;
+	top:10%;
+	bottom: 10%;
+	left: 10%;
+	right: 10%;
+
 
 	.closeCalendar {
 		display: inline-block;
@@ -21,4 +29,12 @@ max-width: 20rem;
 			box-shadow: $shad;
 		}
 	}
+}
+.newCalendarWrapper {
+	@extend .calendarWrapper;
+	position: fixed;
+	top:0;
+bottom: 40%;
+	left: 10%;
+
 }
