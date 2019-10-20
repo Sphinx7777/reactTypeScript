@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './ToDo.module.scss'
 import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
@@ -11,6 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {NewCalendarForNewDate} from '../Others/Calendar/NewCalendarForNewDate';
 import ToDoFormForNewDescription from './ToDoFormForNewDescription';
+import {ModalWindowForSearch} from '../Others/ModalWindow/ModalWindowForSearch';
 /*import * as _ from 'lodash'*/
 
 
@@ -23,9 +24,8 @@ type ValueForm = {
 
 export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedTaskToContent, toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent, showSidebar, tasks, setShowSidebar, addNewTask, editMode, addNewTaskContent}: IProps) => {
 
-
-
-
+  const [dateSearchEditMode,setDateSearchEditMode] = useState(false);
+  const [allTasks, setFilteredTasks] = useState(tasks);
   const [addTask, setStatusAddTask] = useState(false);
   const [dateForPlane, setDateForPlane] = useState(new Date());
   const [showCalendar, setStatusCalendar] = useState(false);
@@ -34,6 +34,9 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
   const [taskIdForNewDescription, setTaskIdForNewDescription] = useState(null);
   const [taskIdForNewDate, setTaskIdForNewDate] = useState(null);
   const [dateForNewContent, setDateForNewContent] = useState('');
+
+
+
   const dateForPlaneString: string = dateForPlane.toLocaleDateString();
   const dayOfWeek: string = week[dateForPlane.getDay()];
   const onSubmit: (value: any) => void = (value: ValueForm) => {
@@ -97,6 +100,24 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
     changeNameAndDescription(taskIdForNewDescription, value.name, value.description);
     setShowEditDescription(false);
   };
+  const addDateForSearch = (date: Date)=> {
+  const dateToString = date.toLocaleDateString();
+  const dateTask: any = tasks.filter((t: Task)=> t.dateForPlane===dateToString);
+  setFilteredTasks(dateTask);
+};
+useEffect(()=>{
+  setFilteredTasks(tasks)
+},[tasks]);
+
+const setNameSearchValue =(value: string)=>{
+  const searchName: any=[];
+  for(let i = 0;i<tasks.length;i++){
+    let taskForSearch = tasks[i].taskContent.some(t=> t.name === value);
+    taskForSearch && searchName.push(tasks[i]);
+  }
+  value.length ? setFilteredTasks(searchName) : setFilteredTasks(tasks)
+};
+
 
 
   return (
@@ -110,7 +131,18 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
             <span className={s.filterItem}>активные</span>
             <span className={s.filterItem}>все</span>
           </div>
-          <input type="text" className={s.search} placeholder='Поиск'/>
+          <div className={s.search}>
+            <span className={s.dateSearch} onClick={()=> setDateSearchEditMode(true)}>Поиск по дате</span>
+            {dateSearchEditMode && <ModalWindowForSearch
+							setDateSearchEditMode={setDateSearchEditMode}
+							addDateForSearch={addDateForSearch}/>}
+
+            <input type="text" className={s.nameSearch} placeholder='Поиск по названию'
+            onChange={(event => setNameSearchValue(event.target.value))}
+            />
+
+          </div>
+
         </div>
         <div className={s.taskControl}>
           <div className={s.addNewTask}
@@ -123,7 +155,7 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
 																										submitNewContent={submitNewContent}
 																										setTaskIdForNewContent={setTaskIdForNewContent}/>}
 
-        {tasks.map(t =>
+        {allTasks.map(t =>
           <div className={s.toDoItem} key={t.id}>
             <div className={s.itemHeader}>
               <div className={s.dateAndTaskStatus}>

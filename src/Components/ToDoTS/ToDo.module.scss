@@ -113,13 +113,30 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		}
 
 		.search {
-			border-radius: 0.3rem;
-			outline: none;
-			padding: 3px;
-
-			&:focus {
-				border: 2px solid cornflowerblue;
+display: flex;
+			align-items: center;
+			.dateSearch {
+        background-color: white;
+				text-align: left;
+				margin-right: 0.5rem;
+				padding: 3px 0.5rem ;
+				font-size: 0.9rem;
+				color: rgba(0,0,0,.7);
+				border-radius: 0.3rem;
+				outline: none;
+				border-top: 1px solid gray;
+				border-left: 1px solid gray;
+				cursor: pointer;
 			}
+			.nameSearch {
+				border-radius: 0.3rem;
+				outline: none;
+				padding: 3px;
+				&:focus {
+					border: 2px solid cornflowerblue;
+				}
+			}
+
 
 		}
 	}
