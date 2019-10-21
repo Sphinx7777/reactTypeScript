@@ -1,20 +1,25 @@
 import React from 'react'
 import s from './ModalWindow.module.scss'
 import {NewCalendarForSearch} from "../Calendar/NewCalendarForSearch";
+import {Tasks} from "../../Redux/todoTsReducer";
 
 
 interface IProps {
 	setDateSearchEditMode: (status: boolean) => void;
 	addDateForSearch: (date: Date) => void;
+	addDateForSearchToString: (date: string | undefined) => void;
+	tasks: Tasks;
 }
 
-export const ModalWindowForSearch = ({addDateForSearch,setDateSearchEditMode}: IProps) => {
+export const ModalWindowForSearch = ({addDateForSearchToString,tasks,addDateForSearch,setDateSearchEditMode}: IProps) => {
 
 	return (
 		<>
-			<div className={s.modal+' '+s.overlay}>
-				<div className={s.modalContent}>
-					<NewCalendarForSearch {...{addDateForSearch,setDateSearchEditMode}}/>
+			<div className={s.modal+' '+s.overlay} onClick={() => {
+				setDateSearchEditMode(false)
+			}}>
+				<div className={s.modalContent} >
+					<NewCalendarForSearch {...{addDateForSearchToString,tasks,addDateForSearch,setDateSearchEditMode}}/>
 				</div>
 			</div>
 		</>)

@@ -119,6 +119,10 @@ export const ToDo = ({
 		const dateTask: any = tasks.filter((t: Task) => t.dateForPlane === dateToString);
 		setFilteredTasks(dateTask);
 	};
+	const addDateForSearchToString = (date: string | undefined) => {
+		const dateTask: any = tasks.filter((t: Task) => t.dateForPlane === date);
+		setFilteredTasks(dateTask);
+	};
 
 	const contents = tasks.map((t: Task) => t.taskContent);
 	useEffect(() => {
@@ -158,6 +162,8 @@ export const ToDo = ({
 					<div className={s.search}>
 						<span className={s.dateSearch} onClick={() => setDateSearchEditMode(true)}>Поиск по дате</span>
 						{dateSearchEditMode && <ModalWindowForSearch
+							addDateForSearchToString={addDateForSearchToString}
+							tasks={tasks}
 							setDateSearchEditMode={setDateSearchEditMode}
 							addDateForSearch={addDateForSearch}/>}
 						<input type="text" className={s.nameSearch} placeholder='Поиск по названию'
