@@ -105,9 +105,10 @@ export const ToDo = ({changeNameAndDescription, newDateForTask, removeCompletedT
   const dateTask: any = tasks.filter((t: Task)=> t.dateForPlane===dateToString);
   setFilteredTasks(dateTask);
 };
-useEffect(()=>{
+  const contents = tasks.map((t: Task)=> t.taskContent);
+  useEffect(()=>{
   setFilteredTasks(tasks)
-},[tasks]);
+},[tasks.length,contents.length]);
 
 const setNameSearchValue =(value: string)=>{
   const searchName: any=[];
@@ -132,6 +133,7 @@ const setNameSearchValue =(value: string)=>{
             <span className={s.filterItem}>все</span>
           </div>
           <div className={s.search}>
+            <span className={s.dateSearch} onClick={()=> setFilteredTasks(tasks)}>Все</span>
             <span className={s.dateSearch} onClick={()=> setDateSearchEditMode(true)}>Поиск по дате</span>
             {dateSearchEditMode && <ModalWindowForSearch
 							setDateSearchEditMode={setDateSearchEditMode}
