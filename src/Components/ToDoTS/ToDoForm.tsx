@@ -1,12 +1,13 @@
 import React from 'react';
 import s from './ToDo.module.scss';
 import {Field, reduxForm, InjectedFormProps} from "redux-form";
-import {maxLengthCreator,emptyField} from "../Validators/Validators";
+import {maxLengthCreator, emptyField} from "../Validators/Validators";
 import {InputComponent, TextAreaComponent} from "../Validators/ComponentsFromReduxForm";
 
 
 const maxlength200 = maxLengthCreator(200);
 const maxlength30 = maxLengthCreator(30);
+
 interface IProps {
 	dateForPlaneString?: string;
 	setStatusAddTask: any;
@@ -39,19 +40,20 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 						cols='30'
 						component={TextAreaComponent}
 						label='Описание'
-						validate={[emptyField,maxlength200]}
+						validate={[emptyField, maxlength200]}
 					/>
 				</div>
 				{props.error && <span className={s.formError}>{props.error}</span>}
 				<div className={s.formBtn}>
 					<button className={s.formSubmitBtn} type="submit" disabled={submitting}>Добавить</button>
-					<button className={s.formClearBtn} type="button" disabled={pristine || submitting} onClick={reset}>Очистить</button>
+					<button className={s.formClearBtn} type="button" disabled={pristine || submitting} onClick={reset}>Очистить
+					</button>
 					<button className={s.formCancelBtn} type="button"
-									onClick={()=>{
+									onClick={() => {
 										props.setStatusAddTask(null);
 										props.setStatusCalendar(false);
-
-					}}>Отменить</button>
+									}}>Отменить
+					</button>
 				</div>
 			</form>
 		</div>
@@ -61,18 +63,3 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 export default reduxForm<{}, IProps>({
 	form: 'toDoForm',
 })(ToDoForm)
-
-/*<div className={s.loginCheck}>
-	<Field
-name="rememberMe"
-type="checkbox"
-component={InputComponent}
-label="RememberMe"
-	/>
-	</div>*/
-
-/*onKeyPress={(event) => {
-	if (event.key === 'Enter') {
-		handleSubmit()
-	}
-}}*/

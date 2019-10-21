@@ -4,13 +4,11 @@ import {NewCalendarForSearch} from "../Calendar/NewCalendarForSearch";
 
 
 interface IProps {
-
 	setDateSearchEditMode: (status: boolean) => void;
 	addDateForSearch: (date: Date) => void;
 }
 
 export const ModalWindowForSearch = ({addDateForSearch,setDateSearchEditMode}: IProps) => {
-
 
 	return (
 		<>

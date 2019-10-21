@@ -12,7 +12,6 @@ interface IProps {
 
 export const ModalWindow = ({setStatusCalendar,dateForPlane,setDateForPlane}: IProps) => {
 
-
 	return (
 		<>
 			<div className={s.modal+' '+s.overlay}>

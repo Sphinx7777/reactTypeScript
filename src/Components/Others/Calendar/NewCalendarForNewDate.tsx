@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Calendar from 'react-calendar';
 import s from './NewCalendar.module.scss';
+
 type OnChangeDateCallback = (date: Date | Date[]) => void
 type DateCallback = (date: Date) => void
 
@@ -18,15 +19,12 @@ interface CalendarProps {
 
 export class NewCalendarForNewDate extends Component<CalendarProps> {
 
-
-
 	onChange = (date: object): void => this.props.setDateForPlane(date);
 
 	render() {
-		const minDate=new Date();
+		const minDate = new Date();
 
 		return (
-
 			<div className={s.newCalendarWrapper} onKeyPress={(event) => {
 				if (event.key === 'Enter') {
 					this.props.addTaskIdForNewDate(null)
@@ -38,18 +36,17 @@ export class NewCalendarForNewDate extends Component<CalendarProps> {
 					value={this.props.dateForPlane}
 				/>
 				<div>
-					<div className={s.closeCalendar} onClick={()=>{
+					<div className={s.closeCalendar} onClick={() => {
 						this.props.changeDateTask();
 						this.props.addTaskIdForNewDate(null);
-					}}>Применить</div>
+					}}>Применить
+					</div>
 				</div>
-				<div className={s.closeCalendar} onClick={()=>{
+				<div className={s.closeCalendar} onClick={() => {
 					this.props.addTaskIdForNewDate(null);
-				}}>Отменить</div>
+				}}>Отменить
 				</div>
-
-
-
+			</div>
 		);
 	}
 }

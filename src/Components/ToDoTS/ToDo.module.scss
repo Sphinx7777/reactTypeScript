@@ -28,7 +28,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 		.form {
 			max-width: 30rem;
-
 			display: flex;
 			flex-direction: column;
 			text-align: center;
@@ -55,13 +54,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 		}
-
-		.formDate {
-
-		}
-
 	}
-
 
 	.calendar {
 		margin-left: 10rem;
@@ -75,22 +68,21 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 		.addNewTask, .dellAllFinishedTask {
 			box-shadow: $shad;
-			font-size: 0.9rem;
 			display: inline-block;
-			padding: 1rem;
+			padding: 0.5rem;
 			margin-top: 0.5rem;
 			cursor: pointer;
-			color: black;
-
 			&:hover {
 				background-color: lightgray;
-
 			}
 		}
-
-
+		.addNewTask {
+			color: green;
+		}
+		.dellAllFinishedTask {
+			color: red;
+		}
 	}
-
 
 	.toDoHeader {
 		padding: 0.5rem;
@@ -103,26 +95,40 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		max-width: 100%;
 
 		.taskFilter {
-			margin: 0 auto 0.7rem auto;
+			margin: 0 auto;
 
 			.filterItem {
-				margin-right: 0.5rem;
+				font-size: 0.8rem;
+				color: black;
+				cursor: pointer;
+				padding: 0.3rem;
+				background: rgba(0, 0, 0, .1);
+				border-radius: 0.3rem;
+				outline: none;
+				margin-right: 1.5rem;
 
+				&:hover {
+					box-shadow: $shad;
+				}
 			}
 
+			@media screen and (max-width: 660px) {
+				margin-bottom: 1rem;
+			}
 		}
 
 		.search {
-     display: flex;
+			display: flex;
 			align-items: center;
 			flex-wrap: wrap;
 			margin: 0 auto;
+
 			.dateSearch {
 				font-size: 0.8rem;
 				color: black;
 				cursor: pointer;
 				padding: 0.3rem;
-				background: rgba(0,0,0,.1);
+				background: rgba(0, 0, 0, .1);
 				border-radius: 0.3rem;
 				outline: none;
 				margin-right: 1rem;
@@ -131,21 +137,25 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					box-shadow: $shad;
 				}
 			}
+
 			.nameSearch {
 				border-radius: 0.3rem;
 				outline: none;
 				padding: 3px;
+
 				&:focus {
 					border: 2px solid cornflowerblue;
 				}
-				@media screen and (max-width: 463px) {
+
+				@media screen and (max-width: 376px) {
 					margin-top: 0.5rem;
 				}
 			}
 		}
+
 		@media screen and (max-width: 663px) {
 			.search {
-			justify-content: center;
+				justify-content: center;
 			}
 		}
 	}
@@ -180,12 +190,14 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				.totalAndCompletedTask {
 					color: black;
 				}
+
 				.completedTasks {
 					margin-left: 0.5rem;
 					color: black;
 				}
 
 			}
+
 			@media screen and (max-width: 483px) {
 				.dateAndTaskStatus {
 					justify-content: center;
@@ -202,26 +214,28 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				.addTask {
 					font-size: 0.8rem;
-					color: black;
+					color: green;
 					cursor: pointer;
 					padding: 3px;
-					background: rgba(0,0,0,.1);
+					background: rgba(0, 0, 0, .1);
 					border-radius: 0.3rem;
 					outline: none;
+
 					&:hover {
 						box-shadow: $shad;
 					}
+
 					&:active {
 						background-color: lightgray;
 					}
 				}
 
-				.dellAllTask,.dellFinishedTask {
+				.dellAllTask, .dellFinishedTask {
 					font-size: 0.8rem;
 					color: black;
 					cursor: pointer;
 					padding: 3px;
-					background: rgba(0,0,0,.1);
+					background: rgba(0, 0, 0, .1);
 					border-radius: 0.3rem;
 					outline: none;
 
@@ -231,12 +245,12 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 					&:active {
 						background-color: lightgray;
-
 					}
 				}
+
 				.dellAllTask {
 					margin-left: 0.5rem;
-
+					color: red;
 				}
 
 				.openList {
@@ -246,10 +260,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					color: black;
 					cursor: pointer;
 					margin: 0.2rem auto;
-					background: rgba(0,0,0,.1);
+					background: rgba(0, 0, 0, .1);
 					border-radius: 0.3rem;
 					outline: none;
-
 
 					&:hover {
 						box-shadow: $shad;
@@ -257,14 +270,14 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 					&:active {
 						background-color: lightgray;
-
 					}
 				}
 			}
+
 			@media screen and (max-width: 570px) {
 				.action {
 					text-align: center;
-          flex-direction: column;
+					flex-direction: column;
 					justify-content: stretch;
 					align-content: stretch;
 					align-items: stretch;
@@ -298,7 +311,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					}
 
 					.dellAllTask {
-
 						margin: 0.5rem 0 0 0;
 						border: 1px solid white;
 						border-radius: 0.3rem;
@@ -307,7 +319,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						padding: 0.2rem 0.2rem;
 					}
 				}
-
 			}
 
 			.dateForPlane, .dateForPlaneEdit {
@@ -324,7 +335,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			.dayForPlane {
 				color: black;
 			}
-
 		}
 
 		.itemHeader,
@@ -365,7 +375,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				border-bottom: 1px solid black;
 				border-radius: 0.5rem;
 
-
 				.taskHeader {
 					padding: 0.5rem;
 					margin: 0.5rem auto;
@@ -379,8 +388,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						outline: none;
 						display: inline-block;
 						margin-bottom: 1rem;
-
-
 					}
 
 					.createDateAndFinished {
@@ -392,6 +399,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						.createDate {
 							color: black;
 						}
+
 						.finished {
 							color: black;
 						}
@@ -417,7 +425,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						color: black;
 						cursor: pointer;
 						padding: 3px;
-						background: rgba(0,0,0,.1);
+						background: rgba(0, 0, 0, .1);
 						border-radius: 0.3rem;
 						outline: none;
 						margin-right: 1rem;
@@ -428,21 +436,14 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 						&:active {
 							background-color: lightgray;
-
 						}
 					}
-
 				}
 			}
 		}
 
-		.itemContents.active {
-
-		}
-
 		.itemContents.none {
 			display: none;
-
 		}
 	}
 

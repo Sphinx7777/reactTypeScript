@@ -4,9 +4,6 @@ $shad: 0 1px 4px rgba(0, 0, 0, .3),
 inset 0 0 40px rgba(0, 0, 0, .1);
 
 
-
-
-
 .sideBarWrapper {
 	grid-area: s;
 	position: absolute;
@@ -21,19 +18,18 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	transition: opacity 1s;
 	box-shadow: $shad;
 	padding: 5px;
-  z-index: 2;
+	z-index: 2;
 	border-radius: 0.5rem;
-
 
 	.link {
 		display: block;
 		text-decoration: none;
 		text-align: center;
 		margin-top: 1rem;
+
 		&:last-child {
 			margin-bottom: 3rem;
 		}
-
 
 		.linkImg {
 			max-width: 2.8rem;
@@ -42,6 +38,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			border-radius: 100%;
 			outline: none;
 			border: 1px solid white;
+
 			&:hover {
 				background-color: rgba(0, 0, 0, .1);
 				border: 1px solid darkgray;
@@ -53,6 +50,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			display: inline-block;
 		}
 	}
+
 	.close {
 		padding: 3px;
 		background-color: lightcoral;
@@ -71,11 +69,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 }
 
 @media screen and (max-width: 450px) {
-
 	.sideBarWrapper {
 		position: fixed;
 		top: 0;
 		left: 0;
 	}
-
 }

@@ -1,10 +1,11 @@
 import React from 'react'
 import s from './SideBar.module.scss'
 import {MyProps} from "../Header/Header";
-const shape = require( './../../images/shape.png');
-const search = require( './../../images/search.ico');
 
-export const SideBar = ({showSidebar,setShowSidebar}: MyProps) => {
+const shape = require('./../../images/shape.png');
+const search = require('./../../images/search.ico');
+
+export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
 
 	return (
 		<>
@@ -18,15 +19,14 @@ export const SideBar = ({showSidebar,setShowSidebar}: MyProps) => {
 				<div>
 					<a className={s.link} target='_blank' rel='noopener noreferrer'
 						 href="https://sphinx7777.github.io/SocialNetvork">
-						<img className={s.linkImg} src={search} alt="Social Network"/><span className={s.linkTitle}>Social Network</span>
+						<img className={s.linkImg} src={search} alt="Social Network"/>
+						<span className={s.linkTitle}>Social Network</span>
 					</a>
 				</div>
-
-				<span className={s.close} onClick={()=> {
+				<span className={s.close} onClick={() => {
 					setShowSidebar(!showSidebar)
 				}}>Закрыть</span>
 			</div>
-
 		</>
 	)
 };
