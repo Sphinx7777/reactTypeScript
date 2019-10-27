@@ -14,7 +14,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	.formWrapper {
 		position: fixed;
 		top: 0;
-		color: black;
+		margin: 0 auto;
 		z-index: 5;
 		background-color: rgb(255, 255, 255);
 		border-radius: 0.5rem;
@@ -439,7 +439,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			right: 0;
 			box-shadow: $shad;
 			background-color: white;
-			z-index: 5;
+			z-index: 4;
 			border-bottom-right-radius: 0.5rem;
 			border-bottom-left-radius: 0.5rem;
 
@@ -530,26 +530,5 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		.itemContents.none {
 			display: none;
 		}
-	}
-
-	.footerWrapper {
-		display: none;
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		justify-content: space-between;
-		align-content: center;
-		align-items: center;
-		padding: 3px 0.5rem;
-		box-shadow: $shad;
-		background-color: white;
-		z-index: 3;
-	}
-}
-
-@media screen and (max-width: 680px) {
-	.toDoWrapper {
-
 	}
 }

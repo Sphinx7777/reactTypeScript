@@ -32,6 +32,7 @@ const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> =
 					<Field
 						name='name'
 						size={30}
+						placeholder='Min 1 && Max 30 symbols'
 						type='text'
 						component={InputComponent}
 						label='Название'
@@ -44,6 +45,7 @@ const ToDoFormNewContent: React.FC<IProps & InjectedFormProps<{}, IProps>> =
 						name='description'
 						cols='30'
 						size={200}
+						placeholder='Min 1 && Max 200 symbols'
 						component={TextAreaComponent}
 						label='Описание'
 						validate={[emptyField, maxlength200]}

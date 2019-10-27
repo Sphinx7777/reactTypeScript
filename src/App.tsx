@@ -8,14 +8,14 @@ const Resume = React.lazy(() => import('./Components/Others/Resume/Resume'));
 
 const App: React.FC = () => {
   const [showSidebar, setShowSidebar] = useState(false); //toggle menu
-
+  console.log('app')
   return (
     <div className={s.app} >
       <Header {...{showSidebar, setShowSidebar}} />
       <SideBar {...{showSidebar,setShowSidebar}} />
       <div className={s.content}>
         <Switch>
-          <Route exact path='/' render={() => <ToDoContainer {...{showSidebar, setShowSidebar}}/>}/>
+          <Route exact path='/' render={() => <ToDoContainer {...{setShowSidebar}}/>}/>
           <Route path='/resume' render={() =>
             <Suspense fallback={<div>Загрузка...</div>}>
               <Resume />

@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import s from './ToDo.module.scss'
-import {ContactLinks} from "../Others/ContaktLinks/ContactLinks";
-import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 import {ModalWindow} from '../Others/ModalWindow/ModalWindow';
 import {IProps} from "./ToDoContainer";
 import ToDoForm from "./ToDoForm";
@@ -25,10 +23,10 @@ export const ToDo = ({
 											 changeNameAndDescription, newDateForTask, removeCompletedTaskToContent,
 											 toSetStatusCompletedTask,
 											 removeAllTaskContent, removeTaskContent, toggleShowTaskContent,
-											 showSidebar, tasks,
+											 tasks,
 											 setShowSidebar, addNewTask, addNewTaskContent, setRemoveAllCompletedTask
 										 }: IProps) => {
-
+console.log('todo')
 	const [dateSearchEditMode, setDateSearchEditMode] = useState(false);
 	const [allTasks, setFilteredTasks] = useState(tasks);
 	const [addTask, setStatusAddTask] = useState(false);
@@ -130,10 +128,13 @@ export const ToDo = ({
 		setFilteredTasks(tasks)
 	}, [tasks.length, contents.length]);
 
+
+
+
 	const setNameSearchValue = (value: string) => {
 		const searchName: any = [];
 		for (let i = 0; i < tasks.length; i++) {
-			let taskForSearch = tasks[i].taskContent.some(t => t.name === value);
+			let taskForSearch = tasks[i].taskContent.some(t => t.name.toString().toLowerCase().includes(value.toString().toLowerCase()));
 			taskForSearch && searchName.push(tasks[i]);
 		}
 		value.length ? setFilteredTasks(searchName) : setFilteredTasks(tasks)
@@ -175,8 +176,12 @@ export const ToDo = ({
 				</div>
 				<div className={s.taskControl}>
 					<div className={s.addNewTask}
-							 onClick={createNewTask}>{!addTask ? 'Добавить планы на новую дату' : 'Отменить'}</div>
-					<div className={s.dellAllFinishedTask} onClick={()=>setRemoveAllCompletedTask()}>Удалить все завершенные</div>
+							 onClick={createNewTask}>
+						{!addTask ? 'Добавить планы на новую дату' : 'Отменить'}
+					</div>
+					<div className={s.dellAllFinishedTask} onClick={()=>setRemoveAllCompletedTask()}>
+						Удалить все завершенные
+					</div>
 				</div>
 				{addTask && <ToDoForm onSubmit={onSubmit} setStatusAddTask={setStatusAddTask}
 															setStatusCalendar={setStatusCalendar} dateForPlaneString={dateForPlaneString}/>}
@@ -282,11 +287,6 @@ export const ToDo = ({
 				{showCalendar && <div className={s.calendar}>
 					<ModalWindow {...{setStatusCalendar, dateForPlane, setDateForPlane}}/>
 				</div>}
-				{/*for width <450px */}
-				<div className={s.footerWrapper}>
-					<BurgerMenu {...{showSidebar, setShowSidebar}}/>
-					<ContactLinks/>
-				</div>
 			</div>
 		</>)
 };

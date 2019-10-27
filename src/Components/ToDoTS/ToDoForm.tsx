@@ -28,6 +28,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 				<div className={s.formName}>
 					<Field
 						name='name'
+						placeholder='Min 1 && Max 30 symbols'
 						size={30}
 						type='text'
 						component={InputComponent}
@@ -38,6 +39,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 				<div className={s.formDescription}>
 					<Field
 						name='description'
+						placeholder='Min 1 && Max 200 symbols'
 						cols='30'
 						size={200}
 						component={TextAreaComponent}

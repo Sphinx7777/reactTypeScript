@@ -9,7 +9,6 @@ import {
 import {TodoState} from '../Redux/reduxStore';
 
 export interface IProps {
-	showSidebar: boolean;
 	setShowSidebar: (showSidebar: boolean) => void;
 	addNewTask: (task: Task) => {};
 	addNewTaskContent: (idContent: number | null, newTaskContent: TaskContent) => {};
@@ -27,9 +26,10 @@ export interface IProps {
 class ToDoContainer extends Component<IProps> {
 
 	render() {
+		console.log('todoContainer')
 		const {
 			changeNameAndDescription, newDateForTask, removeCompletedTaskToContent, toSetStatusCompletedTask,
-			removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, showSidebar, setShowSidebar,
+			removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, setShowSidebar,
 			tasks, addNewTaskContent, setRemoveAllCompletedTask
 		} = this.props;
 
@@ -37,7 +37,7 @@ class ToDoContainer extends Component<IProps> {
 			<div>
 				<ToDo {...{
 					changeNameAndDescription, newDateForTask, removeCompletedTaskToContent, toSetStatusCompletedTask,
-					removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, showSidebar, setShowSidebar,
+					removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, setShowSidebar,
 					tasks, addNewTaskContent, setRemoveAllCompletedTask
 				}}/>
 			</div>
