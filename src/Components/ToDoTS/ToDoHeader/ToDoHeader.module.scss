@@ -1,0 +1,97 @@
+$shad: 0 1px 4px rgba(0, 0, 0, .3),
+-23px 0 20px -23px rgba(0, 0, 0, .6),
+23px 0 20px -23px rgba(0, 0, 0, .6),
+inset 0 0 40px rgba(0, 0, 0, .1);
+
+.toDoHeader {
+  padding: 0.5rem;
+  border-bottom: 5px solid black;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+
+  .taskFilter {
+    margin: 0 auto;
+
+    .filterItem {
+      font-size: 0.8rem;
+      color: black;
+      cursor: pointer;
+      padding: 3px;
+      border: 1px solid black;
+      border-radius: 0.3rem;
+      outline: none;
+      margin-right: 1rem;
+
+
+      &:hover {
+        box-shadow: $shad;
+      }
+
+      &:active {
+        border: 1px solid transparent;
+      }
+    }
+
+    @media screen and (max-width: 630px) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    .dateSearch {
+      font-size: 0.8rem;
+      color: black;
+      cursor: pointer;
+      padding: 3px;
+      border: 1px solid black;
+      border-radius: 0.3rem;
+      outline: none;
+      margin-right: 1rem;
+
+
+      &:hover {
+        box-shadow: $shad;
+      }
+
+      &:active {
+        border: 1px solid transparent;
+      }
+    }
+
+    .nameSearch {
+      border-radius: 0.3rem;
+      outline: none;
+      padding: 3px;
+
+      &:focus {
+        border: 2px solid cornflowerblue;
+      }
+      @media screen and (max-width: 398px) {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 663px) {
+    .search {
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 573px) {
+  .toDoHeader {
+    flex-direction: column;
+    align-content: center;
+  }
+}

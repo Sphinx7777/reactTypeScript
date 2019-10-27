@@ -8,7 +8,7 @@ const Resume = React.lazy(() => import('./Components/Others/Resume/Resume'));
 
 const App: React.FC = () => {
   const [showSidebar, setShowSidebar] = useState(false); //toggle menu
-  console.log('app')
+
   return (
     <div className={s.app} >
       <Header {...{showSidebar, setShowSidebar}} />

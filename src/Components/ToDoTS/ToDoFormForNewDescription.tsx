@@ -5,11 +5,12 @@ import {maxLengthCreator, emptyField} from "../Validators/Validators";
 import {InputComponent, TextAreaComponent} from "../Validators/ComponentsFromReduxForm";
 
 
+
 const maxlength200 = maxLengthCreator(200);
 const maxlength30 = maxLengthCreator(30);
 
 interface IProps {
-	setShowEditDescription: any
+	setShowEditDescription: (status:boolean)=> void;
 	submitNewDescription: any
 }
 

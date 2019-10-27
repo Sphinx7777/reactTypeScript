@@ -26,7 +26,7 @@ export interface IProps {
 class ToDoContainer extends Component<IProps> {
 
 	render() {
-		console.log('todoContainer')
+
 		const {
 			changeNameAndDescription, newDateForTask, removeCompletedTaskToContent, toSetStatusCompletedTask,
 			removeAllTaskContent, removeTaskContent, toggleShowTaskContent, addNewTask, setShowSidebar,

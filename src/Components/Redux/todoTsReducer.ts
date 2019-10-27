@@ -1,6 +1,5 @@
 // @ts-ignore
 import {load} from 'redux-localstorage-simple';
-/*import * as _ from 'lodash'*/
 
 
 const ADD_NEW_TASK: string = '/todoReducer___ADD_NEW_TASK';

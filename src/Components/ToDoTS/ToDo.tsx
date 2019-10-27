@@ -9,8 +9,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {NewCalendarForNewDate} from '../Others/Calendar/NewCalendarForNewDate';
 import ToDoFormForNewDescription from './ToDoFormForNewDescription';
-import {ModalWindowForSearch} from '../Others/ModalWindow/ModalWindowForSearch';
-/*import * as _ from 'lodash'*/
+import {ToDoHeader} from "./ToDoHeader/ToDoHeader";
+
+
+
 
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
@@ -21,12 +23,10 @@ type ValueForm = {
 
 export const ToDo = ({
 											 changeNameAndDescription, newDateForTask, removeCompletedTaskToContent,
-											 toSetStatusCompletedTask,
-											 removeAllTaskContent, removeTaskContent, toggleShowTaskContent,
-											 tasks,
-											 setShowSidebar, addNewTask, addNewTaskContent, setRemoveAllCompletedTask
+											 toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent,
+											 tasks, setShowSidebar, addNewTask, addNewTaskContent, setRemoveAllCompletedTask
 										 }: IProps) => {
-console.log('todo')
+
 	const [dateSearchEditMode, setDateSearchEditMode] = useState(false);
 	const [allTasks, setFilteredTasks] = useState(tasks);
 	const [addTask, setStatusAddTask] = useState(false);
@@ -108,7 +108,7 @@ console.log('todo')
 		setTaskIdForNewDescription(idContent)
 	};
 
-	const submitNewDescription: (value: any) => void = (value) => {
+	const submitNewDescription: (value: ValueForm) => void = (value) => {
 		changeNameAndDescription(taskIdForNewDescription, value.name, value.description);
 		setShowEditDescription(false);
 	};
@@ -155,25 +155,10 @@ console.log('todo')
 				. Рефакторинг в конце обучения. Еще ссылки в меню.
 			</div>
 			<div className={s.toDoWrapper} onClick={()=>setShowSidebar(false)}>
-				<div className={s.toDoHeader}>
-					<div className={s.taskFilter}>
-						<span className={s.filterItem} onClick={() => setFilteredTasks(tasks)}>Все</span>
-						<span className={s.filterItem} onClick={() => setFilteredTaskSearch(true)}>Завершенные</span>
-						<span className={s.filterItem} onClick={() => setFilteredTaskSearch(false)}>Активные</span>
-
-					</div>
-					<div className={s.search}>
-						<span className={s.dateSearch} onClick={() => setDateSearchEditMode(true)}>Поиск по дате</span>
-						{dateSearchEditMode && <ModalWindowForSearch
-							addDateForSearchToString={addDateForSearchToString}
-							tasks={tasks}
-							setDateSearchEditMode={setDateSearchEditMode}
-							addDateForSearch={addDateForSearch}/>}
-						<input type="text" className={s.nameSearch} placeholder='Поиск по названию'
-									 onChange={(event => setNameSearchValue(event.target.value))}
-						/>
-					</div>
-				</div>
+				<ToDoHeader {...{setFilteredTasks,setFilteredTaskSearch,tasks,
+					setDateSearchEditMode,dateSearchEditMode,addDateForSearchToString,
+					addDateForSearch,setNameSearchValue
+				}}/>
 				<div className={s.taskControl}>
 					<div className={s.addNewTask}
 							 onClick={createNewTask}>
