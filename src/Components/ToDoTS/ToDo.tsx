@@ -128,7 +128,7 @@ export const ToDo = ({
 	const contents = tasks.map((t: Task) => t.taskContent);
 	useEffect(() => {
 		setFilteredTasks(tasks)
-	}, [tasks,tasks.length, contents.length]);
+	}, [tasks.length, contents.length]);
 
 	const setNameSearchValue = (value: string) => {
 		const searchName: any = [];
