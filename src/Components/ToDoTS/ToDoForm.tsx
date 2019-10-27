@@ -28,6 +28,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 				<div className={s.formName}>
 					<Field
 						name='name'
+						size={30}
 						type='text'
 						component={InputComponent}
 						label='Название'
@@ -38,6 +39,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 					<Field
 						name='description'
 						cols='30'
+						size={200}
 						component={TextAreaComponent}
 						label='Описание'
 						validate={[emptyField, maxlength200]}

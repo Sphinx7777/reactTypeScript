@@ -15,11 +15,6 @@ export const ContactLinks = () => {
 				<img className={s.linkImg} src={lamp} alt="Джинни"/><span className={s.linkTitle}>Djinni</span>
 			</a>
 			<a className={s.link} target='_blank' rel='noopener noreferrer'
-				 href="https://t.me/S_f_i_n_x">
-				<img className={s.linkImg} src={telegram} alt="Телеграм"/><span
-				className={s.linkTitle}>Telegram</span>
-			</a>
-			<a className={s.link} target='_blank' rel='noopener noreferrer'
 				 href="https://www.linkedin.com/in/onishchenkosergei">
 				<img className={s.linkImg} src={linkedIn} alt="Линкедин"/><span
 				className={s.linkTitle}>linkedin</span>
@@ -28,6 +23,11 @@ export const ContactLinks = () => {
 				 href="https://github.com/Sphinx7777?tab=repositories">
 				<img className={s.linkImg} src={git} alt="GIT"/><span
 				className={s.linkTitle}>GIT</span>
+			</a>
+			<a className={s.link} target='_blank' rel='noopener noreferrer'
+				 href="https://t.me/S_f_i_n_x">
+				<img className={s.linkImg} src={telegram} alt="Телеграм"/><span
+				className={s.linkTitle}>Telegram</span>
 			</a>
 		</div>
 	)

@@ -150,8 +150,8 @@ export const ToDo = ({
 
 	return (
 		<>
-			<div>Учебный проект по TypeScript... начало... Сложный, гязный, обЪемный код очень помогает мне лучше учиться
-				...рефакторинг в конце обучения... и оформление на коленке по быстрому...
+			<div>Учебный проект по TypeScript. Начало. Сложный, грязный и перемешанный код очень помогает мне лучше учиться
+				. Рефакторинг в конце обучения. Еще ссылки в меню.
 			</div>
 			<div className={s.toDoWrapper} onClick={()=>setShowSidebar(false)}>
 				<div className={s.toDoHeader}>
@@ -220,7 +220,7 @@ export const ToDo = ({
 							</div>
 							<div className={s.action}>
 								<div className={s.addTask} onClick={() => addTaskId(t.id, t.dateForPlane)}>Добавить</div>
-								<div className={s.openList} onClick={() => {
+								<div className={!t.editStatus ? s.openList : (s.openList+' '+s.active)} onClick={() => {
 									toggleShowTaskContent(t.id, !t.editStatus);
 								}}>{!t.editStatus ? 'Открыть список' : 'Закрыть список'}
 								</div>
@@ -253,14 +253,14 @@ export const ToDo = ({
 											/>
 										</div>
 										<div>
-											<div className={s.taskName} onDoubleClick={() => {
+											<div className={!c.completed ? s.taskName : (s.taskName + ' ' + s.completed)} onDoubleClick={() => {
 												IdForNewDescription(c.idContent);
 												setShowEditDescription(true)
 											}} title='Дабл клик для редактирования'>
 												{c.name}
 											</div>
 										</div>
-										<div className={s.taskContent} onDoubleClick={() => {
+										<div className={!c.completed ? s.taskContent : (s.taskContent + ' ' + s.completed)} onDoubleClick={() => {
 											IdForNewDescription(c.idContent);
 											setShowEditDescription(true)
 										}} title='Дабл клик для редактирования'>

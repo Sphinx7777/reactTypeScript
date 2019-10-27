@@ -12,7 +12,7 @@ export const InputComponent = (
 		<>
 			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{touched && error ? error:label}</div>
 			<input className={s.inputField + ' ' + (touched && error ? s.errorInputField : '')}
-						 {...input} autoFocus={autoFocus}  size={size} type={type}  />
+						 {...input} autoFocus={autoFocus}  maxLength={size} type={type}  />
 			{/*{touched &&
 			((error && <div className={s.inputError}>{error}</div>) ||
 				(warning && <div className={s.inputWarning}>{warning}  </div>))}*/}
@@ -21,12 +21,12 @@ export const InputComponent = (
 };
 // textarea for Redux-form
 export const TextAreaComponent = (
-	{input,label,rows,cols,meta: {error, warning, touched}}: ComponentFromForm) => {
+	{input,label,rows,size,cols,meta: {error, warning, touched}}: ComponentFromForm) => {
 	return (
 		<>
 			<div className={s.inputLabel + ' ' + (touched && error ? s.errorInputLabel : '')}>{touched && error ? error:label}</div>
 			<textarea className={s.areaField + ' ' + (touched && error ? s.errorAreaField : '')}
-								{...input}  rows={rows} cols={cols} />
+								{...input} maxLength={size}  rows={rows} cols={cols} />
 		{/*	{touched &&
 			((error && <div className={s.areaError}>{error}</div>) ||
 				(warning && <div className={s.areaWarning}>{warning}</div>))}*/}

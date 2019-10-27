@@ -130,7 +130,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 			}
 
-			@media screen and (max-width: 660px) {
+			@media screen and (max-width: 630px) {
 				margin-bottom: 1rem;
 			}
 		}
@@ -168,6 +168,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				&:focus {
 					border: 2px solid cornflowerblue;
+				}
+				@media screen and (max-width: 398px) {
+					margin-top: 0.5rem;
 				}
 			}
 		}
@@ -213,6 +216,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					border-bottom: 1px solid black;
 					border-radius: 0.5rem;
 					padding: 0 0.5rem;
+					@media screen and (max-width: 518px) {
+						margin-bottom: 0.5rem;
+					}
 				}
 
 				.completedTasks {
@@ -266,12 +272,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						border: 1px solid black;
 						border-radius: 0.3rem;
 						outline: none;
-
-
 						&:hover {
 							box-shadow: $shad;
 						}
-
 						&:active {
 							border: 1px solid transparent;
 						}
@@ -285,23 +288,22 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 				.openList {
-					display: inline-block;
-					text-align: center;
-					padding: 3px;
+					font-size: 0.8rem;
 					color: black;
 					cursor: pointer;
-					margin: 0.2rem auto;
-					background: rgba(0, 0, 0, .1);
+					padding: 3px;
+					border: 1px solid black;
 					border-radius: 0.3rem;
 					outline: none;
-
 					&:hover {
 						box-shadow: $shad;
 					}
-
 					&:active {
-						background-color: lightgray;
+						border: 1px solid transparent;
 					}
+				}
+				.openList.active {
+					background-color: rgba(124,252,0,0.1);
 				}
 			}
 
@@ -357,6 +359,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 							align-content: center;
 							max-width: 40%;
 							margin-top: 0;
+							margin-bottom: 0;
 							margin-left: 0.5rem;
 							border: 1px solid white;
 							border-radius: 0.3rem;
@@ -379,6 +382,9 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		margin-right: 5px;
 		padding: 2px;
 		border-radius: 0.2rem;
+		font-weight: bold;
+		font-size: 0.9rem;
+
 	}
 
 	.dateForPlaneEdit {
@@ -387,6 +393,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 	.dayForPlane {
 		color: black;
+		font-weight: bold;
+		font-size: 0.9rem;
+	}
+	@media screen and (max-width: 518px) {
+		margin-bottom: 0.5rem;
 	}
 }
 }
@@ -448,7 +459,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						display: inline-block;
 						margin-bottom: 1rem;
 						border-bottom: 1px solid black;
+						word-break: break-all;
 					}
+					.taskName.completed {
+						color: green;
+						text-decoration: line-through;
+					}
+
 
 					.createDateAndFinished {
 						display: flex;
@@ -475,6 +492,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					border-radius: 0.5rem;
 					outline: none;
 					border-bottom: 1px solid black;
+					word-break: break-all;
+				}
+				.taskContent.completed {
+					color: green;
+					text-decoration: line-through;
 				}
 
 				.dellContent {
@@ -529,7 +551,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 		.footerWrapper {
-			display: flex;
+
 
 		}
 	}
