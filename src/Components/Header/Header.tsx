@@ -11,7 +11,7 @@ export interface MyProps {
 
 export const Header = ({showSidebar,setShowSidebar}: MyProps) => {
   return (
-    <div className={s.headerWrapper}>
+    <div className={s.headerWrapper} >
         <BurgerMenu {...{showSidebar,setShowSidebar}}/>
       <ContactLinks/>
     </div>

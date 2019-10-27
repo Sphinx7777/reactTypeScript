@@ -72,13 +72,16 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			padding: 0.5rem;
 			margin-top: 0.5rem;
 			cursor: pointer;
+
 			&:hover {
 				background-color: lightgray;
 			}
 		}
+
 		.addNewTask {
 			color: green;
 		}
+
 		.dellAllFinishedTask {
 			color: red;
 		}
@@ -168,11 +171,12 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	}
 
 	.toDoItem {
+		position: relative;
 		padding: 1rem 0;
 
 
 		.itemHeader {
-			background: silver;
+			background: rgba(0, 0, 0, .1);
 			text-align: left;
 			padding: 0.5rem 2rem 0.5rem 1rem;
 			align-content: center;
@@ -230,28 +234,33 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					}
 				}
 
-				.dellAllTask, .dellFinishedTask {
-					font-size: 0.8rem;
-					color: black;
-					cursor: pointer;
-					padding: 3px;
-					background: rgba(0, 0, 0, .1);
-					border-radius: 0.3rem;
-					outline: none;
+				.buttonsDell {
+					text-align: center;
 
-					&:hover {
-						box-shadow: $shad;
+					.dellAllTask, .dellFinishedTask {
+						font-size: 0.8rem;
+						color: black;
+						cursor: pointer;
+						padding: 3px;
+						background: rgba(0, 0, 0, .1);
+						border-radius: 0.3rem;
+						outline: none;
+
+						&:hover {
+							box-shadow: $shad;
+						}
+
+						&:active {
+							background-color: lightgray;
+						}
 					}
 
-					&:active {
-						background-color: lightgray;
+					.dellAllTask {
+						margin-top: 0.5rem;
+						color: red;
 					}
 				}
 
-				.dellAllTask {
-					margin-left: 0.5rem;
-					color: red;
-				}
 
 				.openList {
 					display: inline-block;
@@ -288,7 +297,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						border: 1px solid white;
 						border-radius: 0.3rem;
 						outline: none;
-						padding: 1rem 0.2rem;
+						padding: 0.5rem 0.2rem;
 						order: 3;
 					}
 
@@ -297,27 +306,44 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						border: 1px solid white;
 						border-radius: 0.3rem;
 						outline: none;
-						padding: 1rem 0.2rem;
+						padding: 0.5rem 0.2rem;
 						order: 4;
 					}
 
-					.dellFinishedTask {
-						margin: 0.5rem 0 0 0;
-						border: 1px solid white;
-						border-radius: 0.3rem;
-						outline: none;
-						padding: 0.2rem 0.2rem;
-						order: 2;
+
+					.buttonsDell {
+						display: flex;
+						flex-wrap: wrap;
+						justify-content: center;
+						order: 1;
+
+						.dellFinishedTask {
+							display: flex;
+							align-items: center;
+							align-content: center;
+							max-width: 40%;
+							border: 1px solid white;
+							border-radius: 0.3rem;
+							outline: none;
+							padding: 5px;
+
+						}
+
+						.dellAllTask {
+							display: flex;
+							align-items: center;
+							align-content: center;
+							max-width: 40%;
+							margin-top: 0;
+							margin-left: 0.5rem;
+							border: 1px solid white;
+							border-radius: 0.3rem;
+							outline: none;
+							padding: 5px;
+						}
+
 					}
 
-					.dellAllTask {
-						margin: 0.5rem 0 0 0;
-						border: 1px solid white;
-						border-radius: 0.3rem;
-						outline: none;
-						order: 1;
-						padding: 0.2rem 0.2rem;
-					}
 				}
 			}
 
@@ -325,7 +351,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				color: black;
 				margin-right: 5px;
 				padding: 3px;
-				border-radius: 0.5rem;
+				border-radius: 0.2rem;
 			}
 
 			.dateForPlaneEdit {
@@ -368,8 +394,12 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		}
 
 		.itemContents {
+			position: absolute;
+			left: 0;
+			right: 0;
 			box-shadow: $shad;
-			background: rgba(0, 0, 0, 0.1);
+			background-color: lightgray;
+			z-index: 5;
 
 			.task {
 				border-bottom: 1px solid black;
@@ -455,6 +485,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		right: 0;
 		justify-content: space-between;
 		align-content: center;
+		align-items: center;
 		padding: 3px 0.5rem;
 		box-shadow: $shad;
 		background-color: white;
@@ -469,11 +500,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		.footerWrapper {
 			display: flex;
 
-			.burgerMenuWrapper {
-				position: sticky;
-				padding: 0;
-				margin: 0;
-			}
 		}
 	}
 }

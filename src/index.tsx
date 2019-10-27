@@ -9,12 +9,12 @@ import {Provider} from "react-redux";
 
 
 ReactDOM.render(
-	<HashRouter>
-		<Provider store={store}>
-			<App />
-		</Provider>
-	</HashRouter>
-	, document.getElementById('root'));
+  <HashRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </HashRouter>
+  , document.getElementById('root'));
 
 
 serviceWorker.unregister();

@@ -9,7 +9,9 @@ export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
 
 	return (
 		<>
-			<div className={showSidebar ? s.sideBarWrapper : (s.sideBarWrapper + ' ' + s.hide)}>
+			<div className={showSidebar ? s.sideBarWrapper : (s.sideBarWrapper + ' ' + s.hide)}
+			onClick={(event)=>event.stopPropagation()}
+			>
 				<div>
 					<a className={s.link} target='_blank' rel='noopener noreferrer'
 						 href="https://sphinx7777.github.io/Portfolio">

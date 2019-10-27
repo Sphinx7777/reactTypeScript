@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const [showSidebar, setShowSidebar] = useState(false); //toggle menu
 
   return (
-    <div className={s.app}>
+    <div className={s.app} >
       <Header {...{showSidebar, setShowSidebar}} />
       <SideBar {...{showSidebar,setShowSidebar}} />
       <div className={s.content}>

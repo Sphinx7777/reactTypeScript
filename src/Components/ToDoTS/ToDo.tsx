@@ -21,10 +21,11 @@ type ValueForm = {
 	description: any,
 }
 
-
 export const ToDo = ({
-											 changeNameAndDescription, newDateForTask, removeCompletedTaskToContent, toSetStatusCompletedTask,
-											 removeAllTaskContent, removeTaskContent, toggleShowTaskContent, showSidebar, tasks,
+											 changeNameAndDescription, newDateForTask, removeCompletedTaskToContent,
+											 toSetStatusCompletedTask,
+											 removeAllTaskContent, removeTaskContent, toggleShowTaskContent,
+											 showSidebar, tasks,
 											 setShowSidebar, addNewTask, addNewTaskContent, setRemoveAllCompletedTask
 										 }: IProps) => {
 
@@ -127,7 +128,7 @@ export const ToDo = ({
 	const contents = tasks.map((t: Task) => t.taskContent);
 	useEffect(() => {
 		setFilteredTasks(tasks)
-	}, [tasks.length, contents.length]);
+	}, [tasks,tasks.length, contents.length]);
 
 	const setNameSearchValue = (value: string) => {
 		const searchName: any = [];
@@ -152,7 +153,7 @@ export const ToDo = ({
 			<div>Учебный проект по TypeScript... начало... Сложный, гязный, обЪемный код очень помогает мне лучше учиться
 				... p.s. Я могу писать лучше... и оформление на коленке по быстрому...
 			</div>
-			<div className={s.toDoWrapper}>
+			<div className={s.toDoWrapper} onClick={()=>setShowSidebar(false)}>
 				<div className={s.toDoHeader}>
 					<div className={s.taskFilter}>
 						<span className={s.filterItem} onClick={() => setFilteredTaskSearch(true)}>Завершенные</span>
@@ -218,10 +219,16 @@ export const ToDo = ({
 									toggleShowTaskContent(t.id, !t.editStatus);
 								}}>{!t.editStatus ? 'Открыть список' : 'Закрыть список'}
 								</div>
-								<div className={s.dellFinishedTask} onClick={() => removeAllCompletedTaskToContent(t.id)}>Удалить
-									завершенные
+								<div className={s.buttonsDell}>
+									<div className={s.dellFinishedTask} onClick={() => removeAllCompletedTaskToContent(t.id)}>
+										Удалить
+										завершенные
+									</div>
+									<div className={s.dellAllTask} onClick={() => removeAllThisTaskContent(t.id)}>
+										Удалить все
+									</div>
 								</div>
-								<div className={s.dellAllTask} onClick={() => removeAllThisTaskContent(t.id)}>Удалить все</div>
+
 							</div>
 						</div>
 						<div className={t.editStatus ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
