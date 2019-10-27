@@ -1,9 +1,12 @@
 import React from 'react'
 import s from './SideBar.module.scss'
 import {MyProps} from "../Header/Header";
+import {NavLink} from "react-router-dom";
 
-const shape = require('./../../images/shape.png');
-const search = require('./../../images/search.ico');
+const organizer = require('./../../images/organizer.png');
+const network = require('./../../images/socialnetwork.png');
+const resume = require('./../../images/resume.png');
+const main = require('./../../images/search.ico');
 
 export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
 
@@ -13,21 +16,33 @@ export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
 			onClick={(event)=>event.stopPropagation()}
 			>
 				<div>
+					<NavLink className={s.link} to='/'>
+						<img className={s.linkImg} src={main} alt="Main"/>
+						<span className={s.linkTitle}>Главная</span>
+					</NavLink>
+				</div>
+				<div>
 					<a className={s.link} target='_blank' rel='noopener noreferrer'
 						 href="https://sphinx7777.github.io/Portfolio">
-						<img className={s.linkImg} src={shape} alt="Portfolio"/><span className={s.linkTitle}>Portfolio v.1.0</span>
+						<img className={s.linkImg} src={organizer} alt="Portfolio"/><span className={s.linkTitle}>Portfolio v.1.0</span>
 					</a>
 				</div>
 				<div>
 					<a className={s.link} target='_blank' rel='noopener noreferrer'
 						 href="https://sphinx7777.github.io/SocialNetvork">
-						<img className={s.linkImg} src={search} alt="Social Network"/>
+						<img className={s.linkImg} src={network} alt="Social network"/>
 						<span className={s.linkTitle}>Social Network</span>
 					</a>
 				</div>
+				<div>
+					<NavLink className={s.link} to='/resume'>
+						<img className={s.linkImg} src={resume} alt="Resume"/>
+						<span className={s.linkTitle}>Resume</span>
+					</NavLink>
+				</div>
 				<span className={s.close} onClick={() => {
 					setShowSidebar(!showSidebar)
-				}}>Закрыть</span>
+				}}>X</span>
 			</div>
 		</>
 	)

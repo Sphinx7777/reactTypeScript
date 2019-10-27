@@ -151,14 +151,15 @@ export const ToDo = ({
 	return (
 		<>
 			<div>Учебный проект по TypeScript... начало... Сложный, гязный, обЪемный код очень помогает мне лучше учиться
-				... p.s. Я могу писать лучше... и оформление на коленке по быстрому...
+				...рефакторинг в конце обучения... и оформление на коленке по быстрому...
 			</div>
 			<div className={s.toDoWrapper} onClick={()=>setShowSidebar(false)}>
 				<div className={s.toDoHeader}>
 					<div className={s.taskFilter}>
+						<span className={s.filterItem} onClick={() => setFilteredTasks(tasks)}>Все</span>
 						<span className={s.filterItem} onClick={() => setFilteredTaskSearch(true)}>Завершенные</span>
 						<span className={s.filterItem} onClick={() => setFilteredTaskSearch(false)}>Активные</span>
-						<span className={s.filterItem} onClick={() => setFilteredTasks(tasks)}>Все</span>
+
 					</div>
 					<div className={s.search}>
 						<span className={s.dateSearch} onClick={() => setDateSearchEditMode(true)}>Поиск по дате</span>
@@ -189,12 +190,13 @@ export const ToDo = ({
 							<div className={s.dateAndTaskStatus}>
 								<div>
 									{t.editStatus ?
-										<div>
+										<div className={s.dateForPlaneWrap}>
                       <span title='Дабл клик для редактирования' className={s.dateForPlaneEdit}
 														onDoubleClick={() => {
 															addTaskIdForNewDate(t.id);
 														}}
 											>{t.dateForPlane}</span>
+											<span className={s.dayForPlane}>{t.deyOfWeek}</span>
 											{taskIdForNewDate && <NewCalendarForNewDate
 												dateForPlane={dateForPlane}
 												setDateForPlane={setDateForPlane}
@@ -202,8 +204,11 @@ export const ToDo = ({
 												changeDateTask={changeDateTask}
 											/>}
 										</div>
-										: <span className={s.dateForPlane}>{t.dateForPlane}</span>}
-									<span className={s.dayForPlane}>{t.deyOfWeek}</span>
+										: <div className={s.dateForPlaneWrap}>
+											<span className={s.dateForPlane}>{t.dateForPlane}</span>
+											<span className={s.dayForPlane}>{t.deyOfWeek}</span>
+										</div> }
+
 								</div>
 								<div className={s.totalAndCompletedTask}>
                   <span

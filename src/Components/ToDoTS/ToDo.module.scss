@@ -67,14 +67,23 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 		padding: 0 0.5rem;
 
 		.addNewTask, .dellAllFinishedTask {
-			box-shadow: $shad;
-			display: inline-block;
-			padding: 0.5rem;
-			margin-top: 0.5rem;
+			font-size: 0.8rem;
+			color: black;
 			cursor: pointer;
+			padding: 0.3rem;
+			margin-top: 0.5rem;
+			border: 1px solid black;
+			border-radius: 0.3rem;
+			outline: none;
+			margin-right: 1rem;
+
 
 			&:hover {
-				background-color: lightgray;
+				box-shadow: $shad;
+			}
+
+			&:active {
+				border: 1px solid transparent;
 			}
 		}
 
@@ -89,7 +98,8 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 	.toDoHeader {
 		padding: 0.5rem;
-		box-shadow: $shad;
+		border-bottom: 5px solid black;
+		border-radius: 1rem;
 		margin-bottom: 0.5rem;
 		display: flex;
 		justify-content: space-between;
@@ -104,14 +114,19 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				font-size: 0.8rem;
 				color: black;
 				cursor: pointer;
-				padding: 0.3rem;
-				background: rgba(0, 0, 0, .1);
+				padding: 3px;
+				border: 1px solid black;
 				border-radius: 0.3rem;
 				outline: none;
-				margin-right: 1.5rem;
+				margin-right: 1rem;
+
 
 				&:hover {
 					box-shadow: $shad;
+				}
+
+				&:active {
+					border: 1px solid transparent;
 				}
 			}
 
@@ -130,14 +145,19 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				font-size: 0.8rem;
 				color: black;
 				cursor: pointer;
-				padding: 0.3rem;
-				background: rgba(0, 0, 0, .1);
+				padding: 3px;
+				border: 1px solid black;
 				border-radius: 0.3rem;
 				outline: none;
 				margin-right: 1rem;
 
+
 				&:hover {
 					box-shadow: $shad;
+				}
+
+				&:active {
+					border: 1px solid transparent;
 				}
 			}
 
@@ -148,10 +168,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				&:focus {
 					border: 2px solid cornflowerblue;
-				}
-
-				@media screen and (max-width: 376px) {
-					margin-top: 0.5rem;
 				}
 			}
 		}
@@ -176,7 +192,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 
 		.itemHeader {
-			background: rgba(0, 0, 0, .1);
+
 			text-align: left;
 			padding: 0.5rem 2rem 0.5rem 1rem;
 			align-content: center;
@@ -190,9 +206,13 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				justify-content: space-between;
 				align-content: center;
 				align-items: center;
+				margin-bottom: 0.5rem;
 
 				.totalAndCompletedTask {
 					color: black;
+					border-bottom: 1px solid black;
+					border-radius: 0.5rem;
+					padding: 0 0.5rem;
 				}
 
 				.completedTasks {
@@ -202,7 +222,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			}
 
-			@media screen and (max-width: 483px) {
+			@media screen and (max-width: 537px) {
 				.dateAndTaskStatus {
 					justify-content: center;
 				}
@@ -214,23 +234,24 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				flex-wrap: wrap;
 				align-items: center;
 				align-content: center;
-				margin-top: 0.5rem;
+
 
 				.addTask {
 					font-size: 0.8rem;
-					color: green;
+					color: black;
 					cursor: pointer;
 					padding: 3px;
-					background: rgba(0, 0, 0, .1);
+					border: 1px solid black;
 					border-radius: 0.3rem;
 					outline: none;
+
 
 					&:hover {
 						box-shadow: $shad;
 					}
 
 					&:active {
-						background-color: lightgray;
+						border: 1px solid transparent;
 					}
 				}
 
@@ -242,21 +263,22 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						color: black;
 						cursor: pointer;
 						padding: 3px;
-						background: rgba(0, 0, 0, .1);
+						border: 1px solid black;
 						border-radius: 0.3rem;
 						outline: none;
+
 
 						&:hover {
 							box-shadow: $shad;
 						}
 
 						&:active {
-							background-color: lightgray;
+							border: 1px solid transparent;
 						}
 					}
 
 					.dellAllTask {
-						margin-top: 0.5rem;
+						margin: 0.5rem 0 0.5rem 0;
 						color: red;
 					}
 				}
@@ -346,22 +368,29 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 				}
 			}
+.dateForPlaneWrap {
+	margin-right: 0.5rem;
+	border-bottom: 1px solid black;
+	border-radius: 0.5rem;
+	padding: 0 0.5rem;
 
-			.dateForPlane, .dateForPlaneEdit {
-				color: black;
-				margin-right: 5px;
-				padding: 2px;
-				border-radius: 0.2rem;
-			}
+	.dateForPlane, .dateForPlaneEdit {
+		color: black;
+		margin-right: 5px;
+		padding: 2px;
+		border-radius: 0.2rem;
+	}
 
-			.dateForPlaneEdit {
-				background-color: white;
-			}
+	.dateForPlaneEdit {
+		background-color: white;
+	}
 
-			.dayForPlane {
-				color: black;
-			}
-		}
+	.dayForPlane {
+		color: black;
+	}
+}
+}
+
 
 		.itemHeader,
 		.itemHeader::before,
@@ -398,11 +427,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			left: 0;
 			right: 0;
 			box-shadow: $shad;
-			background-color: lightgray;
+			background-color: white;
 			z-index: 5;
 
 			.task {
-				border-bottom: 1px solid black;
+				border-bottom: 5px solid black;
 				border-radius: 0.5rem;
 
 				.taskHeader {
@@ -418,6 +447,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						outline: none;
 						display: inline-block;
 						margin-bottom: 1rem;
+						border-bottom: 1px solid black;
 					}
 
 					.createDateAndFinished {
@@ -444,6 +474,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					background: white;
 					border-radius: 0.5rem;
 					outline: none;
+					border-bottom: 1px solid black;
 				}
 
 				.dellContent {
@@ -455,7 +486,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						color: black;
 						cursor: pointer;
 						padding: 3px;
-						background: rgba(0, 0, 0, .1);
+						border: 1px solid black;
 						border-radius: 0.3rem;
 						outline: none;
 						margin-right: 1rem;
@@ -465,7 +496,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 						}
 
 						&:active {
-							background-color: lightgray;
+							border: 1px solid transparent;
 						}
 					}
 				}
@@ -495,7 +526,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 @media screen and (max-width: 450px) {
 	.toDoWrapper {
-		padding: 5px;
+
 
 		.footerWrapper {
 			display: flex;
