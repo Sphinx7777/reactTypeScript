@@ -7,9 +7,10 @@ import {Task, TaskContent} from "../Redux/todoTsReducer";
 import ToDoFormNewContent from "./ToDoFormNewContent";
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {NewCalendarForNewDate} from '../Others/Calendar/NewCalendarForNewDate';
+
 import ToDoFormForNewDescription from './ToDoFormForNewDescription';
 import {ToDoHeader} from "./ToDoHeader/ToDoHeader";
+import {ToDoItemHeader} from "./ToDoItemHeader/ToDoItemHeader";
 
 
 
@@ -176,7 +177,14 @@ export const ToDo = ({
 
 				{allTasks.map(t =>
 					<div className={s.toDoItem} key={t.id}>
-						<div className={s.itemHeader}>
+						<ToDoItemHeader {...{addTaskIdForNewDate,taskIdForNewDate,dateForPlane,
+							setDateForPlane,changeDateTask,addTaskId,
+							toggleShowTaskContent,removeAllCompletedTaskToContent,
+							removeAllThisTaskContent,t:t,tasks
+						}}/>
+
+
+						{/*<div className={s.itemHeader}>
 							<div className={s.dateAndTaskStatus}>
 								<div>
 									{t.editStatus ?
@@ -225,7 +233,7 @@ export const ToDo = ({
 								</div>
 
 							</div>
-						</div>
+						</div>*/}
 						<div className={t.editStatus ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 							{t.taskContent.map((c: TaskContent) =>
 								<div className={s.task} key={c.idContent}>
