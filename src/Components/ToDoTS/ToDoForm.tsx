@@ -50,7 +50,7 @@ const ToDoForm: React.FC<IProps & InjectedFormProps<{}, IProps>> = (props: IProp
 				{props.error && <span className={s.formError}>{props.error}</span>}
 				<div className={s.formBtn}>
 					<button className={s.formSubmitBtn} type="submit" disabled={submitting}>Добавить</button>
-					<button className={s.formClearBtn} type="button" disabled={pristine || submitting} onClick={reset}>Очистить
+					<button className={s.formClearBtn} type="reset" disabled={pristine || submitting} onClick={reset}>Очистить
 					</button>
 					<button className={s.formCancelBtn} type="button"
 									onClick={() => {
