@@ -1,0 +1,221 @@
+$shad: 0 1px 4px rgba(0, 0, 0, .3),
+-23px 0 20px -23px rgba(0, 0, 0, .6),
+23px 0 20px -23px rgba(0, 0, 0, .6),
+inset 0 0 40px rgba(0, 0, 0, .1);
+
+.itemHeader {
+	background: linear-gradient(to bottom left, white, grey);
+	text-align: left;
+	padding: 0.5rem 2rem 0.5rem 1rem;
+	align-content: center;
+	position: relative;
+	margin-bottom: 0.5rem;
+	border-radius: 0.5rem;
+	outline: none;
+
+	.dateAndTaskStatus {
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: center;
+		align-items: center;
+		margin-bottom: 0.5rem;
+
+		.totalAndCompletedTask {
+			color: black;
+			border-bottom: 1px solid black;
+			border-radius: 0.5rem;
+			padding: 0 0.5rem;
+			@media screen and (max-width: 518px) {
+				margin-bottom: 0.5rem;
+			}
+		}
+
+		.completedTasks {
+			margin-left: 0.5rem;
+			color: black;
+		}
+
+	}
+
+	@media screen and (max-width: 537px) {
+		.dateAndTaskStatus {
+			justify-content: center;
+		}
+	}
+
+	.action {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		align-items: center;
+		align-content: center;
+
+
+		.addTask {
+			font-size: 0.8rem;
+			color: black;
+			cursor: pointer;
+			padding: 3px;
+			border: 1px solid black;
+			border-radius: 0.3rem;
+			outline: none;
+
+
+			&:hover {
+				background: linear-gradient(to bottom left, white, grey);
+			}
+
+			&:active {
+				border: 1px solid transparent;
+			}
+		}
+
+		.buttonsDell {
+			text-align: center;
+
+			.dellAllTask, .dellFinishedTask {
+				font-size: 0.8rem;
+				color: black;
+				cursor: pointer;
+				padding: 3px;
+				border: 1px solid black;
+				border-radius: 0.3rem;
+				outline: none;
+				&:hover {
+					background: linear-gradient(to bottom left, white, grey);
+				}
+				&:active {
+					border: 1px solid transparent;
+				}
+			}
+
+			.dellAllTask {
+				margin: 0.5rem 0 0.5rem 0;
+				color: red;
+			}
+		}
+
+
+		.openList {
+			font-size: 0.8rem;
+			color: black;
+			cursor: pointer;
+			padding: 3px;
+			border: 1px solid black;
+			border-radius: 0.3rem;
+			outline: none;
+			font-weight: bold;
+			font-style: italic;
+			&:hover {
+				background: linear-gradient(to bottom left, white, grey);
+			}
+			&:active {
+				border: 1px solid transparent;
+			}
+		}
+		.openList.active {
+			background-color: rgba(124,252,0,0.1);
+		}
+	}
+
+	@media screen and (max-width: 570px) {
+		.action {
+			text-align: center;
+			flex-direction: column;
+			justify-content: stretch;
+			align-content: stretch;
+			align-items: stretch;
+
+			.addTask {
+				margin: 0.5rem 0 0 0;
+				display: block;
+				border: 1px solid white;
+				border-radius: 0.3rem;
+				outline: none;
+				padding: 0.5rem 0.2rem;
+				order: 3;
+			}
+
+			.openList {
+				margin: 0.5rem 0 0 0;
+				border: 1px solid white;
+				border-radius: 0.3rem;
+				outline: none;
+				padding: 0.5rem 0.2rem;
+				order: 4;
+
+			}
+
+
+			.buttonsDell {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				order: 1;
+
+				.dellFinishedTask {
+					display: flex;
+					align-items: center;
+					align-content: center;
+					max-width: 40%;
+					border: 1px solid white;
+					border-radius: 0.3rem;
+					outline: none;
+					padding: 5px;
+
+				}
+
+				.dellAllTask {
+					display: flex;
+					align-items: center;
+					align-content: center;
+					max-width: 40%;
+					margin-top: 0;
+					margin-bottom: 0;
+					margin-left: 0.5rem;
+					border: 1px solid white;
+					border-radius: 0.3rem;
+					outline: none;
+					padding: 5px;
+				}
+
+			}
+
+		}
+	}
+	.dateForPlaneWrap {
+		margin-right: 0.5rem;
+		border-bottom: 1px solid black;
+		border-radius: 0.5rem;
+		padding: 0 0.5rem;
+
+		.dateForPlane, .dateForPlaneEdit {
+			color: black;
+			margin-right: 5px;
+			padding: 2px;
+			border-radius: 0.2rem;
+			font-weight: bold;
+			font-size: 0.9rem;
+
+		}
+
+		.dateForPlaneEdit {
+			background-color: white;
+		}
+
+		.dayForPlane {
+			color: black;
+			font-weight: bold;
+			font-size: 0.9rem;
+		}
+		@media screen and (max-width: 518px) {
+			margin-bottom: 0.5rem;
+		}
+	}
+}
+
+@media screen and (max-width: 573px) {
+
+}

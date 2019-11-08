@@ -5,15 +5,9 @@ import {IProps} from "./ToDoContainer";
 import ToDoForm from "./ToDoForm";
 import {Task, TaskContent} from "../Redux/todoTsReducer";
 import ToDoFormNewContent from "./ToDoFormNewContent";
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {NewCalendarForNewDate} from '../Others/Calendar/NewCalendarForNewDate';
-import ToDoFormForNewDescription from './ToDoFormForNewDescription';
 import {ToDoHeader} from "./ToDoHeader/ToDoHeader";
-
-
-
-
+import {ToDoItemHeader} from "./ToDoItemHeader/ToDoItemHeader";
+import {ContentsForTask} from "./Task/ContentsForTask";
 
 const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 type ValueForm = {
@@ -21,7 +15,7 @@ type ValueForm = {
 	description: any,
 }
 
-export const ToDo = ({
+export const ToDo = React.memo( ({
 											 changeNameAndDescription, newDateForTask, removeCompletedTaskToContent,
 											 toSetStatusCompletedTask, removeAllTaskContent, removeTaskContent, toggleShowTaskContent,
 											 tasks, setShowSidebar, addNewTask, addNewTaskContent, setRemoveAllCompletedTask
@@ -128,9 +122,6 @@ export const ToDo = ({
 		setFilteredTasks(tasks)
 	}, [tasks.length, contents.length]);
 
-
-
-
 	const setNameSearchValue = (value: string) => {
 		const searchName: any = [];
 		for (let i = 0; i < tasks.length; i++) {
@@ -155,10 +146,12 @@ export const ToDo = ({
 				. Рефакторинг в конце обучения. Еще ссылки в меню.
 			</div>
 			<div className={s.toDoWrapper} onClick={()=>setShowSidebar(false)}>
+
 				<ToDoHeader {...{setFilteredTasks,setFilteredTaskSearch,tasks,
 					setDateSearchEditMode,dateSearchEditMode,addDateForSearchToString,
 					addDateForSearch,setNameSearchValue
 				}}/>
+
 				<div className={s.taskControl}>
 					<div className={s.addNewTask}
 							 onClick={createNewTask}>
@@ -168,6 +161,7 @@ export const ToDo = ({
 						Удалить все завершенные
 					</div>
 				</div>
+
 				{addTask && <ToDoForm onSubmit={onSubmit} setStatusAddTask={setStatusAddTask}
 															setStatusCalendar={setStatusCalendar} dateForPlaneString={dateForPlaneString}/>}
 				{taskIdForNewContent && <ToDoFormNewContent dateForNewContent={dateForNewContent}
@@ -176,102 +170,31 @@ export const ToDo = ({
 
 				{allTasks.map(t =>
 					<div className={s.toDoItem} key={t.id}>
-						<div className={s.itemHeader}>
-							<div className={s.dateAndTaskStatus}>
-								<div>
-									{t.editStatus ?
-										<div className={s.dateForPlaneWrap}>
-                      <span title='Дабл клик для редактирования' className={s.dateForPlaneEdit}
-														onDoubleClick={() => {
-															addTaskIdForNewDate(t.id);
-														}}
-											>{t.dateForPlane}</span>
-											<span className={s.dayForPlane}>{t.deyOfWeek}</span>
-											{taskIdForNewDate && <NewCalendarForNewDate
-												dateForPlane={dateForPlane}
-												setDateForPlane={setDateForPlane}
-												addTaskIdForNewDate={addTaskIdForNewDate}
-												changeDateTask={changeDateTask}
-											/>}
-										</div>
-										: <div className={s.dateForPlaneWrap}>
-											<span className={s.dateForPlane}>{t.dateForPlane}</span>
-											<span className={s.dayForPlane}>{t.deyOfWeek}</span>
-										</div> }
 
-								</div>
-								<div className={s.totalAndCompletedTask}>
-                  <span
-										className={s.totalTasks}>Всего дел : <b>{t.taskContent.length ? t.taskContent.length : 0}</b></span>
-									<span
-										className={s.completedTasks}>Выполнено : <b>{t.taskContent.length
-										? t.taskContent.filter(tc => tc.completed).length : 0}</b></span>
-								</div>
-							</div>
-							<div className={s.action}>
-								<div className={s.addTask} onClick={() => addTaskId(t.id, t.dateForPlane)}>Добавить</div>
-								<div className={!t.editStatus ? s.openList : (s.openList+' '+s.active)} onClick={() => {
-									toggleShowTaskContent(t.id, !t.editStatus);
-								}}>{!t.editStatus ? 'Открыть список' : 'Закрыть список'}
-								</div>
-								<div className={s.buttonsDell}>
-									<div className={s.dellFinishedTask} onClick={() => removeAllCompletedTaskToContent(t.id)}>
-										Удалить
-										завершенные
-									</div>
-									<div className={s.dellAllTask} onClick={() => removeAllThisTaskContent(t.id)}>
-										Удалить все
-									</div>
-								</div>
+						<ToDoItemHeader {...{addTaskIdForNewDate,taskIdForNewDate,dateForPlane,
+							setDateForPlane,changeDateTask,addTaskId,
+							toggleShowTaskContent,removeAllCompletedTaskToContent,
+							removeAllThisTaskContent,t:t,tasks
+						}}/>
 
-							</div>
-						</div>
 						<div className={t.editStatus ? s.itemContents + ' ' + s.active : (s.itemContents + ' ' + s.none)}>
 							{t.taskContent.map((c: TaskContent) =>
 								<div className={s.task} key={c.idContent}>
-									<div className={s.taskHeader}>
-										<div className={s.createDateAndFinished}>
-									<span className={s.createDate}>
-                    Дата создания : <b>{c.createDate}</b>
-									</span>
-											<FormControlLabel className={s.finished}
-																				checked={c.completed}
-																				onChange={() => toggleCompletedTask(c.idContent, !c.completed)}
-																				control={<Checkbox color="primary"/>}
-																				label="Статус"
-																				labelPlacement="start"
-											/>
-										</div>
-										<div>
-											<div className={!c.completed ? s.taskName : (s.taskName + ' ' + s.completed)} onDoubleClick={() => {
-												IdForNewDescription(c.idContent);
-												setShowEditDescription(true)
-											}} title='Дабл клик для редактирования'>
-												{c.name}
-											</div>
-										</div>
-										<div className={!c.completed ? s.taskContent : (s.taskContent + ' ' + s.completed)} onDoubleClick={() => {
-											IdForNewDescription(c.idContent);
-											setShowEditDescription(true)
-										}} title='Дабл клик для редактирования'>
-											{c.description}
-										</div>
-										{showEditDescription &&
-										<ToDoFormForNewDescription initialValues={{name: c.name, description: c.description}}
-																							 submitNewDescription={submitNewDescription}
-																							 setShowEditDescription={setShowEditDescription}/>
-										}
-									</div>
-									<div className={s.dellContent}>
-										<span className={s.dellContentBtn} onClick={() => removeThisTaskContent(c.idContent)}>Удалить</span>
-									</div>
+
+								<ContentsForTask {...{toggleCompletedTask,IdForNewDescription,
+									setShowEditDescription,showEditDescription,submitNewDescription,
+									removeThisTaskContent,c
+								}}/>
+
 								</div>)}
 						</div>
 					</div>
 				)}
+
 				{showCalendar && <div className={s.calendar}>
 					<ModalWindow {...{setStatusCalendar, dateForPlane, setDateForPlane}}/>
 				</div>}
+
 			</div>
 		</>)
-};
+});
