@@ -9,7 +9,7 @@ export const BurgerMenu = ({setShowSidebar,showSidebar}: MyProps) => {
 
 	return (
 		<>
-			<div className={s.burgerMenuWrapper}  >
+			<div className={s.burgerMenuWrapper}  onClick={(e)=>e.stopPropagation()}>
 				<img className={s.burgerMenuImg} src={burger} alt="" onClick={()=>setShowSidebar(!showSidebar)}/>
 				<div>
 					<img className={s.burgerMenuArrow} src={arrow} alt=""/>
