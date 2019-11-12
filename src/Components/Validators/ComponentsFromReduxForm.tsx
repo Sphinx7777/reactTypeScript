@@ -37,7 +37,8 @@ export const InputComponent = (
              autoFocus={autoFocus}
              maxLength={size}
              type={type}/>
-      {/*{touched &&
+
+             {/*{touched &&
 			((error && <div className={s.inputError}>{error}</div>) ||
 				(warning && <div className={s.inputWarning}>{warning}  </div>))}*/}
     </>
@@ -65,7 +66,8 @@ export const TextAreaComponent = (
                 maxLength={size}
                 rows={rows}
                 cols={cols}/>
-      {/*	{touched &&
+
+                {/*	{touched &&
 			((error && <div className={s.areaError}>{error}</div>) ||
 				(warning && <div className={s.areaWarning}>{warning}</div>))}*/}
     </>
