@@ -1,24 +1,24 @@
 
-
 .app {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 1200px;
-  position: relative;
+	text-align: center;
+	margin: 0 auto;
+	max-width: 1200px;
+	position: relative;
 
 
-
-  .content {
-    grid-area: c;
-  }
+	.content {
+		grid-area: c;
+	}
 }
+
 @media screen and (max-width: 600px) {
-  .app {
-    font-size: 90%;
-  }
+	.app {
+		font-size: 90%;
+	}
 }
+
 @media screen and (max-width: 537px) {
-  .app {
-    font-size: 85%;
-  }
+	.app {
+		font-size: 85%;
+	}
 }

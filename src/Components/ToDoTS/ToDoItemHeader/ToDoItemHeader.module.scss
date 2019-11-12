@@ -83,9 +83,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				border: 1px solid black;
 				border-radius: 0.3rem;
 				outline: none;
+
 				&:hover {
 					background: linear-gradient(to bottom left, white, grey);
 				}
+
 				&:active {
 					border: 1px solid transparent;
 				}
@@ -108,15 +110,18 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			outline: none;
 			font-weight: bold;
 			font-style: italic;
+
 			&:hover {
 				background: linear-gradient(to bottom left, white, grey);
 			}
+
 			&:active {
 				border: 1px solid transparent;
 			}
 		}
+
 		.openList.active {
-			background-color: rgba(124,252,0,0.1);
+			background-color: rgba(124, 252, 0, 0.1);
 		}
 	}
 
@@ -185,6 +190,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 		}
 	}
+
 	.dateForPlaneWrap {
 		margin-right: 0.5rem;
 		border-bottom: 1px solid black;
@@ -210,6 +216,7 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			font-weight: bold;
 			font-size: 0.9rem;
 		}
+
 		@media screen and (max-width: 518px) {
 			margin-bottom: 0.5rem;
 		}

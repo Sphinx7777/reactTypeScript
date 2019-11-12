@@ -6,7 +6,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ToDoFormForNewDescription from "../ToDoFormForNewDescription";
 
 export interface IProps {
-  toggleCompletedTask: (idContent: number,completed:boolean) => void   ;
+  toggleCompletedTask: (idContent: number, completed: boolean) => void;
   IdForNewDescription: (idContent: number) => void;
   setShowEditDescription: (status: boolean) => void;
   showEditDescription: boolean;
@@ -15,10 +15,21 @@ export interface IProps {
   c: TaskContent;
 }
 
-export const ContentsForTask = ({toggleCompletedTask,IdForNewDescription,
-                       setShowEditDescription,showEditDescription,submitNewDescription,
-                       removeThisTaskContent,c
-                                     }: IProps) => {
+export const ContentsForTask = (
+  {
+    toggleCompletedTask, IdForNewDescription,
+    setShowEditDescription, showEditDescription, submitNewDescription,
+    removeThisTaskContent, c
+  }: IProps) => {
+
+  const setToggleCompletedTask = () => toggleCompletedTask(c.idContent, !c.completed);
+
+  const openEitDescription = () => {
+    IdForNewDescription(c.idContent);
+    setShowEditDescription(true);
+  };
+
+  const dellThisTaskContent = () => removeThisTaskContent(c.idContent);
 
   return (
     <>
@@ -29,36 +40,44 @@ export const ContentsForTask = ({toggleCompletedTask,IdForNewDescription,
 									</span>
           <FormControlLabel className={s.finished}
                             checked={c.completed}
-                            onChange={() => toggleCompletedTask(c.idContent, !c.completed)}
+                            onChange={setToggleCompletedTask}
                             control={<Checkbox color="primary"/>}
                             label="Статус"
                             labelPlacement="start"
           />
         </div>
         <div>
-          <div className={!c.completed ? s.taskName : (s.taskName + ' ' + s.completed)} onDoubleClick={() => {
-            IdForNewDescription(c.idContent);
-            setShowEditDescription(true)
-          }} title='Дабл клик для редактирования'>
+          <div className={!c.completed ? s.taskName : (s.taskName + ' ' + s.completed)}
+               onDoubleClick={openEitDescription}
+               title='Дабл клик для редактирования'>
             {c.name}
           </div>
         </div>
-        <div className={!c.completed ? s.taskContent : (s.taskContent + ' ' + s.completed)} onDoubleClick={() => {
-          IdForNewDescription(c.idContent);
-          setShowEditDescription(true)
-        }} title='Дабл клик для редактирования'>
+        <div className={!c.completed ? s.taskContent : (s.taskContent + ' ' + s.completed)}
+             onDoubleClick={openEitDescription}
+             title='Дабл клик для редактирования'>
           {c.description}
         </div>
-        {showEditDescription &&
-				<ToDoFormForNewDescription initialValues={{name: c.name, description: c.description}}
-																	 submitNewDescription={submitNewDescription}
-																	 setShowEditDescription={setShowEditDescription}/>
+        {
+          showEditDescription &&
+					<ToDoFormForNewDescription {...
+            {
+              initialValues:
+                {
+                  name: c.name, description: c.description
+                },
+              submitNewDescription,
+              setShowEditDescription
+            }}/>
         }
       </div>
       <div className={s.dellContent}>
-        <span className={s.dellContentBtn} onClick={() => removeThisTaskContent(c.idContent)}>Удалить</span>
+        <span className={s.dellContentBtn}
+              onClick={dellThisTaskContent}>
+          Удалить
+        </span>
       </div>
-      </>
+    </>
   )
 };
 

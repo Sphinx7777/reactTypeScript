@@ -6,13 +6,20 @@ const arrow = require( './../../../images/arrow_left.png');
 
 
 export const BurgerMenu = ({setShowSidebar,showSidebar}: MyProps) => {
+	
+	const toggleSidebar = () => setShowSidebar(!showSidebar);
 
 	return (
 		<>
 			<div className={s.burgerMenuWrapper}  >
-				<img className={s.burgerMenuImg} src={burger} alt="" onClick={()=>setShowSidebar(!showSidebar)}/>
+				<img className={s.burgerMenuImg} 
+						 src={burger} 
+						 alt="" 
+						 onClick={toggleSidebar}/>
 				<div>
-					<img className={s.burgerMenuArrow} src={arrow} alt=""/>
+					<img className={s.burgerMenuArrow} 
+							 src={arrow}
+							 alt=""/>
 				</div>
 			</div>
 		</>

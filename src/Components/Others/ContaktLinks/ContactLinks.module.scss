@@ -1,5 +1,6 @@
+
 .contactsLinkWrapper {
-display: inline-block;
+	display: inline-block;
 
 
 	.link {
@@ -16,10 +17,12 @@ display: inline-block;
 			border-radius: 100%;
 			outline: none;
 			border: 1px solid white;
+
 			&:hover {
 				background-color: rgba(0, 0, 0, .1);
 				border: 1px solid darkgray;
 			}
+
 			@media screen and (max-width: 450px) {
 				max-width: 1.8rem;
 			}
@@ -37,16 +40,19 @@ display: inline-block;
 
 	.link:first-child {
 		margin-left: 1rem;
+
 		.linkImg {
 			padding: 2.1px;
 			border: 1px solid black;
 			border-radius: 100%;
 			outline: none;
-			max-width:1.6rem;
+			max-width: 1.6rem;
 			margin-bottom: 3px;
+
 			&:hover {
 				border: 1px solid darkgray;
 			}
+
 			@media screen and (max-width: 450px) {
 				max-width: 1.2rem;
 			}

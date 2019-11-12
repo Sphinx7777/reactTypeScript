@@ -1,81 +1,80 @@
 
+.taskHeader {
+	padding: 0.5rem;
+	margin: 0.5rem auto;
 
-  .taskHeader {
-    padding: 0.5rem;
-    margin: 0.5rem auto;
+	.taskName {
+		color: black;
+		text-align: left;
+		padding: 2px 1rem;
+		background: white;
+		border-radius: 0.5rem;
+		outline: none;
+		display: inline-block;
+		margin-bottom: 1rem;
+		border-bottom: 1px solid black;
+		word-break: break-all;
+	}
 
-    .taskName {
-      color: black;
-      text-align: left;
-      padding: 2px 1rem;
-      background: white;
-      border-radius: 0.5rem;
-      outline: none;
-      display: inline-block;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid black;
-      word-break: break-all;
-    }
-
-    .taskName.completed {
-      color: green;
-      text-decoration: line-through;
-    }
+	.taskName.completed {
+		color: green;
+		text-decoration: line-through;
+	}
 
 
-    .createDateAndFinished {
-      display: flex;
-      padding: 5px;
-      justify-content: space-between;
-      align-items: center;
+	.createDateAndFinished {
+		display: flex;
+		padding: 5px;
+		justify-content: space-between;
+		align-items: center;
 
-      .createDate {
-        color: black;
-      }
+		.createDate {
+			color: black;
+		}
 
-      .finished {
-        color: black;
-      }
-    }
-  }
+		.finished {
+			color: black;
+		}
+	}
+}
 
-  .taskContent {
-    color: black;
-    text-align: left;
-    padding: 3px;
-    margin: 0 0.75rem 0.5rem 0.75rem;
-    background: white;
-    border-radius: 0.5rem;
-    outline: none;
-    border-bottom: 1px solid black;
-    word-break: break-all;
-  }
+.taskContent {
+	color: black;
+	text-align: left;
+	padding: 3px;
+	margin: 0 0.75rem 0.5rem 0.75rem;
+	background: white;
+	border-radius: 0.5rem;
+	outline: none;
+	border-bottom: 1px solid black;
+	word-break: break-all;
+}
 
-  .taskContent.completed {
-    color: green;
-    text-decoration: line-through;
-  }
+.taskContent.completed {
+	color: green;
+	text-decoration: line-through;
+}
 
-  .dellContent {
-    text-align: right;
-    margin-bottom: 0.5rem;
+.dellContent {
+	text-align: right;
+	margin-bottom: 0.5rem;
 
-    .dellContentBtn {
-      font-size: 0.8rem;
-      color: black;
-      cursor: pointer;
-      padding: 3px;
-      border: 1px solid black;
-      border-radius: 0.3rem;
-      outline: none;
-      margin-right: 1rem;
+	.dellContentBtn {
+		font-size: 0.8rem;
+		color: black;
+		cursor: pointer;
+		padding: 3px;
+		border: 1px solid black;
+		border-radius: 0.3rem;
+		outline: none;
+		margin-right: 1rem;
 
-      &:hover {
-        background: linear-gradient(to bottom left, white, grey);
-      }
+		&:hover {
+			background: linear-gradient(to bottom left, white, grey);
+		}
 
-      &:active {
-        border: 1px solid transparent;
-      }
-    }
-  }
+		&:active {
+			border: 1px solid transparent;
+		}
+	}
+}

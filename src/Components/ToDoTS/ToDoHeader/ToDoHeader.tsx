@@ -4,7 +4,7 @@ import React from "react";
 import {Tasks} from "../../Redux/todoTsReducer";
 
 export interface IProps {
-  setFilteredTasks: (newTasks:Tasks) => void   ;
+  setFilteredTasks: (newTasks: Tasks) => void;
   setFilteredTaskSearch: (status: boolean) => void;
   setDateSearchEditMode: (status: boolean) => void;
   dateSearchEditMode: boolean;
@@ -14,28 +14,54 @@ export interface IProps {
   tasks: Tasks;
 }
 
-export const ToDoHeader = ({setFilteredTasks,setFilteredTaskSearch,tasks,
-                                       setDateSearchEditMode,dateSearchEditMode,addDateForSearchToString,
-                                       addDateForSearch,setNameSearchValue
-                                     }: IProps) => {
+export const ToDoHeader = (
+  {
+    setFilteredTasks, setFilteredTaskSearch, tasks,
+    setDateSearchEditMode, dateSearchEditMode, addDateForSearchToString,
+    addDateForSearch, setNameSearchValue
+  }: IProps) => {
+
+  const showAllTask = () => setFilteredTasks(tasks);
+  const showCompletedTask = () => setFilteredTaskSearch(true);
+  const showActiveTask = () => setFilteredTaskSearch(false);
+
+  const openDateSearch = () => setDateSearchEditMode(true);
+
+  const onChange = (event: any) => {
+    setNameSearchValue(event.target.value)
+  };
 
   return (
     <div className={s.toDoHeader}>
       <div className={s.taskFilter}>
-        <span className={s.filterItem} onClick={() => setFilteredTasks(tasks)}>Все</span>
-        <span className={s.filterItem} onClick={() => setFilteredTaskSearch(true)}>Завершенные</span>
-        <span className={s.filterItem} onClick={() => setFilteredTaskSearch(false)}>Активные</span>
-
+        <span className={s.filterItem}
+              onClick={showAllTask}>
+          Все
+        </span>
+        <span className={s.filterItem}
+              onClick={showCompletedTask}>
+          Завершенные
+        </span>
+        <span className={s.filterItem}
+              onClick={showActiveTask}>
+          Активные
+        </span>
       </div>
       <div className={s.search}>
-        <span className={s.dateSearch} onClick={() => setDateSearchEditMode(true)}>Поиск по дате</span>
-        {dateSearchEditMode && <ModalWindowForSearch
-          addDateForSearchToString={addDateForSearchToString}
-          tasks={tasks}
-          setDateSearchEditMode={setDateSearchEditMode}
-          addDateForSearch={addDateForSearch}/>}
-        <input type="text" className={s.nameSearch} placeholder='Поиск по названию'
-               onChange={(event => setNameSearchValue(event.target.value))}
+        <span className={s.dateSearch}
+              onClick={openDateSearch}>
+          Поиск по дате
+        </span>
+        {
+          dateSearchEditMode && <ModalWindowForSearch {...
+            {
+              addDateForSearchToString, tasks, setDateSearchEditMode, addDateForSearch
+            }}/>
+        }
+        <input className={s.nameSearch}
+               type="text"
+               placeholder='Поиск по названию'
+               onChange={onChange}
         />
       </div>
     </div>
