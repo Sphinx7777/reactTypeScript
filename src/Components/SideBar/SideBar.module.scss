@@ -13,11 +13,11 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 	max-width: 10rem;
 	background-color: white;
 	outline: none;
-	opacity: 100%;
+	opacity: 100;
 	transition: opacity 1s;
 	box-shadow: $shad;
 	padding: 5px;
-	z-index: 10;
+	z-index: 100;
 	border-radius: 0.5rem;
 
 	.link {
