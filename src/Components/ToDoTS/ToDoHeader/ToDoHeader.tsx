@@ -16,9 +16,14 @@ export interface IProps {
 
 export const ToDoHeader = (
   {
-    setFilteredTasks, setFilteredTaskSearch, tasks,
-    setDateSearchEditMode, dateSearchEditMode, addDateForSearchToString,
-    addDateForSearch, setNameSearchValue
+    setFilteredTasks,
+    setFilteredTaskSearch,
+    tasks,
+    setDateSearchEditMode,
+    dateSearchEditMode,
+    addDateForSearchToString,
+    addDateForSearch,
+    setNameSearchValue
   }: IProps) => {
 
   const showAllTask = () => setFilteredTasks(tasks);
@@ -55,7 +60,10 @@ export const ToDoHeader = (
         {
           dateSearchEditMode && <ModalWindowForSearch {...
             {
-              addDateForSearchToString, tasks, setDateSearchEditMode, addDateForSearch
+              addDateForSearchToString,
+              tasks,
+              setDateSearchEditMode,
+              addDateForSearch
             }}/>
         }
         <input className={s.nameSearch}

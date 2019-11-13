@@ -22,7 +22,8 @@ export const ModalWindowForSearch = (
 
   return (
     <>
-      <div className={s.modal + ' ' + s.overlay} onClick={closeEditModeSearch}>
+      <div className={s.modal + ' ' + s.overlay}
+           onClick={closeEditModeSearch}>
         <div className={s.modalContent}>
           <NewCalendarForSearch {...
             {

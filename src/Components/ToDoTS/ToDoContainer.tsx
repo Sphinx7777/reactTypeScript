@@ -2,10 +2,19 @@ import React, {Component} from 'react'
 import {ToDo} from "./ToDo";
 import {connect} from "react-redux";
 import {
-	addNewTask, addNewTaskContent, Task, Tasks, TaskContent,
-	toggleShowTaskContent, removeTaskContent, removeAllTaskContent,
-	changeNameAndDescription, toSetStatusCompletedTask,
-	newDateForTask, removeCompletedTaskToContent, setRemoveAllCompletedTask
+	addNewTask,
+	addNewTaskContent,
+	Task,
+	Tasks,
+	TaskContent,
+	toggleShowTaskContent,
+	removeTaskContent,
+	removeAllTaskContent,
+	changeNameAndDescription,
+	toSetStatusCompletedTask,
+	newDateForTask,
+	removeCompletedTaskToContent,
+	setRemoveAllCompletedTask
 } from "../Redux/todoTsReducer";
 import {TodoState} from '../Redux/reduxStore';
 
@@ -39,8 +48,14 @@ class ToDoContainer extends Component<IProps> {
 export default connect((state: TodoState) => ({
 	tasks: state.toDo.tasks,
 }), {
-	addNewTask, addNewTaskContent, removeCompletedTaskToContent,
-	changeNameAndDescription, toggleShowTaskContent, newDateForTask,
-	removeTaskContent, removeAllTaskContent, toSetStatusCompletedTask,
+	addNewTask,
+	addNewTaskContent,
+	removeCompletedTaskToContent,
+	changeNameAndDescription,
+	toggleShowTaskContent,
+	newDateForTask,
+	removeTaskContent,
+	removeAllTaskContent,
+	toSetStatusCompletedTask,
 	setRemoveAllCompletedTask
 })(ToDoContainer);

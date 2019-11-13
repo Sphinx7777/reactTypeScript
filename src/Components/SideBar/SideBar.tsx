@@ -11,11 +11,15 @@ const main = require('./../../images/search.ico');
 export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
 
   const toggleSidebar = () => setShowSidebar(!showSidebar);
+  
+  const stopPropaganda = (event: any) => event.stopPropagation();
 
   return (
     <>
-      <div className={showSidebar ? s.sideBarWrapper : (s.sideBarWrapper + ' ' + s.hide)}
-           onClick={(event) => event.stopPropagation()}
+      <div className={showSidebar
+        ? s.sideBarWrapper
+        : (s.sideBarWrapper + ' ' + s.hide)}
+           onClick={stopPropaganda}
       >
         <div>
           <a className={s.link}
@@ -63,7 +67,10 @@ export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
             </span>
           </NavLink>
         </div>
-        <span className={s.close} onClick={toggleSidebar}>X</span>
+        <span className={s.close} 
+              onClick={toggleSidebar}>
+          X
+        </span>
       </div>
     </>
   )

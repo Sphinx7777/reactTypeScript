@@ -36,7 +36,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			margin-left: 0.5rem;
 			color: black;
 		}
-
 	}
 
 	@media screen and (max-width: 537px) {
@@ -61,7 +60,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			border: 1px solid black;
 			border-radius: 0.3rem;
 			outline: none;
-
 
 			&:hover {
 				background: linear-gradient(to bottom left, white, grey);
@@ -98,7 +96,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				color: red;
 			}
 		}
-
 
 		.openList {
 			font-size: 0.8rem;
@@ -153,7 +150,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 
 			}
 
-
 			.buttonsDell {
 				display: flex;
 				flex-wrap: wrap;
@@ -169,7 +165,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 					border-radius: 0.3rem;
 					outline: none;
 					padding: 5px;
-
 				}
 
 				.dellAllTask {
@@ -187,7 +182,6 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 				}
 
 			}
-
 		}
 	}
 
@@ -221,8 +215,4 @@ inset 0 0 40px rgba(0, 0, 0, .1);
 			margin-bottom: 0.5rem;
 		}
 	}
-}
-
-@media screen and (max-width: 573px) {
-
 }

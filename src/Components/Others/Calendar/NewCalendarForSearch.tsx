@@ -31,6 +31,7 @@ export class NewCalendarForSearch extends Component<CalendarProps> {
   };
 
   closeCalendar = () => this.props.setDateSearchEditMode(false);
+  taskCompleted = (t: Task) => t.taskContent.filter((tc: TaskContent) => tc.completed);
 
   render() {
 
@@ -55,7 +56,7 @@ export class NewCalendarForSearch extends Component<CalendarProps> {
 								Всего : <b>{t.taskContent.length}</b> 
 							</span>
                 <span>
-								Завершено : <b>{t.taskContent.filter((tc: TaskContent) => tc.completed).length}</b> 
+								Завершено : <b>{this.taskCompleted(t).length}</b>
 							</span>
               </div>)
           }

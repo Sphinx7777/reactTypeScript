@@ -13,7 +13,7 @@ export const Header = ({showSidebar,setShowSidebar}: MyProps) => {
   return (
     <div className={s.headerWrapper} >
         <BurgerMenu {...{showSidebar,setShowSidebar}}/>
-      <ContactLinks/>
+      <ContactLinks />
     </div>
   )
 };
