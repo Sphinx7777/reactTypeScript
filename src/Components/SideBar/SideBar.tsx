@@ -1,6 +1,5 @@
 import React from 'react'
 import s from './SideBar.module.scss'
-import {MyProps} from "../Header/Header";
 import {NavLink} from "react-router-dom";
 
 const organizer = require('./../../images/organizer.png');
@@ -8,9 +7,14 @@ const network = require('./../../images/socialnetwork.png');
 const resume = require('./../../images/resume.png');
 const main = require('./../../images/search.ico');
 
-export const SideBar = ({showSidebar, setShowSidebar}: MyProps) => {
+interface SideBarProps {
+  showSidebar: boolean
+  handleShowSidebar: () => void
+}
 
-  const toggleSidebar = () => setShowSidebar(!showSidebar);
+export const SideBar = ({showSidebar, handleShowSidebar}: SideBarProps) => {
+
+  const toggleSidebar = () => handleShowSidebar();
   
   const stopPropaganda = (event: any) => event.stopPropagation();
 

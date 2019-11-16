@@ -4,15 +4,14 @@ import {ContactLinks} from '../Others/ContaktLinks/ContactLinks';
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 
 
-export interface MyProps {
-  showSidebar: boolean;
-  setShowSidebar: (showSidebar: boolean) => void;
+interface MyProps {
+  handleShowSidebar: () => void;
 }
 
-export const Header = ({showSidebar,setShowSidebar}: MyProps) => {
+export const Header = ({handleShowSidebar}: MyProps) => {
   return (
     <div className={s.headerWrapper} >
-        <BurgerMenu {...{showSidebar,setShowSidebar}}/>
+        <BurgerMenu handleShowSidebar={handleShowSidebar}/>
       <ContactLinks />
     </div>
   )
