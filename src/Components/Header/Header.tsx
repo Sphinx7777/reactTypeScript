@@ -4,16 +4,15 @@ import {ContactLinks} from '../Others/ContaktLinks/ContactLinks';
 import {BurgerMenu} from "../Others/BurgerMenu/BurgerMenu";
 
 
-interface MyProps {
+interface HeaderProps {
   handleShowSidebar: () => void;
 }
 
-export const Header = ({handleShowSidebar}: MyProps) => {
+export const Header = ({handleShowSidebar}: HeaderProps) => {
   return (
-    <div className={s.headerWrapper} >
+    <div className={s.headerWrapper}>
         <BurgerMenu handleShowSidebar={handleShowSidebar}/>
       <ContactLinks />
     </div>
   )
 };
-

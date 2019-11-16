@@ -12,7 +12,7 @@ import './index.css';
 ReactDOM.render(
   <HashRouter>
     <Provider store={store}>
-      <App />
+      <App/>
     </Provider>
   </HashRouter>,
   document.getElementById('root')

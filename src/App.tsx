@@ -17,14 +17,14 @@ const App: React.FC = () => {
 
   return (
     <div className={s.app}>
-      <Header handleShowSidebar={handleShowSidebar} />
-      <SideBar showSidebar={showSidebar} handleShowSidebar={handleShowSidebar} />
+      <Header handleShowSidebar={handleShowSidebar}/>
+      <SideBar showSidebar={showSidebar} handleShowSidebar={handleShowSidebar}/>
       <div className={s.content}>
         <Switch>
-          <Route exact path='/' render={() => <ToDoContainer {...{setShowSidebar}}/>}/>
+          <Route exact path='/' render={() => <ToDoContainer setShowSidebar={setShowSidebar}/>}/>
           <Suspense fallback={<div>Загрузка...</div>}>
             <Route path='/resume' render={() => <ResumeComponent/>}/>
-          </Suspense>}/>
+          </Suspense>
         </Switch>
       </div>
     </div>
